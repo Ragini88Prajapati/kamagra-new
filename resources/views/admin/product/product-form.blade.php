@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">Product Name h</label>
+                                    <label for="name">Product Name </label>
                                     <?php
                                             if(old('name') != null){
                                                 $name_value = old('name');

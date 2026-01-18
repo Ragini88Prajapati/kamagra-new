@@ -91,8 +91,8 @@ class CartController extends Controller
         $data = self::get_cart_details();
         $data['cart_data']=$data;
         // dd($data);exit;
-        // return view('client2.cart', $data);
-        return view('client2.cartpage', $data);
+        return view('client2.cart', $data);
+        // return view('client2.cartpage', $data);
         // return view('client.product.product-cart', $data);
     }
 

@@ -5,185 +5,203 @@ use App\Models\Client\Product;
 @extends('layouts.client2')
 
 @section('content')
+<>
+<div class="emptybackround"></div>
+<div class="cart-container">
+    <h1>Einkaufswagen</h1>
 
-<div class="bt-breadcrumb">
-    <div class="container">
-        <div class="row">
-            <ul class="breadcrumb">
-                <li><a href="#"><i class="fa fa-home"></i></a>
-                </li>
-                <li><a href="cart.php">Einkaufswagen</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div><!-- /.bt-breadcrumb -->
-<div class="container">
-    <div class="row">
-        <div id="content" class="col-sm-12 col-md-12 col-lg-12 min-height-content">
-            <h1>Einkaufswagen </h1>
-            <form method="post" enctype="multipart/form-data">
-                <div class="table-responsive cart-info">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <td class="image" colspan="2">PRODUCT NAME</td>
-                                <td class="product-price">STÜCKPREIS</td>
-                                <td class="quantity">MENGE</td>
-                                <td class="total">GESAMT</td>
-                                <td class="remove"></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (isset($cart_product_list) && !empty($cart_product_list))
-                            @foreach ($cart_product_list as $item)
-                            @php
-                            $prod_data=Product::where('id',$item['product_id'])->first();
-                            @endphp
-                            <tr>
-                                <td class="image cart-product-images">
-                                    <a href="product-detail.php"><img
-                                            src="{{asset('/assets/images/product/').'/'.$prod_data->image}}"
-                                            alt="{{$prod_data->name}}" title="{{$prod_data->name}}" />
-                                    </a>
-                                </td>
-                                <td class="name"><a href="product-detail.php">{{$prod_data->name}}</a>
-                                    {{-- <br /> <small>Color: Pink</small> --}}
-                                </td>
-                                <td class="product-price">€{{$item['price']}}</td>
-                                <td class="quantity">
-                                    <div class="input-group btn-block" style="max-width: 100px;">
-                                        <button onclick="changeQty('{{$item['id']}}',0); return false;"
-                                            class="decrease"><i class="fa fa-minus"></i>
-                                        </button>
-                                        <input id="select-number{{$item['id']}}" type="text" name="quantity[]"
-                                            data-product="{{$item['id']}}" value="{{$item['quantity']}}" size="1"
-                                            class="form-control" />
-                                        <button onclick="changeQty('{{$item['id']}}',1); return false;"
-                                            class="increase"><i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                                <td class="total">€{{$item['total_price']}}</td>
-                                <td class="remove">
-                                    {{-- <button type="submit" data-toggle="tooltip" title="Update" class="btn btn-update"><i
-                                                    class="fa fa-refresh"></i>
-                                            </button> --}}
-                                    <button type="button" data-toggle="tooltip" title="Remove"
-                                        data-product="{{$item['id']}}" class="btn btn-remove delete-product"><i
-                                            class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            @endforeach
-                            @else
-                            Cart is Empty!
-                            @endif
+    <form method="post" enctype="multipart/form-data">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" class="shop-basket-items">
+            <thead>
+                <tr>
+                    <th width="52%" align="left">Produktname</th>
+                    <th width="13%" align="center">CROWD</th>
+                    <th width="15%" align="right">PREIS</th>
+                    <th width="15%" align="right">INSGESAMT</th>
+                    <th></th>
+                </tr>
+            </thead>
 
-                            {{-- <tr>
-                                <td class="image cart-product-images">
-                                    <a href="product-detail.php"><img src="images/product/p11-268x268.jpg"
-                                            alt="{{$prod_data->name}}"
-                            title="Cashmere cuff vintage Levi maxi" />
-                            </a>
-                            </td>
-                            <td class="name"><a href="product-detail.php">Cashmere cuff vintage Levi maxi</a>
-                                <br /> <small>Color: Pink</small>
-                            </td>
-                            <td class="product-price">$158.00</td>
-                            <td class="quantity">
-                                <div class="input-group btn-block" style="max-width: 100px;">
-                                    <button onclick="changeQty('0',0); return false;" class="decrease"><i
-                                            class="fa fa-minus"></i>
-                                    </button>
-                                    <input id="select-number0" type="text" name="quantity[]" value="2" size="1"
-                                        class="form-control" />
-                                    <button onclick="changeQty('0',1); return false;" class="increase"><i
-                                            class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td class="total">$316.00</td>
-                            <td class="remove">
-                                <button type="submit" data-toggle="tooltip" title="Update" class="btn btn-update"><i
-                                        class="fa fa-refresh"></i>
-                                </button>
-                                <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-remove"><i
-                                        class="fa fa-times"></i>
-                                </button>
-                            </td>
-                            </tr>
-                            <tr>
-                                <td class="image cart-product-images">
-                                    <a href="product-detail.php"><img src="images/product/p11-268x268.jpg"
-                                            alt="Cashmere cuff vintage Levi maxi"
-                                            title="Cashmere cuff vintage Levi maxi" />
-                                    </a>
-                                </td>
-                                <td class="name"><a href="product-detail.php">Cashmere cuff vintage Levi maxi</a>
-                                    <br /> <small>Color: Pink</small>
-                                </td>
-                                <td class="product-price">$158.00</td>
-                                <td class="quantity">
-                                    <div class="input-group btn-block" style="max-width: 100px;">
-                                        <button onclick="changeQty('0',0); return false;" class="decrease"><i
-                                                class="fa fa-minus"></i>
-                                        </button>
-                                        <input id="select-number0" type="text" name="quantity[]" value="2" size="1"
-                                            class="form-control" />
-                                        <button onclick="changeQty('0',1); return false;" class="increase"><i
-                                                class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                                <td class="total">$316.00</td>
-                                <td class="remove">
-                                    <button type="submit" data-toggle="tooltip" title="Update" class="btn btn-update"><i
-                                            class="fa fa-refresh"></i>
-                                    </button>
-                                    <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-remove"><i
-                                            class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr> --}}
-                        </tbody>
-                    </table>
-                </div>
-            </form>
+            <tbody>
+                @if (isset($cart_product_list) && !empty($cart_product_list))
+                @foreach ($cart_product_list as $item)
+                @php
+                $prod_data=Product::where('id',$item['product_id'])->first();
+                @endphp
+                <tr>
+                    <td class="product-name">
+                        <a href="#">
+                            {{$prod_data->name}}
+                        </a>
+                    </td>
 
+                    <td align="center">
+                        <input type="text" name="quantity[]" data-product="{{$item['id']}}" value="{{$item['quantity']}}" size="2" class="form-input-text" style="text-align: center; width: 24px;">
+                        <span class="unit">St.</span>
+                    </td>
 
-        </div><!-- /#content -->
-        <div class="col-sm-12 col-md-12 col-lg-6">
-            <div class="cart-total">
-                <table>
-                    <tr>
-                        <td class="left">Zwischensumme:</td>
-                        <td class="right">€{{$cart_total_price}}</td>
-                    </tr>
-                    {{-- <tr>
-                        <td class="left">Eco Tax (-2.00):</td>
-                        <td class="right">$4.00</td>
-                    </tr> --}}
-                    {{-- <tr>
-                        <td class="left">VAT (20%):</td>
-                        <td class="right">$52.00</td>
-                    </tr> --}}
-                    <tr>
-                        <td class="left">Gesamt:</td>
-                        <td class="right">€{{$cart_total_price}}</td>
-                    </tr>
-                </table>
-            </div><!-- /.cart-total -->
-            <div class="buttons btn-mr0">
-                <div class="pull-left"><a href="{{route('home.index')}}" class="btn btn-gray">Mit dem Einkaufen
-                        fortfahren</a>
-                </div>
-                <div class="pull-right"><a href="{{route('home.checkout_form')}}" class="btn btn-blue">Kasse</a>
-                </div>
+                    <td>€{{$item['price']}}</td>
+
+                    <td>€{{$item['total_price']}}</td>
+
+                    <td class="remove" data-product="{{$item['id']}}" style="cursor: pointer; font-weight: bold; color: #000; text-align: center;">X</td>
+                </tr>
+                @endforeach
+                @else
+                <tr>
+                    <td colspan="5">Cart is Empty!</td>
+                </tr>
+                @endif
+
+                <tr>
+                    <td colspan="5">
+                        <select name="gift" id="gift" onchange="fnSubmitForm('basketform');">
+                            <option value="0" class="gift-placeholder">
+                                Bitte wählen Sie Ihr Geschenk aus
+                            </option>
+
+                            <option value="219">
+                                GIFT: 3 PACKS OF KAMAGRA ORAL JELLY 100 WORTH €72 FREE
+                            </option>
+
+                            <option value="303">
+                                GIFT: 3 PACKS OF CENFORCE 100 WORTH €50 FREE
+                            </option>
+
+                            <option value="305">
+                                GIFT: 3 PACKS OF VIDALISTA 20 WORTH €50 FREE
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="5">
+                        <input
+                            type="text"
+                            name="item_discount"
+                            id="item_discount"
+                            class="form-input-text"
+                            placeholder="Gutscheincode eingeben"
+                        />
+
+                        <button
+                            type="button"
+                            class="basket-button"
+                            onclick="fnCoupon(true);"
+                        >
+                            Gutschein verwenden
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+
+        <div class="payment">
+            <div class="payment-label">
+                Zahlungsmethode:
+            </div>
+
+            <div class="payment-options">
+                <label class="payment-option">
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="bank_transfer"
+                        checked
+                        onclick="fnSubmitForm('basketform');"
+                    />
+                    Überweisung
+                    <img src="https://www.kamagraoriginal.to/images/logo-bank_transfer.png" alt="Banküberweisung" />
+                </label>
+
+                <label class="payment-option">
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="crypto"
+                        onclick="fnSubmitForm('basketform');"
+                    />
+                    Bitcoin <span class="discount">(10% Rabatt)</span>
+                    <img src="https://www.kamagraoriginal.to/images/logo-crypto.png" alt="Bitcoin" />
+                </label>
             </div>
         </div>
-    </div><!-- /.row -->
-</div><!-- /.container -->
+
+        <div class="delivery">
+            <div class="delivery-label">
+                Versandart:
+            </div>
+
+            <div class="delivery-select">
+                <select
+                    id="delivery"
+                    name="delivery"
+                    class="form-select"
+                    onchange="fnSubmitForm('basketform');"
+                >
+                    <option value="5" selected>
+                        Schneller und diskreter Versand (+€0)
+                    </option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="total-summary">
+            <span class="total-label">Gesamtsumme:</span>
+            <span class="total-amount">€{{$cart_total_price}}</span>
+        </div>
+
+        <div class="cart-actions">
+            <div class="terms-row">
+                <input
+                    type="checkbox"
+                    id="agreement"
+                    name="agreement"
+                    class="form-checkbox1"
+                />
+
+                <label for="agreement">
+                    <strong>
+                        Ich habe die
+                        <a
+                            href="https://www.kamagraoriginal.to/de/geschaftsbedingungen"
+                            target="_blank"
+                            class="form-link"
+                        >
+                            Geschäftsbedingungen
+                        </a>
+                        gelesen und stimme ihnen zu.
+                    </strong>
+                </label>
+            </div>
+
+            <div class="buttons-row">
+                <button
+                    type="button"
+                    class="basket-button"
+                    onclick="fnRecalculate('basketform');"
+                >
+                    Aktualisieren
+                </button>
+
+                <button
+                    type="button"
+                    class="basket-button primary"
+                    onclick="fnConfirmOrder();"
+                >
+                    Zur Kasse gehen
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+
+    </div>
+</div>
 
 @endsection
 
@@ -232,6 +250,28 @@ function changeQty(position, increase) {
     }
     position = '';
 }
+
+// Add missing functions required by cartpage UI
+function fnSubmitForm(formName) {
+    // Placeholder function for form submission
+    console.log("Form submitted: " + formName);
+}
+
+function fnCoupon(showMessage) {
+    // Placeholder function for coupon handling
+    console.log("Coupon function called");
+}
+
+function fnRecalculate(formName) {
+    // Placeholder function for recalculation
+    console.log("Recalculating: " + formName);
+}
+
+function fnConfirmOrder() {
+    // Redirect to checkout page when confirm order is clicked
+    window.location.href = "{{ route('home.checkout_form') }}";
+}
+
 $(document).on("change", "#input_country", function() {
     var country_id = $(this).val();
     $.ajax({
@@ -244,6 +284,50 @@ $(document).on("change", "#input_country", function() {
         success: function(res) {
             $("#input_zone").html(res);
         }
+    });
+});
+
+$(document).ready(function() {
+    // Handle quantity changes
+    $('.form-input-text[name="quantity[]"]').on('change', function() {
+        var position = $(this).data('product');
+        var newQty = $(this).val();
+        
+        $.ajax({
+            url: "{{ route('product.update-cart') }}",
+            type: "POST",
+            data: {
+                product: position,
+                quantity: newQty,
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(data) {
+                window.location.reload();
+            },
+            error: function(data) {
+                window.location.reload();
+            }
+        });
+    });
+    
+    // Handle product removal - click on remove cell (X)
+    $('.remove[data-product]').click(function() {
+        var productId = $(this).data('product');
+        
+        $.ajax({
+            url: "{{ route('product.delete-from-cart') }}",
+            type: "POST",
+            data: {
+                product: productId,
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(data) {
+                window.location.reload();
+            },
+            error: function(data) {
+                window.location.reload();
+            }
+        });
     });
 });
 </script>

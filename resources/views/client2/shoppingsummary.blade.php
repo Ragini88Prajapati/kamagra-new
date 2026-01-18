@@ -30,50 +30,50 @@
 
         <div style="margin-top:10px; clear:both;">
           <div style="float:left; width:150px;">First name: *</div>
-          <input type="text" name="delivery_name" id="delivery_name"
-                 placeholder="First name" class="form-input-text"
+          <input type="text" name="" id=""
+                 placeholder="" class="form-input-text"
                  style="width:280px;">
         </div>
 
         <div style="margin-top:10px; clear:both;">
           <div style="float:left; width:150px;">Last name: *</div>
-          <input type="text" name="delivery_surname" id="delivery_surname"
+          <input type="text" name="" id=""
                  placeholder="Last name" class="form-input-text"
                  style="width:280px;">
         </div>
 
         <div style="margin-top:10px; clear:both;">
-          <input type="hidden" name="delivery_street" id="delivery_street">
+          <input type="hidden" name="" id="">
 
           <div style="float:left; width:150px;">Street: *</div>
-          <input type="text" name="delivery_street_name" id="delivery_street_name"
+          <input type="text" name="name" id="name"
                  placeholder="Street" class="form-input-text"
                  style="width:140px; float: left; font: normal 11px Arial;"
                 >
 
           <div style="float:left; width:100px; text-align:center;">House number: *</div>
-          <input type="text" name="delivery_street_nr" id="delivery_street_nr"
+          <input type="text" name="" id=""
                  placeholder="House number" class="form-input-text"
                  style="width:40px; font: normal 11px Arial;">
         </div>
 
         <div style="margin-top:10px; clear:both;">
           <div style="float:left; width:150px;">City: *</div>
-          <input type="text" name="delivery_city" id="delivery_city"
+          <input type="text" name="" id=""
                  placeholder="City" class="form-input-text"
                  style="width:280px;">
         </div>
 
         <div style="margin-top:10px; clear:both;">
           <div style="float:left; width:150px;">Postal code: *</div>
-          <input type="text" name="delivery_zip" id="delivery_zip"
+          <input type="text" name="" id=""
                  placeholder="Postal code" class="form-input-text"
                  style="width:280px;">
         </div>
 
         <div style="margin-top:10px; clear:both;">
           <div style="float:left; width:150px;">Country: *</div>
-          <select name="delivery_state" id="delivery_state"
+          <select name="" id=""
                   class="form-select" style="width:280px;">
             <option value="">Select country</option>
             <option>Austria</option>
@@ -93,7 +93,7 @@
 
         <div style="margin-top:10px; clear:both;">
           <div style="float:left; width:150px;">Phone: *</div>
-          <input type="text" name="delivery_phone" id="delivery_phone"
+          <input type="text" name="" id=""
                  placeholder="Phone" class="form-input-text"
                  style="width:280px;"
                  oninput="this.value=this.value.replace(/[^0-9]/g,'')">
@@ -101,7 +101,7 @@
 
         <div style="margin-top:10px; clear:both;">
           <div style="float:left; width:150px;">Email: *</div>
-          <input type="email" name="delivery_email" id="delivery_email"
+          <input type="email" name="" id=""
                  placeholder="E-mail" class="form-input-text"
                  style="width:280px;">
         </div>
