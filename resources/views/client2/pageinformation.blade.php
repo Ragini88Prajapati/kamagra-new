@@ -159,14 +159,14 @@
   <!-- Right -->
   <div class="review-right">
     <div class="rating-grid">
-      <div class="rating-item">★★★★★ <span>35</span></div>
-      <div class="rating-item">★★★★☆ <span>6</span></div>
+      <div class="rating-item">★★★★★ <span class="rating-number">35</span></div>
+      <div class="rating-item">★★★★☆ <span class="rating-number">6</span></div>
 
-      <div class="rating-item">★★★☆☆ <span>0</span></div>
-      <div class="rating-item">★★☆☆☆ <span>0</span></div>
+      <div class="rating-item">★★★☆☆ <span class="rating-number">0</span></div>
+      <div class="rating-item">★★☆☆☆ <span class="rating-number">0</span></div>
 
-      <div class="rating-item">★☆☆☆☆ <span>0</span></div>
-      <div class="rating-item">☆☆☆☆☆ <span>0</span></div>
+      <div class="rating-item">★☆☆☆☆ <span class="rating-number">0</span></div>
+      <div class="rating-item">☆☆☆☆☆ <span class="rating-number">0</span></div>
     </div>
   </div>
 </div>

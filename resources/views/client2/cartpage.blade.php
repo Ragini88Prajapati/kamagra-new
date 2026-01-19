@@ -1,11 +1,7 @@
-@php
-use App\Models\Client\Product;
-
-@endphp
-@extends('layouts.client2')
+@extends('layouts.client_plain')
 
 @section('content')
-<>
+
 <div class="emptybackround"></div>
 <div class="cart-container">
     <h1>Shopping cart</h1>
@@ -34,9 +30,9 @@ use App\Models\Client\Product;
             <span class="unit">St.</span>
           </td>
 
-          <td>160 €</td>
+          <td align="right">160 €</td>
 
-          <td>€320</td>
+          <td align="right">€320</td>
 
           <td class="remove">X</td>
         </tr>
@@ -69,8 +65,8 @@ use App\Models\Client\Product;
     type="text"
     name="item_discount"
     id="item_discount"
-    class="form-input-text"
-    placeholder="Enter voucher code"
+    class="item_discount"
+   
   />
 
   <button
@@ -186,4 +182,3 @@ use App\Models\Client\Product;
 
 
   </div>
-</>

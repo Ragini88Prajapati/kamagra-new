@@ -13,6 +13,8 @@
     <!-- shopping summary -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/shoppingsummary.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/pageinformation.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/cartpage.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/ordercompleted.css') }}" />
 </head>
 <body>
 

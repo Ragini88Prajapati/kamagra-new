@@ -4,7 +4,7 @@
 <div class="emptybackround"></div>
 <div class="cart-container">
 
-  <h1>Shopping summary</h1>
+  <h1 class="shoppingh1">Shopping summary</h1>
 
   <table class="shop-confirm-info" width="100%" cellpadding="0" cellspacing="0">
   <tr>
@@ -51,7 +51,7 @@
                  style="width:140px; float: left; font: normal 11px Arial;"
                 >
 
-          <div style="float:left; width:100px; text-align:center;">House number: *</div>
+          <div style="float:left; width:100px; text-align:center; " class="housenumber">House number: *</div>
           <input type="text" name="delivery_street_nr" id="delivery_street_nr"
                  placeholder="House number" class="form-input-text"
                  style="width:40px; font: normal 11px Arial;">

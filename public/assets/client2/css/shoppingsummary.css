@@ -1,10 +1,4 @@
-.emptybackround {
-    width: 750px;
-    margin: 30px auto 0;
-    padding: 20px;
-    border-bottom: 2px solid #9ec8fa;
-    background-color: #54a6d8;
-}
+
 .cart-container {
     width: 750px;
     margin: 0 auto 30px;
@@ -20,6 +14,7 @@ h1 {
     font-weight: bold;
     color: #075baf;
     font-family: Arial, Helvetica, sans-serif;
+    margin-top: -10px;
 }
 
 .shop-confirm-info {
@@ -121,3 +116,124 @@ h1 {
     border-radius: 3px;
     cursor: pointer;
   }
+
+  /* =========================
+   MOBILE FONT SCALING ONLY
+   DESKTOP UNTOUCHED
+   ========================= */
+@media (max-width: 768px) {
+  
+  .cart-container {
+    width: 100%;
+    margin: 0;
+    padding: 12px;
+    box-sizing: border-box;
+  }
+
+ .shoppingh1 {
+    font-size: 56px;
+    margin-bottom: 12px;
+    margin-top: -10px;
+  }
+
+  .shop-confirm-info {
+    font-size: 26px;
+   line-height: 32px;
+  }
+
+   .shop-confirm-client b {
+    font-size: 28px;
+  }
+  .shop-confirm-client div[style*="float:left"] {
+    float: none !important;
+    width: 100% !important;
+    margin-bottom: 5px;
+    font-size: 24px;
+  }
+
+  .shop-confirm-client .form-input-text,
+  .shop-confirm-client .form-select {
+    font-size: 22px;      /* text size */
+    padding: 10px 8px;    /* input height */
+  }
+
+  /* Prevent overflow on small screens */
+  .shop-confirm-client input,
+  .shop-confirm-client select {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+#delivery_street_name,
+  #delivery_street_nr {
+    float: left;
+    box-sizing: border-box;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  /* Street (left) */
+  #delivery_street_name {
+    width: 70% !important;
+    margin-right: 4%;
+  }
+
+  /* House number (right) */
+  #delivery_street_nr {
+    width: 26% !important;
+    margin-top: -20px;
+  }
+  .housenumber{
+    margin-top: -27px;
+    padding-bottom: 18px;
+  }
+
+
+  .form-input-text,
+  .form-select {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+ 
+
+  /* Product table */
+  .shop-confirm-items th {
+    font-size: 25px;
+  }
+
+  .shop-confirm-items td {
+    font-size: 24px;
+    padding: 6px 4px;
+  }
+  .shop-confirm-items tr.odd td b a {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  /* Gift item text */
+  .shop-confirm-items tr.even td b {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  /* Payment & delivery */
+  .shop-confirm-payment-delivery {
+    font-size: 24px;
+  }
+
+  /* Total summary */
+  .shop-confirm-summary td {
+    font-size: 40px;
+  }
+
+  /* Buttons */
+  .basket-button1 {
+    display: none;
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .basket-button2 {
+    font-size: 32px;
+    padding: 14px 14px;
+  }
+}

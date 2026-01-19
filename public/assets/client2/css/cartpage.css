@@ -1,29 +1,3 @@
-.emptybackround {
-    width: 900px;
-    margin: 30px auto 0;
-    padding: 20px;
-    border-bottom: 2px solid #9ec8fa;
-    background-color: #1a638f;
-}
-.cart-container {
-    width: 900px;
-    margin: 0 auto 30px;
-    background: #fff;
-    border: 1px solid #b5d9f2;
-    padding: 20px;
-}
-
-h1 {
-    font-size: 2em;
-    font-weight: bold;
-    color: #075baf;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-/* .shop-basket-items {
-    width: 100%;
-    border-collapse: collapse;
-} */
 
 .shop-basket-items thead {
     background: #bfe6ff;
@@ -125,6 +99,12 @@ h1 {
   min-width: 200px;
   
 }
+.item_discount{
+ width: 184px;
+    padding: 4px;
+    font-size: 14px;
+    border: 1px solid #9EC8FA;
+}
 
 .delivery-select {
   width: 55%;
@@ -178,7 +158,7 @@ h1 {
   justify-content: space-between;
 }
 
-basket-button {
+.basket-button {
     color: #FFF;
     font-weight: 700;
     white-space: nowrap;
@@ -195,3 +175,103 @@ basket-button {
   font-size: 16px;
 }
 
+/* ===============================
+   MOBILE VIEW ONLY – NO LAYOUT CHANGE
+================================ */
+@media (max-width: 768px) {
+
+  /* Container */
+  .cart-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Table text size */
+  .shop-basket-items th {
+    font-size: 14px;
+    padding: 6px 6px;
+  }
+
+  .shop-basket-items td {
+    font-size: 14px;
+    padding: 8px 6px;
+  }
+
+  .product-name a {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  /* Quantity input */
+  .shop-basket-items input.form-input-text {
+    width: 30px !important;
+    padding: 4px;
+    font-size: 14px;
+  }
+
+  /* Gift select */
+  #gift {
+    width: 100%;
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  /* Voucher input */
+  #item_discount {
+   
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  /* Buttons */
+  .basket-button {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  /* Payment & delivery (ROW PRESERVED) */
+  .payment,
+  .delivery {
+    font-size: 14px;
+  }
+
+  .payment-label,
+  .delivery-label {
+    width: 40%;
+    margin-bottom: 12px;
+  }
+
+  .payment-options,
+  .delivery-select {
+    width: 55%;
+  }
+
+  .payment-option {
+    gap: 6px;
+  }
+
+  /* Total */
+  .total-summary {
+    font-size: 18px;
+  }
+
+  /* Terms */
+  .terms-row {
+    font-size: 14px;
+  }
+
+  .form-checkbox1 {
+    transform: scale(1.2);
+    margin-top: -14px;
+  }
+
+  /* Action buttons */
+  .buttons-row .basket-button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .basket-button.primary {
+    font-size: 15px;
+  }
+}

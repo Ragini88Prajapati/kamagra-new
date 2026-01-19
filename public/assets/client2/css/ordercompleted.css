@@ -1,0 +1,58 @@
+
+
+
+.success-text {
+  font-size: 13px;
+  margin-bottom: 42px;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 32px;
+}
+
+.summary-table-odd{
+font-size: 18px;
+}
+
+.green {
+  color: #009900;
+  font-weight: bold;
+}
+
+.payment-note {
+ font-size: 16px;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 42px;
+    padding-left: 10px;
+}
+
+
+.payment-table .paymenttotal-amount {
+ margin-bottom: 20px;
+}
+
+
+.warning {
+  color: red;
+  font-size: 14px;
+}
+
+.qr {
+  width: 200px;
+  height: 200px;
+  margin-top: 15px;
+}
+
+/* MOBILE ONLY – no layout change */
+@media (max-width: 768px) {
+  
+
+ 
+  .qr {
+    width: 160px;
+    height: 160px;
+  }
+}
