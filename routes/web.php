@@ -63,6 +63,12 @@ Route::get('/pageinformation', function () {
 Route::get('/ordercompleted', function () {
     return view('client2.ordercompleted');
 })->name('page.information');
+Route::get('/gift', function () {
+    return view('client2.giftpage');
+})->name('page.information');
+Route::get('/review', function () {
+    return view('client2.reviewpage');
+})->name('page.information');
 
 //ragini
 Route::get('/category/{category_id}/products', 'Client\ProductController@productsByCategory')->name('client2.category-product');

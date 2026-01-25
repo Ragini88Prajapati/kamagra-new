@@ -1,0 +1,84 @@
+.intro{
+    font-size: 1.5em;
+    line-height: 1.3;
+    padding-bottom: 1em;
+}
+
+.gifts-items {
+    margin-top: 2em;
+    display: flex;
+}
+
+.gift-item {
+    border-right: 1px solid #C4DDFC;
+}
+.gift-heading {
+    width: 33%;
+    text-decoration: none;
+    margin-bottom: 1em;
+    float: left;
+    color: #212121;
+    font-size: 18px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-width: 222px;
+    font-weight: bold;
+}
+.gift-image {
+    display: block;
+    margin: 0 auto 1em auto;
+    max-height: 84px;
+}
+.giftprice{
+    
+    text-align: center;
+}
+.price {
+    margin-top: 1em;
+    font-weight: 400;
+    color: #F25500;
+    font-size: 15px;
+}
+
+.label {
+    font-weight: 400;
+    color: #F25500;
+    font-size: 15px;
+  margin-right: 4px;
+  text-decoration: none;
+  
+  
+}
+
+.old-price {
+  color: #F25500;
+    font-size: 15px;
+  margin-right: 6px;
+}
+
+.gift {
+    padding: 5px;
+   background-color: #F25500;
+   color: white;
+   font-weight: bold;
+   border-radius: 7px;
+}
+
+.zobrazit-darcek {
+    color: #FFF;
+    text-align: center;
+    line-height: 34px;
+    width: 148px;
+    height: 35px;
+    background-color: #3FAFDE;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+    border-radius: 5px;
+}

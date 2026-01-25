@@ -6445,6 +6445,20 @@ footer .bt-footer-bottom.bggreen-footer {
     width: 20px;
 }
 
+/* Footer */
+.menu {
+  color: #071D35;
+    font-size: 65%;
+    font-weight: bold;
+    padding: 2px 0 15px 84px;
+}
+ .menu a {
+    color: #071D35;
+    font-size: 130%;
+    text-decoration: none;
+    padding: 0 5px;
+}
+
 @media screen and (min-width: 768px){
     .reviews-mobile{
         display: block;

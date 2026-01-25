@@ -448,61 +448,64 @@ use App\Models\Client\Product;
                 @yield('content')
             </div>
 
-            <div id="bt_footer" style="background: #eaf8ff; border-top: 1px solid #ddd; padding: 40px 0;">
+           <div id="bt_footer" style="background: #eaf8ff; border-top: 1px solid #ddd; padding: 40px 0;">
 
                 <footer>
                     <!-- New Footer Design matching Screenshot -->
-                    <div class="footer-new" style="background: #eaf8ff; border-top: 1px solid #ddd; padding: 30px 0; margin-top: 20px;">
+                    <div class="footer-new" style="background: #eaf8ff; border-top: 1px solid #ddd; padding: 30px 0; margin-top: 20px; ">
                         <div class="container">
-                            <div class="row" style="display: flex; align-items: center; flex-wrap: wrap;">
+                           <div class="row" style="display:flex; align-items:center; flex-wrap:wrap;">
                                 <!-- Logo Left -->
-                                <div class="col-md-3 col-sm-12" style="text-align: left; padding-bottom: 20px;">
-                                     <a href="{{route('home.index')}}">
-                                         <img src="https://www.kamagraoriginal.to/images/logo.png?v=10" alt="Kamagra Original" style="max-height: 40px;">
-                                     </a>
-                                </div>
+                               <div class="col-md-3 col-sm-12" style="text-align:left; padding-bottom:20px;">
+    <a href="{{route('home.index')}}">
+        <img src="https://www.kamagraoriginal.to/images/logo.png?v=10"
+             alt="Kamagra Original"
+             style="max-height:40px;">
+    </a>
+</div>
+
                                 <!-- Links Center/Right -->
-                                <div class="col-md-9 col-sm-12" style="text-align: right;">
+                                <div class="col-md-9 col-sm-12 menu" style="text-align: center; ">
                                     
                                     <!-- Row 1 -->
-                                    <div style="margin-bottom: 8px;">
-                                        <a href="{{route('home.index')}}" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Home</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="{{route('product.product-list')}}" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Products</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Gifts</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Reviews</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="{{route('home.kamagra-glossary')}}" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Encyclopedia</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Advice</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">FAQ</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="{{route('home.contact_us')}}" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Contact</a>
+                                    <div style="margin-bottom: 5px;">
+                                        <a href="{{route('home.index')}}" >Home</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="{{route('product.product-list')}}" >Products</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="#">Gifts</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="#" >Reviews</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="{{route('home.kamagra-glossary')}}" >Encyclopedia</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="#" >Advice</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="#" >FAQ</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="{{route('home.contact_us')}}" >Contact</a>
                                     </div>
 
                                     <!-- Row 2 -->
-                                    <div style="margin-bottom: 8px;">
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">GDPR</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Terms and Conditions</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Payment</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Exchanges & Returns</a>
+                                    <div style="margin-bottom: 5px;">
+                                        <a href="#" >GDPR</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="#" >Terms and Conditions</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="#">Payment</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="#" >Exchanges & Returns</a>
                                     </div>
 
                                     <!-- Row 3 -->
                                     <div>
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Discreet handling</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Shipping & Delivery</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Legal Notice</a>
-                                        <span style="color: #ccc; margin: 0 8px;">|</span>
-                                        <a href="#" style="color: #003e6d; font-weight: bold; font-size: 13px; text-decoration: none;">Information</a>
+                                        <a href="#" >Discreet handling</a>
+                                        <span style=" margin: 0 5px;">|</span>
+                                        <a href="#" >Shipping & Delivery</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="#" >Legal Notice</a>
+                                        <span style="margin: 0 5px;">|</span>
+                                        <a href="#" >Information</a>
                                     </div>
 
                                 </div>
@@ -561,17 +564,18 @@ use App\Models\Client\Product;
                    -->
                 </footer>
             </div>
-                                                        </li>
+                                                        <!-- </li>
                                                         <li> <a href="{{route('home.sexual-enhance')}}"><span class="menu-title">Potenzmittel</span></a>
                                                         </li>
                                                         <li> <a href="{{route('home.blog')}}"><span class="menu-title">bloggen</span></a>
-                                                        </li>
-                                                    </ul>
+                                                        </li> -->
+                                                    <!-- </ul>
                                                 </div>
                                             </div>
-                                        </div><!-- /.col-sm-4 -->
-                                        <div class="col-sm-4 col-xs-12 col-lg-3">
-                                            <!--Load modules in position footer newsletter-->
+                                        </div> -->
+                                        <!-- /.col-sm-4 -->
+                                        <!-- <div class="col-sm-4 col-xs-12 col-lg-3">
+                                           
                                             <div class="bt-newsletter">
                                                 <div class="footer-newsletter">
                                                     <div class="title">
@@ -613,8 +617,8 @@ use App\Models\Client\Product;
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div><!-- /.col-sm-4 -->
+                                            </div> -->
+                                        <!-- /.col-sm-4 -->
                                         <!-- <div class="footer-social col-xs-4">
                                             <h3>Follow us</h3>
                                             <ul>
@@ -637,19 +641,20 @@ use App\Models\Client\Product;
                                                 </li>
                                             </ul>
                                         </div>/.col-sm-4 -->
-                                        <div class="footer-email col-xs-12 col-lg-3">
+                                        <!-- <div class="footer-email col-xs-12 col-lg-3">
                                             <h3>SCHREIBEN SIE UNS EINE E-MAIL</h3>
                                             <p>
                                                 <a href="mailto:support@onlinekamagrastore.com" class="w-100">support@onlinekamagrastore.com</a>
                                             </p>
                                             <a href="//www.dmca.com/Protection/Status.aspx?ID=58f44135-ceda-40d3-95bd-8c84e1d8798a" title="DMCA.com Protection Status" class="dmca-badge"> <img src="https://images.dmca.com/Badges/DMCA_badge_grn_60w.png?ID=58f44135-ceda-40d3-95bd-8c84e1d8798a" alt="DMCA.com Protection Status" /></a>
                                             <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
-                                        </div>
-                                    </div>
+                                        </div> -->
+                                    <!-- </div>
                                 </div>
                             </div>
-                        </div><!-- /.bt-footer-middle -->
-                        <div class="bt-footer-bottom bggreen-footer">
+                        </div> -->
+                        <!-- /.bt-footer-middle -->
+                        <!-- <div class="bt-footer-bottom bggreen-footer">
                             <div class="container">
                                 <div class="row">
                                     <div class="link">
@@ -704,14 +709,15 @@ use App\Models\Client\Product;
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div><!-- /.powered-payment -->
+                                    </div>
                                 </div>
                             </div>
-                        </div><!-- /.bt-footer-bottom -->
+                        </div> -->
+                        <!-- /.bt-footer-bottom -->
                     </footer>
                 </div><!-- /#bt_footer -->
-                <div id="back_top" class="back_top" title="Back To Top"><span><i class="fa fa-angle-up"></i></span>
-                </div>
+                <!-- <div id="back_top" class="back_top" title="Back To Top"><span><i class="fa fa-angle-up"></i></span>
+                </div> -->
             </div>
         </div>
         <script src="{{ asset('assets/client2/js/jquery-2.1.1.min.js') }}"></script>
