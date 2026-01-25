@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\Brand;
+use App\Models\Admin\Category;
 use App\Models\Admin\Gender;
 
 class Product extends Model
@@ -24,5 +25,30 @@ class Product extends Model
     function gender()
     {
         return $this->belongsTo(Gender::class)->select('id', 'name', 'description')->where('status', 1);
+    }
+
+    function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id')->select('id', 'name', 'description')->where('status', 1);
+    }
+    
+    public function reviews()
+    {
+        return $this->hasMany(\App\Models\Client\ProductReview::class, 'product_id');
+    }
+    
+    public function approvedReviews()
+    {
+        return $this->hasMany(\App\Models\Client\ProductReview::class, 'product_id')->where('approved', true);
+    }
+    
+    public function avgRating()
+    {
+        return $this->approvedReviews()->avg('rating');
+    }
+    
+    public function reviewsCount()
+    {
+        return $this->approvedReviews()->count();
     }
 }

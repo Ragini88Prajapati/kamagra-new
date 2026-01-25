@@ -144,7 +144,7 @@
                                             </tr>
                                             <tr>
                                                 <th>Shipping:</th>
-                                                <td>€0</td>
+                                                <td>€10.00</td>
                                             </tr>
                                             <tr>
                                                 <th>Total:</th>

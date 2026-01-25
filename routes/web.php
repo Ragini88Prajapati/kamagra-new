@@ -48,6 +48,7 @@ Route::get('/product', 'Client\ProductController@index')->name('product.product-
 Route::get('/product/product-filter', 'Client\ProductController@product_list_filter')->name('product.product-list-filter');
 Route::post('/product/add-to-cart', 'Client\ProductController@add_to_cart')->name('product.add-to-cart');
 Route::post('/product/update-cart', 'Client\CartController@update_cart')->name('product.update-cart');
+Route::post('/product/validate-cart', 'Client\CartController@validate_cart')->name('product.validate-cart');
 Route::get('/product/cart', 'Client\CartController@show_cart')->name('product.show-cart');
 Route::get('/product/{product_slug}', 'Client\ProductController@product_preview')->name('client.product.product-preview');
 Route::post('/delete-from-cart', 'Client\ProductController@delete_from_cart')->name('product.delete-from-cart');
@@ -241,7 +242,7 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('logout');
 });
 
-Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+
 Route::post('process-transaction', 'Client\PaymentGatewayController@processTransaction')->name('processTransaction');
 Route::get('success-transaction', 'Client\PaymentGatewayController@successTransaction')->name('successTransaction');
 Route::get('cancel-transaction', 'Client\PaymentGatewayController@cancelTransaction')->name('cancelTransaction');
@@ -284,5 +285,6 @@ Route::get('/thank-you', 'Client\HomeController@thank_you')->name('home.thank-yo
 Route::get('/blog', 'Client\HomeController@blog')->name('home.blog');
 Route::get('/blog/{url}', 'Client\HomeController@blog_detail')->name('home.blog-detail');
 Route::post('/blog-review-save', 'Client\HomeController@saveBlogReview')->name('home.blog-review-save');
+Route::post('/product-review-save', 'Client\HomeController@saveProductReview')->name('home.product-review-save');
 
 Route::get('/sitemap.xml', 'Client\HomeController@sitemapXml');

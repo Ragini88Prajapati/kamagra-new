@@ -47,6 +47,7 @@ class ProductController extends Controller
 
     public function insert(Request $request)
     {
+        
         $validated_request = request()->validate([
             'name' => 'required|string|max:255|unique:product,name',
             'subtitle' => 'required|string|max:255',
@@ -64,8 +65,14 @@ class ProductController extends Controller
             // 'gender' => 'required|exists:gender,id',
             'image' => 'mimes:jpeg,jpg,png|required',
             'product_image.*'  => 'mimes:jpeg,jpg,png',
-            'number_text' => 'nullable'
+            'number_text' => 'nullable',
+            'usage_instructions' => 'nullable',
+            'warnings' => 'nullable',
+            'mechanism_of_action' => 'nullable',
+            'tips' => 'nullable'
         ]);
+
+        // dd();   
 
         $slug =  str_replace(' ', '-', trim($validated_request['name']));
         $user_id = Auth::guard('admin')->user()->id;
@@ -93,6 +100,12 @@ class ProductController extends Controller
         $product->twitter_title = $request -> twitter_title;
         $product->twitter_description = $request -> twitter_description;
         
+        // Product information tabs fields
+        $product->usage_instructions = $request->usage_instructions;
+        $product->warnings = $request->warnings;
+        $product->mechanism_of_action = $request->mechanism_of_action;
+        $product->tips = $request->tips;
+        
         $product->price  = $validated_request['price'];
         $product->category_id  = $validated_request['category_id'];
         // $product->gender_id  = $validated_request['gender'];
@@ -101,6 +114,8 @@ class ProductController extends Controller
         $product->created_at = date('Y-m-d H:i:s');
         $product->created_by = $user_id;
         $product->status = 1;
+
+      
         $product->save();
 
         $product_id = $product->id;
@@ -172,7 +187,11 @@ class ProductController extends Controller
             // 'gender' => 'required|exists:gender,id',
             'image' => 'mimes:jpeg,jpg,png',
             'product_image.*'  => 'mimes:jpeg,jpg,png',
-            'number_text' => 'nullable'
+            'number_text' => 'nullable',
+            'usage_instructions' => 'nullable',
+            'warnings' => 'nullable',
+            'mechanism_of_action' => 'nullable',
+            'tips' => 'nullable'
         ]);
 
         $slug =  str_replace(' ', '-', trim($validated_request['name']));
@@ -205,6 +224,12 @@ class ProductController extends Controller
         $product->twitter_site = $request -> twitter_site;
         $product->twitter_title = $request -> twitter_title;
         $product->twitter_description = $request -> twitter_description;
+        
+        // Product information tabs fields
+        $product->usage_instructions = $request->usage_instructions;
+        $product->warnings = $request->warnings;
+        $product->mechanism_of_action = $request->mechanism_of_action;
+        $product->tips = $request->tips;
         
         $product->number_text = $validated_request['number_text'];
         $product->created_at = date('Y-m-d H:i:s');

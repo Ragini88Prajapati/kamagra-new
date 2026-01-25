@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('assets/client/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/client/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/client/css/colors.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/shoppingsummary.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/pageinformation.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client/css/slick/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client/css/slick/slick-theme.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">

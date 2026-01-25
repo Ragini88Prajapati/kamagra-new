@@ -510,7 +510,10 @@ class PaymentGatewayController extends Controller
         if(Auth::check()){
             $users_id = Auth::user()->id;
         }else{
-            if($request->account_type == 'register'){
+            // Default to guest account type if not specified or invalid
+            $account_type = $request->account_type ?? 'guest';
+            
+            if($account_type == 'register'){
                 $olduser = User::where('email',$shipping_email_id)->first();
                 if($olduser){
                     $users_id = $olduser->id;
@@ -525,7 +528,8 @@ class PaymentGatewayController extends Controller
                         'password' => Hash::make($shipping_password),
                     ]);
                 }
-            }else if($request->account_type == 'guest'){
+            }else{
+                // Default to guest account for any account type that is not 'register'
                 $olduser = User::where('email',$shipping_email_id)->first();
                 if($olduser){
                     $users_id = $olduser->id;
@@ -692,7 +696,7 @@ class PaymentGatewayController extends Controller
             'payment_comment' => $payment_comment,
             'agree_terms' => $agree_terms,
             'total_cart_amount' => $sub_total,
-            'total_amount_paid' => $sub_total,
+            'total_amount_paid' => $total,
             'users_id' => $users_id,
             'created_at' => date('Y-m-d H:i:s'),
         ]);
