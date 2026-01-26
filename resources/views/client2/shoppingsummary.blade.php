@@ -117,13 +117,12 @@
 <input type="hidden">
 <table width="100%" cellpadding="0" cellspacing="0" border="0" class="shop-confirm-items">
   <tbody>
-    <tr>
-      <th width="57%" align="left">Product name</th>
-      <th width="13%" align="center">CROWD</th>
-      <th width="15%" align="right">PRICE</th>
-      <th width="15%" align="right">IN TOTAL</th>
-    </tr>
-
+   <tr>
+  <th style="width:57%; text-align:left;">Product name</th>
+  <th style="width:13%; text-align:center;">CROWD</th>
+  <th style="width:15%; text-align:right;">PRICE</th>
+  <th style="width:15%; text-align:right;">IN TOTAL</th>
+</tr>
     <tr class="odd">
       <td>
         <b>

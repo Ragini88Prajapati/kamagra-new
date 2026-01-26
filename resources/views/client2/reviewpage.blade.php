@@ -11,4 +11,4 @@
      Simply order €20 or more and choose from a wide variety of gifts.
       We'll delight you with a present, and you'll make your partner happy too.
     </p>
-</div>
+</div>g

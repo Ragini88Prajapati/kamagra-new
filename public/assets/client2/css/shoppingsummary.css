@@ -1,26 +1,16 @@
 
-.cart-container {
-    width: 750px;
-    margin: 0 auto 30px;
-    background: #fff;
-    border: 1px solid #b5d9f2;
-    padding: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
-}
-
-h1 {
-    font-size: 2em;
-    font-weight: bold;
-    color: #075baf;
-    font-family: Arial, Helvetica, sans-serif;
+.shoppingh1 {
+    font-size: 25px;
+    font-weight: 600;
+    color: #075BAF;
     margin-top: -10px;
 }
 
 .shop-confirm-info {
-    width: 100%;
-    font-size: 14px;
+   font-size: 13px;
     line-height: 1.5;
+    color: #071D35;
+     margin-top: -10px;
 }
 
 .shop-confirm-info a {
@@ -34,14 +24,15 @@ h1 {
     margin: 20px auto;
     font-family: Arial, sans-serif;
 }
-
-.form-input-text,
-.form-select,
-.form-textarea {
-    border: 1px solid #9ec8fa;
-    padding: 4px;
+.forminputtext{
+  width:280px;
+   padding:0px;
+   border: 1px solid #9EC8FA;
 }
-
+.forminputtext::placeholder {
+  font-size: 12px;  
+  padding-left: 5px;
+}
 .shop-confirm-items {
   border-collapse: separate;
   border-spacing: 0 6px; /* horizontal | vertical */
@@ -52,6 +43,7 @@ h1 {
   width: 100%;
   font-family: Arial, sans-serif;
   font-size: 13px;
+  color: black;
 }
 
 .shop-confirm-payment-delivery td {
@@ -95,27 +87,38 @@ h1 {
     
   }
   .basket-button1 {
-    color: #FFF;
+   
     font-weight: 700;
     white-space: nowrap;
-    padding: 4px 6px;
+    padding: 3px;
     background-color: #F46000;
     border: 1px solid #EB5600;
     border-radius: 3px;
     cursor: pointer;
+    text-align: center;
   }
-
+.basketbutton1{
+   color: #FFF;
+   font-weight: 500;
+   font-size: 12px;
+}
    .basket-button2 {
-    color: #FFF;
+  
     font-size: 16px;
     font-weight: bold;
     white-space: nowrap;
-    padding: 8px 10px;
-    background-color: #F46000;
-    border: 1px solid #EB5600;
-    border-radius: 3px;
+   
     cursor: pointer;
   }
+  .basketbutton2{
+   color: #FFF;
+   font-weight: 500;
+   font-size: 18px;
+    background-color: #F46000;
+    border: 1px solid #EB5600;
+     border-radius: 3px;
+      padding: 8px 10px;
+}
 
   /* =========================
    MOBILE FONT SCALING ONLY

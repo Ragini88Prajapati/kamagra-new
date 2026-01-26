@@ -4,7 +4,7 @@ use App\ProductVariant;
 @extends('layouts.client2')
 @section('SEO_Part')
 @section('content')
-<div class="emptybackround"></div>
+
 
 <div class="container" style="margin-top: 20px;">
     <div class="row">
@@ -81,14 +81,14 @@ use App\ProductVariant;
         </div><!-- /#column-left -->
         
         <!-- Main Content -->
-        <div id="content" class="col-sm-9 col-md-9 col-lg-9">
-            
-            <div class="cart-container">
+        <div id="content" class="col-sm-9 col-md-9 col-lg-9" style="margin-top: -30px;">
+           <div class="emptybackround"></div>
+          <div class="cart-container">
             <form method="get" action="https://www.kamagraoriginal.to/shop.php" id="oFormBasketAdd">
-  <input type="hidden" name="shop_module" value="basket">
-  <input type="hidden" name="shop_script" value="add">
-  <input type="hidden" name="lng" value="de">
-  <input type="hidden" name="itm" value="{{$product_data->id}}">
+            <input type="hidden" name="shop_module" value="basket">
+            <input type="hidden" name="shop_script" value="add">
+            <input type="hidden" name="lng" value="de">
+            <input type="hidden" name="itm" value="{{$product_data->id}}">
 
   <div class="row product-row">
 
@@ -110,9 +110,9 @@ use App\ProductVariant;
       @if($product_data->avg_rating)
         @for($i = 1; $i <= 5; $i++)
           @if($i <= $product_data->avg_rating)
-            <span style="color: #FFD700;">★</span>
+            <span style="color: #EA9119;  margin-right: -4px;">★</span>
           @else
-            <span style="color: #ccc;">★</span>
+            <span style="color: #ccc;  margin-right: -4px;">★</span>
           @endif
         @endfor
         <span>({{number_format($product_data->avg_rating, 1)}} average, {{$product_data->reviews_count}} reviews)</span>
@@ -121,7 +121,7 @@ use App\ProductVariant;
       @endif
     </div>
 
-    <h1 class="product-title">
+     <h1 class="product-title">
       {{$product_data->name}}
     </h1>
 
@@ -131,9 +131,9 @@ use App\ProductVariant;
       @endif
     </div>
 
-    <div class="purchase-row">
+     <div class="purchase-row">
   <div class="price">
-    <span>Price:</span>
+    <span style="color:black; font-weight: 400;">Price:</span>
     <strong>€{{$product_data->price ?? $product_data->min_price}}</strong>
   </div>
 
@@ -143,13 +143,13 @@ use App\ProductVariant;
   </div>
   
 
-  <div class="basket-button basket-button-big">
+  <div >
     <?php
     $firstVariant = \App\ProductVariant::where('product_id', $product_data->id)->first();
     $variantId = $firstVariant ? $firstVariant->id : null;
     ?>
     @if($variantId)
-    <button type="button" class="add-to-cart add-to-product-cart" data-product="{{$variantId}}">
+    <button type="button" class="addtocart add-to-product-cart" data-product="{{$variantId}}">
       Add to Cart
     </button>
     @else
@@ -163,14 +163,14 @@ use App\ProductVariant;
 
   <table class="info">
   <tbody>
-    <tr>
+    <tr class="oddtable">
       <td class="label">Product code:</td>
       <td class="value">{{ $product_data->number_text ?? 'N/A' }}</td>
     </tr>
 
     <tr>
       <td class="label">Category:</td>
-      <td class="value">
+      <td class="valuelink">
         @if(isset($product_data->category->name))
         <a href="{{ route('client2.category-product', $product_data->category->id) }}">
           {{$product_data->category->name}}
@@ -181,9 +181,9 @@ use App\ProductVariant;
       </td>
     </tr>
 
-    <tr>
+    <tr class="oddtable">
       <td class="label">Brand:</td>
-      <td class="value">
+      <td class="valuelink">
         @if(isset($product_data->brand->name))
           {{$product_data->brand->name}}
         @else
@@ -194,7 +194,7 @@ use App\ProductVariant;
 
     <tr>
       <td class="label">Availability:</td>
-      <td class="value in-stock">
+      <td class="value">
         @if(isset($product_data->status) && $product_data->status == 1)
           In stock – available for immediate delivery
         @else
@@ -206,32 +206,30 @@ use App\ProductVariant;
 </table>
     </div>
 </div>
-<br>
-<br>
 </form>
 
 <!-- Product Information Tabs -->
 <ul class="product-tab-links" style="list-style: none; padding: 0; margin: 20px 0; border-bottom: 1px solid #ddd;">
     <li style="display: inline-block; margin-right: 5px;">
-        <a href="#tab-uebersicht" class="tab-link active" style="display: block; padding: 10px 20px; background: #0088cc; color: white; text-decoration: none; border-radius: 4px 4px 0 0;">Übersicht</a>
+        <a href="#tab-uebersicht" class="tab-link active" style="display: block; padding: 5px 10px; background: #0088cc; color: white; text-decoration: none; border-radius: 4px 4px 0 0; margin-bottom: 5px;">Übersicht</a>
     </li>
     <li style="display: inline-block; margin-right: 5px;">
-        <a href="#tab-einnahme" class="tab-link" style="display: block; padding: 10px 20px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd;">Einnahme</a>
+        <a href="#tab-einnahme" class="tab-link" style="display: block; padding: 5px 10px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd; margin-bottom: 5px;">Einnahme</a>
     </li>
     <li style="display: inline-block; margin-right: 5px;">
-        <a href="#tab-nebenwirkungen" class="tab-link" style="display: block; padding: 10px 20px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd;">Nebenwirkungen</a>
+        <a href="#tab-nebenwirkungen" class="tab-link" style="display: block; padding: 5px 10px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd; margin-bottom: 5px;">Nebenwirkungen</a>
     </li>
     <li style="display: inline-block; margin-right: 5px;">
-        <a href="#tab-warnhinweis" class="tab-link" style="display: block; padding: 10px 20px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd;">Warnhinweis</a>
+        <a href="#tab-warnhinweis" class="tab-link" style="display: block; padding: 5px 10px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd; margin-bottom: 5px;">Warnhinweis</a>
     </li>
     <li style="display: inline-block; margin-right: 5px;">
-        <a href="#tab-gegenanzeigen" class="tab-link" style="display: block; padding: 10px 20px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd;">Gegenanzeigen</a>
+        <a href="#tab-gegenanzeigen" class="tab-link" style="display: block; padding: 5px 10px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd; margin-bottom: 5px;">Gegenanzeigen</a>
     </li>
     <li style="display: inline-block; margin-right: 5px;">
-        <a href="#tab-wirkweise" class="tab-link" style="display: block; padding: 10px 20px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd;">Wirkweise</a>
+        <a href="#tab-wirkweise" class="tab-link" style="display: block; padding: 5px 10px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd; margin-bottom: 5px;">Wirkweise</a>
     </li>
     <li style="display: inline-block; margin-right: 5px;">
-        <a href="#tab-tipps" class="tab-link" style="display: block; padding: 10px 20px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd;">Tipps</a>
+        <a href="#tab-tipps" class="tab-link" style="display: block; padding: 5px 10px; background: #f5f5f5; color: #333; text-decoration: none; border-radius: 4px 4px 0 0; border: 1px solid #ddd; margin-bottom: 5px;">Tipps</a>
     </li>
 </ul>
 
@@ -239,7 +237,7 @@ use App\ProductVariant;
 <div class="product-tab-contents">
     <!-- Übersicht Tab -->
     <div id="tab-uebersicht" class="tab-content active" style="display: block; padding: 20px; border: 1px solid #ddd; border-top: none; background: #fff;">
-        <h3 style="color: #075BAF; margin-top: 0;">Übersicht</h3>
+        <h2 style="color: #075BAF; margin: -10px 0 -5px; font-size: 1.4em; font-weight: normal;">Übersicht</h2>
         <p>{!! $product_data->description ?? 'Keine Beschreibung verfügbar.' !!}</p>
         
         @if(isset($product_data->highlights) && !empty($product_data->highlights))
@@ -334,14 +332,14 @@ use App\ProductVariant;
             <p><em>Bitte fügen Sie die Tipps im Admin-Bereich hinzu.</em></p>
         @endif
     </div>
-</div>
+
 
 <!-- Reviews Section starts here after tabs -->
 <div class="review-box">
 
   <!-- Left -->
   <div class="review-left">
-    <h3>
+    <h3 >
       REVIEWS FOR {{$product_data->name}}<br>
     </h3>
   </div>
@@ -352,7 +350,7 @@ use App\ProductVariant;
     <div class="stars big-stars">
       @for($i = 1; $i <= 5; $i++)
         @if($i <= ($product_data->avg_rating ?? 0))
-          <span style="color: #FFD700;">★</span>
+          <span style="color: #EA9119; margin-right: -4px;">★</span>
         @else
           <span style="color: #ccc;">★</span>
         @endif
@@ -370,9 +368,9 @@ use App\ProductVariant;
       <div class="rating-item">
         @for($i = 1; $i <= 5; $i++)
           @if($i <= $star)
-            <span style="color: #FFD700;">★</span>
+            <span style="color: #EA9119; margin-right: -4px;">★</span>
           @else
-            <span style="color: #ccc;">★</span>
+            <span style="color: #ccc; margin-right: -4px;">★</span>
           @endif
         @endfor
         <span>{{ $product_data->reviews_by_rating[$star] ?? 0 }}</span>
@@ -381,6 +379,7 @@ use App\ProductVariant;
     </div>
   </div>
 </div>
+</div>
 
 <!-- Display actual reviews - if reviews relationship exists -->
 @if(isset($product_data->reviews) && is_iterable($product_data->reviews))
@@ -388,16 +387,16 @@ use App\ProductVariant;
 <div class="review-item">
   <div class="review-item-header">
     <div class="review-user">
-      <div class="name">{{$review->name ?? 'Anonymous'}}</div>
+      <div class="ratingname">{{$review->name ?? 'Anonymous'}}</div>
       <div class="date">{{date('F j, Y', strtotime($review->created_at))}}</div>
     </div>
 
     <div class="review-rating">
       @for($i = 1; $i <= 5; $i++)
         @if($i <= ($review->rating ?? 0))
-          <span style="color: #FFD700;">★</span>
+          <span style="color: #EA9119; margin-right: -4px;">★</span>
         @else
-          <span style="color: #ccc;">★</span>
+          <span style="color: #ccc; margin-right: -4px;">★</span>
         @endif
       @endfor
     </div>
@@ -481,7 +480,7 @@ use App\ProductVariant;
   @csrf
   <input type="hidden" name="product_id" value="{{$product_data->id}}">
 
-  <h1>Ihre Bewertung abgeben</h1>
+  <h1 style="font-size: 20px; color: #075baf; font-weight: 600;">Ihre Bewertung abgeben</h1>
 
   <div class="submitrow">
     <div class="field">
