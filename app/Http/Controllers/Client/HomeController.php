@@ -101,7 +101,7 @@ class HomeController extends Controller
         return $this->_display('client.user.edit_details', $data);
     }
 
-    public function test_email()
+     public function test_email()
     {
         $user_id = Auth::user()->id;
 
@@ -291,5 +291,53 @@ class HomeController extends Controller
         $data['product_list'] = $product_list;
         return response()->view('client2.sitemap', $data)->header('Content-Type', 'text/xml');
       
+    }
+    
+    public function saveProductReview(Request $request){
+    
+        // Uncomment the line below for debugging if needed
+        // dd($request->all());
+        
+        try {
+            // First check if the rating came via the checkbox group
+            $ratingInput = $request->input('review_rating');
+            if (is_null($ratingInput) || $ratingInput === '') {
+                $ratingInput = $request->input('review_rating_check');
+            }
+            
+            // Ensure review_rating is properly handled
+            $rating = (int)filter_var($ratingInput, FILTER_SANITIZE_NUMBER_INT);
+            
+            if ($ratingInput === null || $ratingInput === '' || $rating < 1 || $rating > 5) {
+                return redirect()->back()->withErrors(['review_rating' => 'The review rating must be between 1 and 5.']);
+            }
+            
+            $request->merge(['review_rating' => $rating]);
+            
+            $request->validate([
+                'product_id' => 'required|exists:product,id',
+                'review_name' => 'required|string|max:255',
+                'review_email' => 'required|email|max:255',
+                'review_comment' => 'required|string'
+            ]);
+            
+            $review = new \App\Models\Client\ProductReview();
+            $review->product_id = $request->input('product_id');
+            $review->name = $request->input('review_name');
+            $review->email = $request->input('review_email');
+            $review->rating = $rating;
+            $review->comment = $request->input('review_comment');
+            $review->approved = 1; // Auto approve for now
+            
+            if($review->save()){
+                return redirect()->back()->with('success', 'Review saved successfully');
+            } else {
+                return redirect()->back()->with('error', 'Failed to save review');
+            }
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator->errors())->withInput();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage())->withInput();
+        }
     }
 }

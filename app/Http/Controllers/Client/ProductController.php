@@ -133,11 +133,26 @@ class ProductController extends Controller
         // dd('ragini');
         $data = $this->data;
         $data['product_list'] = Product::where('status',1)->select('name', 'slug', 'id', 'mrp', 'price', 'subtitle', 'discount', 'image', 'image_path', 'gender_id')->get();
-        $data['product_data'] = Product::with('brand', 'product_image')->select("*")->where('slug', $product_slug)->get()->first();
+        $data['product_data'] = Product::with(['brand', 'category', 'product_image', 'approvedReviews'])->select("*")->where('slug', $product_slug)->first();
+        
+        // Calculate additional review metrics
+        if($data['product_data']) {
+            $reviews = $data['product_data']->approvedReviews;
+            $data['product_data']->avg_rating = $reviews->avg('rating');
+            $data['product_data']->reviews_count = $reviews->count();
+            
+            // Group reviews by rating
+            $reviewsByRating = [];
+            for($i = 5; $i >= 1; $i--) {
+                $reviewsByRating[$i] = $reviews->where('rating', $i)->count();
+            }
+            $data['product_data']->reviews_by_rating = $reviewsByRating;
+        }
         // ragini
         $data['categories'] = Category::select('id', 'name')->where('status', 1)->get();
         // dd($data);exit;
         return $this->_display('client2.product-detail', $data);
+        // return $this->_display('client2.pageinformation', $data);
     }
 
     public function add_to_cart()

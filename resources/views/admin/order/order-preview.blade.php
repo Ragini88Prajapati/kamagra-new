@@ -139,16 +139,16 @@
                                         <tbody>
                                             <tr>
                                                 <th style="width:50%">Subtotal:</th>
-                                                <td>{{ isset($order_data['total_cart_amount']) && !empty($order_data['total_cart_amount']) ? $order_data['total_cart_amount'] : "0" }}
+                                                <td>{{ isset($order_data->total_cart_amount) && !empty($order_data->total_cart_amount) ? $order_data->total_cart_amount : "0" }}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th>Shipping:</th>
-                                                <td>Free</td>
+                                                <td>€10.00</td>
                                             </tr>
                                             <tr>
                                                 <th>Total:</th>
-                                                <td>€{{ isset($order_data['total_amount_paid']) && !empty($order_data['total_amount_paid']) ? $order_data['total_amount_paid'] : "0" }}/-
+                                                <td>€{{ isset($order_data->total_amount_paid) && !empty($order_data->total_amount_paid) ? $order_data->total_amount_paid : "0" }}/-
                                                 </td>
                                             </tr>
                                         </tbody>

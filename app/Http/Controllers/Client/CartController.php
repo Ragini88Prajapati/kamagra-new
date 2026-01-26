@@ -79,6 +79,10 @@ class CartController extends Controller
         $cookie_product_cart = json_encode($cookie_product_cart, JSON_FORCE_OBJECT);
         // print_r($cookie_product_cart);exit;
         setcookie('product_cart', $cookie_product_cart, time() + (86400 * 30), "/");
+        
+        // Update the $_COOKIE superglobal immediately so that subsequent calls to get_cart_details work correctly
+        $_COOKIE['product_cart'] = $cookie_product_cart;
+        
         return true;
     }
 
@@ -90,9 +94,13 @@ class CartController extends Controller
 
         $data = self::get_cart_details();
         $data['cart_data']=$data;
+        
+        // Add categories for sidebar
+        $data['categories'] = \App\Models\Admin\Category::select('id', 'name')->where('status', 1)->get();
+        
         // dd($data);exit;
-        // return view('client2.cart', $data);
-        return view('client2.cartpage', $data);
+        return view('client2.cart', $data);
+        // return view('client2.cartpage', $data);
         // return view('client.product.product-cart', $data);
     }
 

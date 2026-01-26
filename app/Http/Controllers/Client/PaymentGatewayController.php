@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Razorpay\Api\Api;
 use Razorpay\Api\Errors\SignatureVerificationError;
 // use Srmklive\PayPal\Services\ExpressCheckout;
@@ -422,6 +423,39 @@ class PaymentGatewayController extends Controller
 
     public function processTransaction(Request $request)
     {
+        // Server-side validation
+        $validator = Validator::make($request->all(), [
+            'shipping_firstname' => 'required|string|max:255',
+            'shipping_lastname' => 'required|string|max:255',
+            'shipping_address' => 'required|string|max:500',
+            'delivery_street_nr' => 'required|string|max:10',
+            'shipping_city' => 'required|string|max:255',
+            'shipping_pincode' => 'required|string|max:20',
+            'shipping_country' => 'required|numeric',
+            'shipping_mobile_number' => 'required|string|max:20',
+            'shipping_email_id' => 'required|email|max:255',
+            'users_id' => 'required|numeric',
+            'agree_terms' => 'required|accepted'
+        ], [
+            'shipping_firstname.required' => 'First name is required',
+            'shipping_lastname.required' => 'Last name is required',
+            'shipping_address.required' => 'Address is required',
+            'delivery_street_nr.required' => 'House number is required',
+            'shipping_city.required' => 'City is required',
+            'shipping_pincode.required' => 'Postal code is required',
+            'shipping_country.required' => 'Country is required',
+            'shipping_mobile_number.required' => 'Phone number is required',
+            'shipping_email_id.required' => 'Email is required',
+            'users_id.required' => 'User ID is required',
+            'agree_terms.accepted' => 'You must agree to the terms and conditions'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        
         
         $shipping_firstname = $request->shipping_firstname ?? '';
         $shipping_lastname = $request->shipping_lastname ?? '';
@@ -436,6 +470,7 @@ class PaymentGatewayController extends Controller
         $shipping_pincode = $request->shipping_pincode ?? '';
         $shipping_country = $request->shipping_country ?? '';
         $shipping_state_id = $request->shipping_state_id ?? '';
+        $delivery_street_nr = $request->delivery_street_nr ?? '';
         $shipping_password = $request->password ?? '';
         $confirm_password = $request->confirm_password ?? '';
         $same_billing_address = $request->same_billing_address ?? '0';
@@ -454,14 +489,31 @@ class PaymentGatewayController extends Controller
         $payment_method = $request->payment_method ?? '';
         $payment_comment = $request->payment_comment ?? '';
         $agree_terms = $request->agree_terms ?? '0';
-        $sub_total = $request->sub_total ?? '';
-        $total = $request->total ?? '';
-        // $shipping_rate = $request->shipping_rate ?? '';
-            // dd('fhgfhg');
+        $sub_total = $request->sub_total ?? 0;
+        $total = $request->total ?? 0;
+        $shipping_rate = $request->shipping_rate ?? 0;
+        
+        // If sub_total is 0, try to recalculate from cart data
+        if (empty($sub_total) || $sub_total == 0) {
+            $cart_data_temp = CartController::get_cart_details();
+            if (isset($cart_data_temp['cart_total_price']) && !empty($cart_data_temp['cart_total_price'])) {
+                $sub_total = $cart_data_temp['cart_total_price'];
+            }
+        }
+        
+        // Ensure total amount includes shipping if not already calculated
+        if (empty($total) || $total == 0) {
+            $total = floatval($sub_total) + floatval($shipping_rate);
+        }
+        
+        // dd('fhgfhg');
         if(Auth::check()){
             $users_id = Auth::user()->id;
         }else{
-            if($request->account_type == 'register'){
+            // Default to guest account type if not specified or invalid
+            $account_type = $request->account_type ?? 'guest';
+            
+            if($account_type == 'register'){
                 $olduser = User::where('email',$shipping_email_id)->first();
                 if($olduser){
                     $users_id = $olduser->id;
@@ -476,7 +528,8 @@ class PaymentGatewayController extends Controller
                         'password' => Hash::make($shipping_password),
                     ]);
                 }
-            }else if($request->account_type == 'guest'){
+            }else{
+                // Default to guest account for any account type that is not 'register'
                 $olduser = User::where('email',$shipping_email_id)->first();
                 if($olduser){
                     $users_id = $olduser->id;
@@ -505,6 +558,7 @@ class PaymentGatewayController extends Controller
             $shipping_company = $shipping_details->shipping_company ?? '';
             $shipping_company_number = $shipping_details->shipping_company_number ?? '';
             $shipping_address = $shipping_details->shipping_address ?? '';
+            $delivery_street_nr = $shipping_details->delivery_street_nr ?? '';
             $shipping_address2 = $shipping_details->shipping_address2 ?? '';
             $shipping_city = $shipping_details->shipping_city ?? '';
             $shipping_pincode = $shipping_details->shipping_pincode ?? '';
@@ -523,6 +577,7 @@ class PaymentGatewayController extends Controller
                 'shipping_company' => $shipping_company,
                 'shipping_company_number' => $shipping_company_number,
                 'shipping_address' => $shipping_address,
+                'delivery_street_nr' => $delivery_street_nr,
                 'shipping_address2' => $shipping_address2,
                 'shipping_pincode' => $shipping_pincode,
                 'shipping_city' => $shipping_city,
@@ -620,6 +675,7 @@ class PaymentGatewayController extends Controller
             'shipping_company' => $shipping_company,
             'shipping_company_number' => $shipping_company_number,
             'shipping_address' => $shipping_address,
+            'delivery_street_nr' => $delivery_street_nr,
             'shipping_address2' => $shipping_address2,
             'shipping_pincode' => $shipping_pincode,
             'shipping_city' => $shipping_city,
@@ -645,25 +701,24 @@ class PaymentGatewayController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
         ]);
 
-        // comment by me ragini
+        // Process order products from cart
+        foreach($cart_data['cart_product_list'] as $item){
+            $orderProduct = new OrderProduct();
+            $orderProduct->order_id = $order_id;
+            $orderProduct->product_id = $item['product_id'];
+            $orderProduct->variant_id = $item['id'];
+            $orderProduct->price = $item['price'];
+            $orderProduct->total_price = $item['total_price'];
+            $orderProduct->quantity = $item['quantity'];
+            $orderProduct->delivery_status_id = 3; // Default to 'order received'
+            $orderProduct->delivery_status_update_at = date('Y-m-d H:i:s');
+            $orderProduct->status = 1;
+            $orderProduct->save();
         
-        // foreach($cart_data['cart_product_list'] as $item){
-        //     $res = OrderProduct::insert([
-        //         'order_id'=>$order_id,
-        //         'product_id'=>$item['product_id'],
-        //         'variant_id'=>$item['id'],
-        //         // 'user_cart_id'=>$item['id'],
-        //         'price'=>$item['price'],
-        //         'total_price'=>$item['total_price'],
-        //         'quantity'=>$item['quantity'],
-        //         'created_at'=>date('Y-m-d H:i:s'),
-        //     ]);
-
-        //     if($res == 1){
-        //         $updatecart = User_cart::where(['product_id'=>$item['product_id'],'users_id'=>$users_id])->update(['status'=>3]);
-        //     }
-        // }
-
+            // Update cart status
+            $updatecart = User_cart::where(['product_id'=>$item['product_id'],'users_id'=>$users_id])->update(['status'=>3]);
+        }
+         
         if($payment_method == 'paypal'){
             $provider = new PayPalClient;
             $provider->setApiCredentials(config('paypal'));

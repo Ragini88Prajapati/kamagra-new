@@ -432,18 +432,9 @@ use App\Models\Client\Product;
             <!-- /.bt-mobile -->
 
 
-
-
-
-
-
-
-
-
-
-
             </div><!-- End bt_header -->
 
+            <!-- <div id="google_translate_element" style="margin: 10px 0; text-align: right;"></div> -->
             <div id="bt_container" class="bt-wide " style="padding-bottom: 40px; min-height: 600px;">
                 @yield('content')
             </div>

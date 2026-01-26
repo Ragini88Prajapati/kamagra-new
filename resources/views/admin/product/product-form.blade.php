@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">Product Name h</label>
+                                    <label for="name">Product Name </label>
                                     <?php
                                             if(old('name') != null){
                                                 $name_value = old('name');
@@ -283,6 +283,79 @@
                                         class="form-control">{{ $description_value }}</textarea>
                                     @error('description')
                                     <label id="description-error" class="error" for="description">{{ $message }}</label>
+                                    @enderror
+                                </div>
+                            </div>
+                            
+                            <!-- Additional Product Information Tabs Fields -->
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="usage_instructions">Intake (Usage Instructions)</label>
+                                    <?php
+                                    if(old('usage_instructions') != null){
+                                        $usage_instructions_value = old('usage_instructions');
+                                    }else{
+                                        $usage_instructions_value = isset($product_data->usage_instructions) && !empty($product_data->usage_instructions) ? $product_data->usage_instructions : "";;
+                                    }
+                                    ?>
+                                    <textarea name="usage_instructions" id="usage_instructions"
+                                        class="form-control">{{ $usage_instructions_value }}</textarea>
+                                    @error('usage_instructions')
+                                    <label id="usage_instructions-error" class="error" for="usage_instructions">{{ $message }}</label>
+                                    @enderror
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="warnings">Warnings</label>
+                                    <?php
+                                    if(old('warnings') != null){
+                                        $warnings_value = old('warnings');
+                                    }else{
+                                        $warnings_value = isset($product_data->warnings) && !empty($product_data->warnings) ? $product_data->warnings : "";;
+                                    }
+                                    ?>
+                                    <textarea name="warnings" id="warnings"
+                                        class="form-control">{{ $warnings_value }}</textarea>
+                                    @error('warnings')
+                                    <label id="warnings-error" class="error" for="warnings">{{ $message }}</label>
+                                    @enderror
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="mechanism_of_action">Mode of Action</label>
+                                    <?php
+                                    if(old('mechanism_of_action') != null){
+                                        $mechanism_of_action_value = old('mechanism_of_action');
+                                    }else{
+                                        $mechanism_of_action_value = isset($product_data->mechanism_of_action) && !empty($product_data->mechanism_of_action) ? $product_data->mechanism_of_action : "";;
+                                    }
+                                    ?>
+                                    <textarea name="mechanism_of_action" id="mechanism_of_action"
+                                        class="form-control">{{ $mechanism_of_action_value }}</textarea>
+                                    @error('mechanism_of_action')
+                                    <label id="mechanism_of_action-error" class="error" for="mechanism_of_action">{{ $message }}</label>
+                                    @enderror
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="tips">Tips</label>
+                                    <?php
+                                    if(old('tips') != null){
+                                        $tips_value = old('tips');
+                                    }else{
+                                        $tips_value = isset($product_data->tips) && !empty($product_data->tips) ? $product_data->tips : "";;
+                                    }
+                                    ?>
+                                    <textarea name="tips" id="tips"
+                                        class="form-control">{{ $tips_value }}</textarea>
+                                    @error('tips')
+                                    <label id="tips-error" class="error" for="tips">{{ $message }}</label>
                                     @enderror
                                 </div>
                             </div>
@@ -538,6 +611,10 @@
 <script>
     CKEDITOR.replace( 'highlights');
     CKEDITOR.replace( 'description');
+    CKEDITOR.replace( 'usage_instructions');
+    CKEDITOR.replace( 'warnings');
+    CKEDITOR.replace( 'mechanism_of_action');
+    CKEDITOR.replace( 'tips');
 </script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
 <script>
