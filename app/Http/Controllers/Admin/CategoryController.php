@@ -36,6 +36,7 @@ class CategoryController extends Controller
     {
         $validated_request = request()->validate([
             'name' => 'required|string|max:255|unique:product,name',
+            'description' => 'nullable|string',
             // 'price' => 'required',
             // 'image' => 'mimes:jpeg,jpg,png|required',
             // 'product_image.*' => 'mimes:jpeg,jpg,png',
@@ -43,6 +44,7 @@ class CategoryController extends Controller
     
         $category = new Category();
         $category->name = $validated_request['name'];
+        $category->description = strip_tags($validated_request['description'] ?? null, '<p><br><strong><em><ul><ol><li>');
         // $category->price = $validated_request['price'];
         $category->created_at = date('Y-m-d H:i:s');
         $category->status = 1;
@@ -73,6 +75,7 @@ class CategoryController extends Controller
         $category_id  = request()->input('category_id', 0);
         $validated_request = $request->validate([
             'name' => 'required|string|max:255|unique:categories,name,' . $category_id . ',id',
+            'description' => 'nullable|string',
             // 'price' => 'required',
             // 'image' => 'mimes:jpeg,jpg,png',
             // 'product_image.*' => 'mimes:jpeg,jpg,png',
@@ -80,6 +83,7 @@ class CategoryController extends Controller
 
         $category = Category::findOrFail($id);
         $category->name = $validated_request['name'];
+        $category->description = $validated_request['description'] ?? null;
         // $category->price = $validated_request['price'];
         $category->updated_at = date('Y-m-d H:i:s');
 

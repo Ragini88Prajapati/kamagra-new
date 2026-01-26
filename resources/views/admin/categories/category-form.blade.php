@@ -47,6 +47,15 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="description">Category Description</label>
+                                    <textarea name="description" id="description" class="form-control" rows="4">{{ isset($category_data->description) ? $category_data->description : old('description') }}</textarea>
+                                    @error('description')
+                                    <label id="description-error" class="error" for="description">{{ $message }}</label>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <!-- <div class="col-md-6">
                                 <div class="form-group">

@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@php
+use Illuminate\Support\Str;
+@endphp
+
 @section('head')
 <link href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 @endsection
@@ -34,6 +38,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Description</th>
                                     <!-- <th>Image</th> -->
                                     <!-- <th>Price Per Unit</th> -->
                                     <th>Action</th>
@@ -44,6 +49,7 @@
                                 @foreach($category_list as $value)
                                 <tr>
                                     <td>{{ isset($value->name) && !empty($value->name) ? $value->name : '' }}</td>
+                                    <td>{{ isset($value->description) && !empty($value->description) ? Str::limit($value->description, 50) : 'N/A' }}</td>
                                     <!-- <td>
                                         <img src="{{ asset('/assets/images/category/') . '/' . $value->image }}" style="width: 100px;">
                                     </td> -->
