@@ -29,20 +29,27 @@ use const PHP_INT_MIN;
  */
 class BigRationalTest extends AbstractTestCase
 {
-    /**
-     * @param string     $numerator   The expected numerator.
-     * @param string     $denominator The expected denominator.
-     * @param int|string $n           The input numerator.
-     * @param int|string $d           The input denominator.
-     */
-    #[DataProvider('providerNd')]
+    #[DataProvider('providerOfFraction')]
     public function testNd(string $numerator, string $denominator, int|string $n, int|string $d): void
     {
         $rational = BigRational::nd($n, $d);
         self::assertBigRationalInternalValues($numerator, $denominator, $rational);
     }
 
-    public static function providerNd(): array
+    /**
+     * @param string     $numerator   The expected numerator.
+     * @param string     $denominator The expected denominator.
+     * @param int|string $n           The input numerator.
+     * @param int|string $d           The input denominator.
+     */
+    #[DataProvider('providerOfFraction')]
+    public function testOfFraction(string $numerator, string $denominator, int|string $n, int|string $d): void
+    {
+        $rational = BigRational::ofFraction($n, $d);
+        self::assertBigRationalInternalValues($numerator, $denominator, $rational);
+    }
+
+    public static function providerOfFraction(): array
     {
         return [
             ['7', '1', '7', 1],
@@ -57,6 +64,22 @@ class BigRationalTest extends AbstractTestCase
     {
         $this->expectException(DivisionByZeroException::class);
         BigRational::nd(1, 0);
+    }
+
+    public function testNdWithNegativeDenominator(): void
+    {
+        self::assertBigRationalInternalValues('-1', '2', BigRational::nd(1, -2));
+    }
+
+    public function testOfFractionWithZeroDenominator(): void
+    {
+        $this->expectException(DivisionByZeroException::class);
+        BigRational::ofFraction(1, 0);
+    }
+
+    public function testOfFractionWithNegativeDenominator(): void
+    {
+        self::assertBigRationalInternalValues('-1', '2', BigRational::ofFraction(1, -2));
     }
 
     /**
@@ -154,7 +177,7 @@ class BigRationalTest extends AbstractTestCase
 
     public function testAccessors(): void
     {
-        $rational = BigRational::nd(123456789, 987654321);
+        $rational = BigRational::ofFraction(123456789, 987654321);
 
         self::assertBigIntegerEquals('123456789', $rational->getNumerator());
         self::assertBigIntegerEquals('987654321', $rational->getDenominator());
@@ -274,6 +297,47 @@ class BigRationalTest extends AbstractTestCase
     }
 
     /**
+     * @param string $rational       The rational number to test.
+     * @param string $integralPart   The expected integral part.
+     * @param string $fractionalPart The expected fractional part.
+     */
+    #[DataProvider('providerGetIntegralAndFractionalPart')]
+    public function testGetIntegralAndFractionalPart(string $rational, string $integralPart, string $fractionalPart): void
+    {
+        $r = BigRational::of($rational);
+
+        self::assertBigIntegerEquals($integralPart, $r->getIntegralPart());
+        self::assertBigRationalEquals($fractionalPart, $r->getFractionalPart());
+
+        self::assertTrue($r->isEqualTo($r->getFractionalPart()->plus($r->getIntegralPart())));
+    }
+
+    public static function providerGetIntegralAndFractionalPart(): array
+    {
+        return [
+            ['7/3', '2', '1/3'],
+            ['-7/3', '-2', '-1/3'],
+            ['3/4', '0', '3/4'],
+            ['-3/4', '0', '-3/4'],
+            ['22/7', '3', '1/7'],
+            ['-22/7', '-3', '-1/7'],
+            ['1000/3', '333', '1/3'],
+            ['-1000/3', '-333', '-1/3'],
+            ['895/400', '2', '95/400'],
+            ['-2.5', '-2', '-5/10'],
+            ['-5/2', '-2', '-1/2'],
+            ['0', '0', '0'],
+            ['1', '1', '0'],
+            ['-1', '-1', '0'],
+            ['123456789012345678901234567889/7', '17636684144620811271604938269', '6/7'],
+            ['123456789012345678901234567890/7', '17636684144620811271604938270', '0/7'],
+            ['123456789012345678901234567891/7', '17636684144620811271604938270', '1/7'],
+            ['1000000000000000000000/3', '333333333333333333333', '1/3'],
+            ['-999999999999999999999/7', '-142857142857142857142', '-5/7'],
+        ];
+    }
+
+    /**
      * @param string               $rational The rational number to test.
      * @param BigNumber|int|string $plus     The number to add.
      * @param string               $expected The expected rational number result.
@@ -289,7 +353,7 @@ class BigRationalTest extends AbstractTestCase
         return [
             ['123/456', 1, '579/456'],
             ['123/456', BigInteger::of(2), '1035/456'],
-            ['123/456', BigRational::nd(2, 3), '1281/1368'],
+            ['123/456', BigRational::ofFraction(2, 3), '1281/1368'],
             ['234/567', '123/28', '76293/15876'],
             ['-1234567890123456789/497', '79394345/109859892', '-135629495075630790047217323/54600366324'],
             ['-1234567890123456789/999', '-98765/43210', '-53345678532234666518925/43166790'],
@@ -427,6 +491,39 @@ class BigRationalTest extends AbstractTestCase
         ];
     }
 
+    #[DataProvider('providerClamp')]
+    public function testClamp(string $number, BigNumber|int|float|string $min, BigNumber|int|float|string $max, string $expected): void
+    {
+        self::assertBigRationalEquals($expected, BigRational::of($number)->clamp($min, $max));
+    }
+
+    public static function providerClamp(): array
+    {
+        return [
+            ['1/2', '1/4', '3/4', '1/2'],   // within range
+            ['1/8', '1/4', '3/4', '1/4'],   // below min
+            ['7/8', '1/4', '3/4', '3/4'],   // above max
+            ['1/4', '1/4', '3/4', '1/4'],   // equals min
+            ['3/4', '1/4', '3/4', '3/4'],   // equals max
+            ['-1/2', '-3/4', '-1/4', '-1/2'],  // negative range, within
+            ['-1', '-3/4', '-1/4', '-3/4'],    // negative range, below min
+            ['-1/8', '-3/4', '-1/4', '-1/4'],  // negative range, above max
+            ['-3/4', '-3/4', '-1/4', '-3/4'],  // negative range, equals min
+            ['-1/4', '-3/4', '-1/4', '-1/4'],  // negative range, equals max
+            ['0', '-1/2', '1/2', '0'],         // zero within range
+            ['2/3', 0, 1, '2/3'],              // int min/max
+            ['3/2', 0.5, 1.0, '1'],            // float min/max
+            ['5/4', BigRational::of('1/2'), BigRational::of('1'), '1'],  // BigRational min/max
+        ];
+    }
+
+    public function testClampWithInvertedBoundsThrowsException(): void
+    {
+        $number = BigRational::of('1/2');
+        $this->expectException(InvalidArgumentException::class);
+        $number->clamp('3/4', '1/4');
+    }
+
     /**
      * @param string $rational The rational number to test.
      * @param string $expected The expected reciprocal.
@@ -452,7 +549,7 @@ class BigRationalTest extends AbstractTestCase
     public function testReciprocalOfZeroThrowsException(): void
     {
         $this->expectException(DivisionByZeroException::class);
-        BigRational::nd(0, 2)->reciprocal();
+        BigRational::ofFraction(0, 2)->reciprocal();
     }
 
     /**
@@ -827,13 +924,13 @@ class BigRationalTest extends AbstractTestCase
     public static function providerToScale(): array
     {
         return [
-            ['1/8', 3, RoundingMode::UNNECESSARY, '0.125'],
-            ['1/16', 3, RoundingMode::UNNECESSARY, RoundingNecessaryException::class],
-            ['1/16', 3, RoundingMode::HALF_DOWN, '0.062'],
-            ['1/16', 3, RoundingMode::HALF_UP, '0.063'],
-            ['1/9', 30, RoundingMode::DOWN, '0.111111111111111111111111111111'],
-            ['1/9', 30, RoundingMode::UP, '0.111111111111111111111111111112'],
-            ['1/9', 100, RoundingMode::UNNECESSARY, RoundingNecessaryException::class],
+            ['1/8', 3, RoundingMode::Unnecessary, '0.125'],
+            ['1/16', 3, RoundingMode::Unnecessary, RoundingNecessaryException::class],
+            ['1/16', 3, RoundingMode::HalfDown, '0.062'],
+            ['1/16', 3, RoundingMode::HalfUp, '0.063'],
+            ['1/9', 30, RoundingMode::Down, '0.111111111111111111111111111111'],
+            ['1/9', 30, RoundingMode::Up, '0.111111111111111111111111111112'],
+            ['1/9', 100, RoundingMode::Unnecessary, RoundingNecessaryException::class],
         ];
     }
 
@@ -908,7 +1005,7 @@ class BigRationalTest extends AbstractTestCase
     public function testToFloatConversionPerformsSimplificationToPreventOverflow(): void
     {
         $int = BigInteger::of('1e4000');
-        $val = BigRational::nd($int, $int);
+        $val = BigRational::ofFraction($int, $int);
 
         self::assertInfinite($val->getNumerator()->toFloat());
         // Assert that simplification is required and the test would fail without it
@@ -939,6 +1036,46 @@ class BigRationalTest extends AbstractTestCase
     }
 
     /**
+     * @param string $number   The rational number.
+     * @param string $expected The expected decimal representation.
+     */
+    #[DataProvider('providerToRepeatingDecimalString')]
+    public function testToRepeatingDecimalString(string $number, string $expected): void
+    {
+        self::assertSame($expected, BigRational::of($number)->toRepeatingDecimalString());
+    }
+
+    public static function providerToRepeatingDecimalString(): array
+    {
+        return [
+            ['0/7', '0'],
+            ['10/5', '2'],
+            ['1/2', '0.5'],
+            ['1/3', '0.(3)'],
+            ['4/3', '1.(3)'],
+            ['10/3', '3.(3)'],
+            ['7/6', '1.1(6)'],
+            ['22/7', '3.(142857)'],
+            ['171/70', '2.4(428571)'],
+            ['122200/99', '1234.(34)'],
+            ['123/98', '1.2(551020408163265306122448979591836734693877)'],
+            ['1234500000/99999', '12345.(12345)'],
+            ['12345000000/99999', '123451.(23451)'],
+            ['1/250', '0.004'],
+            ['50/8', '6.25'],
+            ['1/28', '0.03(571428)'],
+            ['1/40', '0.025'],
+            ['-1/28', '-0.03(571428)'],
+            ['-1/3', '-0.(3)'],
+            ['-1/30', '-0.0(3)'],
+            ['-5/2', '-2.5'],
+            ['-22/7', '-3.(142857)'],
+            ['1/90', '0.0(1)'],
+            ['1/12', '0.08(3)'],
+        ];
+    }
+
+    /**
      * @param string $numerator   The numerator.
      * @param string $denominator The denominator.
      * @param string $expected    The expected string output.
@@ -946,7 +1083,7 @@ class BigRationalTest extends AbstractTestCase
     #[DataProvider('providerToString')]
     public function testToString(string $numerator, string $denominator, string $expected): void
     {
-        self::assertBigRationalEquals($expected, BigRational::nd($numerator, $denominator));
+        self::assertBigRationalEquals($expected, BigRational::ofFraction($numerator, $denominator));
     }
 
     public static function providerToString(): array
@@ -969,7 +1106,7 @@ class BigRationalTest extends AbstractTestCase
         $numerator = '-1234567890987654321012345678909876543210123456789';
         $denominator = '347827348278374374263874681238374983729873401984091287439827467286';
 
-        $rational = BigRational::nd($numerator, $denominator);
+        $rational = BigRational::ofFraction($numerator, $denominator);
 
         self::assertBigRationalInternalValues($numerator, $denominator, unserialize(serialize($rational)));
     }
@@ -977,6 +1114,6 @@ class BigRationalTest extends AbstractTestCase
     public function testDirectCallToUnserialize(): void
     {
         $this->expectException(LogicException::class);
-        BigRational::nd(1, 2)->__unserialize([]);
+        BigRational::ofFraction(1, 2)->__unserialize([]);
     }
 }

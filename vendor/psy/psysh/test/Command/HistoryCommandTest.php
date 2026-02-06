@@ -3,7 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
- * (c) 2012-2025 Justin Hileman
+ * (c) 2012-2026 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,6 +12,7 @@
 namespace Psy\Test\Command;
 
 use Psy\Command\HistoryCommand;
+use Psy\Configuration;
 use Psy\Output\PassthruPager;
 use Psy\Output\ShellOutput;
 use Psy\Readline\Readline;
@@ -48,7 +49,10 @@ class HistoryCommandTest extends \Psy\Test\TestCase
 
         $command = new HistoryCommand();
         $command->setReadline($readline);
-        $command->setApplication(new Shell());
+        $command->setApplication(new Shell(new Configuration([
+            'configFile'   => __DIR__.'/../fixtures/empty.php',
+            'trustProject' => false,
+        ])));
 
         return $command;
     }

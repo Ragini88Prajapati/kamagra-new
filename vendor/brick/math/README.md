@@ -47,20 +47,20 @@ for a list of changes introduced by each further `0.x.0` version.
 
 This library provides the following public classes in the `Brick\Math` namespace:
 
-- [BigNumber](https://github.com/brick/math/blob/0.14.0/src/BigNumber.php): base class for `BigInteger`, `BigDecimal` and `BigRational`
-- [BigInteger](https://github.com/brick/math/blob/0.14.0/src/BigInteger.php): represents an arbitrary-precision integer number.
-- [BigDecimal](https://github.com/brick/math/blob/0.14.0/src/BigDecimal.php): represents an arbitrary-precision decimal number.
-- [BigRational](https://github.com/brick/math/blob/0.14.0/src/BigRational.php): represents an arbitrary-precision rational number (fraction).
-- [RoundingMode](https://github.com/brick/math/blob/0.14.0/src/RoundingMode.php): enum representing all available rounding modes.
+- [BigNumber](https://github.com/brick/math/blob/0.14.3/src/BigNumber.php): base class for `BigInteger`, `BigDecimal` and `BigRational`
+- [BigInteger](https://github.com/brick/math/blob/0.14.3/src/BigInteger.php): represents an arbitrary-precision integer number.
+- [BigDecimal](https://github.com/brick/math/blob/0.14.3/src/BigDecimal.php): represents an arbitrary-precision decimal number.
+- [BigRational](https://github.com/brick/math/blob/0.14.3/src/BigRational.php): represents an arbitrary-precision rational number (fraction).
+- [RoundingMode](https://github.com/brick/math/blob/0.14.3/src/RoundingMode.php): enum representing all available rounding modes.
 
 And the following exceptions in the `Brick\Math\Exception` namespace:
 
-- [MathException](https://github.com/brick/math/blob/0.14.0/src/Exception/MathException.php): base class for all exceptions
-- [DivisionByZeroException](https://github.com/brick/math/blob/0.14.0/src/Exception/DivisionByZeroException.php): thrown when a division by zero occurs
-- [IntegerOverflowException](https://github.com/brick/math/blob/0.14.0/src/Exception/IntegerOverflowException.php): thrown when attempting to convert a too large `BigInteger` to `int`
-- [NumberFormatException](https://github.com/brick/math/blob/0.14.0/src/Exception/NumberFormatException.php): thrown when parsing a number string in an invalid format
-- [RoundingNecessaryException](https://github.com/brick/math/blob/0.14.0/src/Exception/RoundingNecessaryException.php): thrown when the result of the operation cannot be represented without explicit rounding
-- [NegativeNumberException](https://github.com/brick/math/blob/0.14.0/src/Exception/NegativeNumberException.php): thrown when attempting to calculate the square root of a negative number
+- [MathException](https://github.com/brick/math/blob/0.14.3/src/Exception/MathException.php): base class for all exceptions
+- [DivisionByZeroException](https://github.com/brick/math/blob/0.14.3/src/Exception/DivisionByZeroException.php): thrown when a division by zero occurs
+- [IntegerOverflowException](https://github.com/brick/math/blob/0.14.3/src/Exception/IntegerOverflowException.php): thrown when attempting to convert a too large `BigInteger` to `int`
+- [NumberFormatException](https://github.com/brick/math/blob/0.14.3/src/Exception/NumberFormatException.php): thrown when parsing a number string in an invalid format
+- [RoundingNecessaryException](https://github.com/brick/math/blob/0.14.3/src/Exception/RoundingNecessaryException.php): thrown when the result of the operation cannot be represented without explicit rounding
+- [NegativeNumberException](https://github.com/brick/math/blob/0.14.3/src/Exception/NegativeNumberException.php): thrown when attempting to calculate the square root of a negative number
 
 ### Overview
 
@@ -72,7 +72,7 @@ All classes provide an `of()` factory method that accepts any of the following t
 
 - `BigNumber` instances
 - `int` numbers
-- `float` numbers
+- `float` numbers (deprecated; will be removed in version 0.15)
 - `string` representations of integer, decimal and rational numbers
 
 Example:
@@ -109,9 +109,9 @@ echo BigInteger::of(999999999999999999999); // 1000000000000000000000
 echo BigInteger::of('999999999999999999999'); // 999999999999999999999
 ```
 
-Note about floating-point values: instantiating from a `float` might be unsafe, as floating-point values are
-imprecise by design, and could result in a loss of information. Always prefer instantiating from a `string`, which
-supports an unlimited number of digits:
+Note about floating-point values: instantiating from a `float` is deprecated and will be removed in 0.15. Floating-
+point values are imprecise by design and could result in a loss of information. Always prefer instantiating from a
+`string`, which supports an unlimited number of digits:
 
 ```php
 echo BigDecimal::of(1.99999999999999999999); // 2
@@ -174,11 +174,11 @@ echo BigInteger::of(999)->dividedBy(3); // 333
 echo BigInteger::of(1000)->dividedBy(3); // RoundingNecessaryException
 ```
 
-You can pass an optional [rounding mode](https://github.com/brick/math/blob/0.14.0/src/RoundingMode.php) to round the result, if necessary:
+You can pass an optional [rounding mode](https://github.com/brick/math/blob/0.14.3/src/RoundingMode.php) to round the result, if necessary:
 
 ```php
-echo BigInteger::of(1000)->dividedBy(3, RoundingMode::DOWN); // 333
-echo BigInteger::of(1000)->dividedBy(3, RoundingMode::UP); // 334
+echo BigInteger::of(1000)->dividedBy(3, RoundingMode::Down); // 333
+echo BigInteger::of(1000)->dividedBy(3, RoundingMode::Up); // 334
 ```
 
 If you're into quotients and remainders, there are methods for this, too:
@@ -197,22 +197,22 @@ You can even get both at the same time:
 ##### BigDecimal
 
 Dividing a `BigDecimal` always requires a scale to be specified. If the exact result of the division does not fit in
-the given scale, a [rounding mode](https://github.com/brick/math/blob/0.14.0/src/RoundingMode.php) must be provided.
+the given scale, a [rounding mode](https://github.com/brick/math/blob/0.14.3/src/RoundingMode.php) must be provided.
 
 ```php
 echo BigDecimal::of(1)->dividedBy('8', 3); // 0.125
 echo BigDecimal::of(1)->dividedBy('8', 2); // RoundingNecessaryException
-echo BigDecimal::of(1)->dividedBy('8', 2, RoundingMode::HALF_DOWN); // 0.12
-echo BigDecimal::of(1)->dividedBy('8', 2, RoundingMode::HALF_UP); // 0.13
+echo BigDecimal::of(1)->dividedBy('8', 2, RoundingMode::HalfDown); // 0.12
+echo BigDecimal::of(1)->dividedBy('8', 2, RoundingMode::HalfUp); // 0.13
 ```
 
-If you know that the division yields a finite number of decimals places, you can use `exactlyDividedBy()`, which will
+If you know that the division yields a finite number of decimals places, you can use `dividedByExact()`, which will
 automatically compute the required scale to fit the result, or throw an exception if the division yields an infinite
 repeating decimal:
 
 ```php
-echo BigDecimal::of(1)->exactlyDividedBy(256); // 0.00390625
-echo BigDecimal::of(1)->exactlyDividedBy(11); // RoundingNecessaryException
+echo BigDecimal::of(1)->dividedByExact(256); // 0.00390625
+echo BigDecimal::of(1)->dividedByExact(11); // RoundingNecessaryException
 ```
 
 ##### BigRational

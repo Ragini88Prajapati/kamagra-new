@@ -133,7 +133,7 @@
                           <b style="color:black; font-size: 13px;">DELIVERY ADDRESS FOR GOODS DELIVERY</b>
 
                           <div style="margin-top:10px; clear:both;">
-                            <div style="float:left; width:150px; font-size: 13px;">First name: *</div>
+                            <div class="shoppinglabel" >First name: *</div>
                             <input type="text" name="shipping_firstname" id="delivery_name"
                                    placeholder="First name" class="forminputtext"
                                    value="{{ old('shipping_firstname', Auth::user() ? ((Auth::user()->users_detail instanceof Illuminate\Database\Eloquent\Collection ? Auth::user()->users_detail->first()->first_name ?? '' : Auth::user()->users_detail->first_name ?? '')) : old('shipping_firstname', '')) }}">
@@ -143,7 +143,7 @@
                           </div>
 
                           <div style="margin-top:10px; clear:both;">
-                            <div style="float:left; width:150px; font-size: 13px;">Last name: *</div>
+                            <div class="shoppinglabel">Last name: *</div>
                             <input type="text" name="shipping_lastname" id="delivery_surname"
                                    placeholder="Last name" class="forminputtext"
                                     value="{{ old('shipping_lastname', Auth::user() ? ((Auth::user()->users_detail instanceof Illuminate\Database\Eloquent\Collection ? Auth::user()->users_detail->first()->last_name ?? '' : Auth::user()->users_detail->last_name ?? '')) : old('shipping_lastname', '')) }}">
@@ -153,22 +153,21 @@
                           </div>
 
                           <div style="margin-top:10px; clear:both;">
-            
-
-                           <div style="float:left; width:150px; font-size: 13px;">Street: *</div>
+                           <div class="shoppinglabel">Street: *</div>
                             <input type="text" name="shipping_address" id="delivery_street_name"
                                    placeholder="Street" class="forminputtext"
                                     value="{{ old('shipping_address', Auth::user() ? ((Auth::user()->users_detail instanceof Illuminate\Database\Eloquent\Collection ? Auth::user()->users_detail->first()->address ?? '' : Auth::user()->users_detail->address ?? '')) : old('shipping_address', '')) }}">
                               </div>
+                          
                             <div style="margin-top:10px; clear:both;">
-                           <div style="float:left; width:150px; font-size: 13px;">House number: *</div>
+                            <div class="shoppinglabel">House number: *</div>
                             <input type="text" name="delivery_street_nr" id="delivery_street_nr"
                                    placeholder="House number" class="forminputtext"
                                     value="{{ old('delivery_street_nr') }}">
                           </div>
 
                           <div style="margin-top:10px; clear:both;">
-                            <div style="float:left; font-size: 13px; width:150px;">City: *</div>
+                            <div class="shoppinglabel">City: *</div>
                             <input type="text" name="shipping_city" id="delivery_city"
                                    placeholder="City" class="forminputtext"
                                     value="{{ old('shipping_city', Auth::user() ? ((Auth::user()->users_detail instanceof Illuminate\Database\Eloquent\Collection ? Auth::user()->users_detail->first()->city ?? '' : Auth::user()->users_detail->city ?? '')) : old('shipping_city', '')) }}">
@@ -178,7 +177,7 @@
                           </div>
 
                           <div style="margin-top:10px; clear:both;">
-                            <div style="float:left; font-size: 13px; width:150px;">Postal code: *</div>
+                            <div class="shoppinglabel">Postal code: *</div>
                             <input type="text" name="shipping_pincode" id="delivery_zip"
                                    placeholder="Postal code" class="forminputtext"
                                     value="{{ old('shipping_pincode', Auth::user() ? ((Auth::user()->users_detail instanceof Illuminate\Database\Eloquent\Collection ? Auth::user()->users_detail->first()->pincode ?? '' : Auth::user()->users_detail->pincode ?? '')) : old('shipping_pincode', '')) }}">
@@ -188,7 +187,7 @@
                           </div>
 
                           <div style="margin-top:10px; clear:both;">
-                            <div style="float:left; font-size: 13px; width:150px;">Country: *</div>
+                            <div class="shoppinglabel">Country: *</div>
                             <select name="shipping_country" id="delivery_state"
                                     class="form-select" style="width:280px; padding:0px">
                               <option value="">Select country</option>
@@ -203,7 +202,7 @@
                           </div>
 
                           <div style="margin-top:10px; clear:both;">
-                            <div style="float:left; font-size: 13px; width:150px;">Phone: *</div>
+                            <div class="shoppinglabel">Phone: *</div>
                             <input type="text" name="shipping_mobile_number" id="delivery_phone"
                                    placeholder="Phone" class="forminputtext"
                                     value="{{ old('shipping_mobile_number', Auth::user() ? ((Auth::user()->users_detail instanceof Illuminate\Database\Eloquent\Collection ? Auth::user()->users_detail->first()->mobile ?? '' : Auth::user()->users_detail->mobile ?? '')) : old('shipping_mobile_number', '')) }}"
@@ -214,7 +213,7 @@
                           </div>
 
                           <div style="margin-top:10px; clear:both;">
-                            <div style="float:left; font-size: 13px; width:150px;">Email: *</div>
+                            <div class="shoppinglabel">Email: *</div>
                             <input type="email" name="shipping_email_id" id="delivery_email"
                                    placeholder="E-mail" class="forminputtext"
                                     value="{{ old('shipping_email_id', Auth::user() ? Auth::user()->email : old('shipping_email_id', '')) }}">
@@ -235,11 +234,11 @@
                   <table width="100%" cellpadding="0" cellspacing="0" border="0" class="shop-confirm-items">
                     <tbody>
                        <tr>
-  <th style="width:57%; text-align:left; color: black;">Product name</th>
-  <th style="width:13%; text-align:center; color: black;">CROWD</th>
-  <th style="width:15%; text-align:right; color: black;">PRICE</th>
-  <th style="width:15%; text-align:right; color: black;">IN TOTAL</th>
-</tr>
+                         <th class="shoppingheader">Product name</th>
+                         <th class="shoppingheader1">CROWD</th>
+                         <th class="shoppingheader2">PRICE</th>
+                         <th class="shoppingheader2">IN TOTAL</th>
+                      </tr>
 
                       @foreach($cart_data['cart_product_list'] as $item)
                       @php

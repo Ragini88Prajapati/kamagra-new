@@ -1,3 +1,31 @@
+/* Cart Page CSS */
+
+.emptybackround {
+    width: 900px;
+    margin: 30px auto 0;
+    padding: 20px;
+    border-bottom: 2px solid #9ec8fa;
+    background-color: #1a638f;
+}
+.cart-container {
+    width: 900px;
+    margin: 0 auto 30px;
+    background: #fff;
+    border: 1px solid #b5d9f2;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #075baf;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* .shop-basket-items {
+    width: 100%;
+    border-collapse: collapse;
+} */
 
 .shop-basket-items thead {
     background: #bfe6ff;
@@ -24,10 +52,21 @@
     font-weight: bold;
     text-decoration: none;
 }
+
 .form-input-text{
+    width: 50% !important;
+    box-sizing: border-box;
     border: 1px solid #9EC8FA;
     padding: 5px;
-}
+    }
+
+    .form-select {
+  
+    box-sizing: border-box;
+    border: 1px solid #9EC8FA;
+    padding: 5px;
+    }
+    
 
 .qty {
     width: 50px;
@@ -99,12 +138,6 @@
   min-width: 200px;
   
 }
-.item_discount{
- width: 184px;
-    padding: 4px;
-    font-size: 14px;
-    border: 1px solid #9EC8FA;
-}
 
 .delivery-select {
   width: 55%;
@@ -175,79 +208,80 @@
   font-size: 16px;
 }
 
-/* ===============================
-   MOBILE VIEW ONLY – NO LAYOUT CHANGE
-================================ */
-@media (max-width: 768px) {
+/* =========================
+   MOBILE – ROW STYLE CART
+========================= */
+@media (max-width: 767px) {
 
-  /* Container */
+  .emptybackround,
   .cart-container {
     width: 100%;
     padding: 10px;
   }
 
-  /* Table text size */
-  .shop-basket-items th {
-    font-size: 14px;
-    padding: 6px 6px;
+  .form-input-text{
+        width: 50% !important;
+        box-sizing: border-box;
+    }
+
+  h1 {
+    font-size: 18px;
+    text-align: center;
   }
 
+  /* Keep table layout */
+  .shop-basket-items {
+    font-size: 12px;
+  }
+
+  .shop-basket-items th,
   .shop-basket-items td {
-    font-size: 14px;
-    padding: 8px 6px;
+ 
+    padding: 6px 4px;
+        white-space: nowrap;
+        text-align: center;
   }
 
+  /* Product name smaller */
   .product-name a {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.3;
   }
 
-  /* Quantity input */
-  .shop-basket-items input.form-input-text {
-    width: 30px !important;
-    padding: 4px;
+
+
+  /* Remove button */
+  .remove {
     font-size: 14px;
+    font-weight: bold;
+    text-align: center;
   }
 
-  /* Gift select */
+  /* Gift dropdown */
   #gift {
     width: 100%;
-    font-size: 14px;
-    padding: 6px;
+    font-size: 12px;
   }
 
-  /* Voucher input */
-  #item_discount {
-   
-    font-size: 14px;
-    padding: 6px;
+  /* Voucher row */
+  .item_discount {
+    width: 65%;
+    font-size: 12px;
   }
 
-  /* Buttons */
   .basket-button {
-    font-size: 14px;
-    padding: 6px 10px;
+    font-size: 12px;
+    padding: 4px 6px;
   }
 
-  /* Payment & delivery (ROW PRESERVED) */
+  /* Payment & delivery stay inline but wrap */
   .payment,
   .delivery {
-    font-size: 14px;
-  }
-
-  .payment-label,
-  .delivery-label {
-    width: 40%;
-    margin-bottom: 12px;
-  }
-
-  .payment-options,
-  .delivery-select {
-    width: 55%;
+    font-size: 12px;
   }
 
   .payment-option {
-    gap: 6px;
+    flex-wrap: wrap;
   }
 
   /* Total */
@@ -255,23 +289,12 @@
     font-size: 18px;
   }
 
-  /* Terms */
-  .terms-row {
-    font-size: 14px;
-  }
-
-  .form-checkbox1 {
-    transform: scale(1.2);
-    margin-top: -14px;
-  }
-
-  /* Action buttons */
-  .buttons-row .basket-button {
-    font-size: 14px;
-    padding: 8px;
+  /* Buttons */
+  .buttons-row {
+    gap: 8px;
   }
 
   .basket-button.primary {
-    font-size: 15px;
+    font-size: 14px;
   }
 }

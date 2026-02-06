@@ -61,6 +61,9 @@ use App\Models\Client\Product;
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/resolution.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/pageinformation.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/shoppingsummary.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/indexblade.css') }}" />
+      <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/cartpage.css') }}" />
+      <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/ordercompleted.css') }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/bossblog.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -444,73 +447,71 @@ use App\Models\Client\Product;
 
                 <footer>
                     <!-- New Footer Design matching Screenshot -->
-                    <div class="footer-new" style="background: #eaf8ff; border-top: 1px solid #ddd; padding: 30px 0; margin-top: 20px; ">
-                        <div class="container">
-                           <div class="row" style="display:flex; align-items:center; flex-wrap:wrap;">
-                                <!-- Logo Left -->
-                               <div class="col-md-3 col-sm-12" style="text-align:left; padding-bottom:20px;">
-    <a href="{{route('home.index')}}">
-        <img src="https://www.kamagraoriginal.to/images/logo.png?v=10"
-             alt="Kamagra Original"
-             style="max-height:40px;">
-    </a>
+                  <div class="footer-new">
+    <div class="container">
+        <div class="row footer-row">
+            
+            <!-- Logo Left -->
+            <div class="col-md-3 col-sm-12 footer-logo">
+                <a href="{{route('home.index')}}">
+                    <img src="https://www.kamagraoriginal.to/images/logo.png?v=10"
+                         alt="Kamagra Original">
+                </a>
+            </div>
+
+            <!-- Links -->
+            <div class="col-md-9 col-sm-12 footer-menu">
+
+                <div class="footer-links-row">
+                    <a href="{{route('home.index')}}">Home</a>
+                    <span>|</span>
+                    <a href="{{route('product.product-list')}}">Products</a>
+                    <span>|</span>
+                    <a href="#">Gifts</a>
+                    <span>|</span>
+                    <a href="#">Reviews</a>
+                    <span>|</span>
+                    <a href="{{route('home.kamagra-glossary')}}">Encyclopedia</a>
+                    <span>|</span>
+                    <a href="#">Advice</a>
+                    <span>|</span>
+                    <a href="#">FAQ</a>
+                    <span>|</span>
+                    <a href="{{route('home.contact_us')}}">Contact</a>
+                </div>
+
+                <div class="footer-links-row">
+                    <a href="#">GDPR</a>
+                    <span>|</span>
+                    <a href="#">Terms and Conditions</a>
+                    <span>|</span>
+                    <a href="#">Payment</a>
+                    <span>|</span>
+                    <a href="#">Exchanges & Returns</a>
+                </div>
+
+                <div class="footer-links-row">
+                    <a href="#">Discreet handling</a>
+                    <span>|</span>
+                    <a href="#">Shipping & Delivery</a>
+                    <span>|</span>
+                    <a href="#">Legal Notice</a>
+                    <span>|</span>
+                    <a href="#">Information</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 
-                                <!-- Links Center/Right -->
-                                <div class="col-md-9 col-sm-12 menu" style="text-align: center; ">
-                                    
-                                    <!-- Row 1 -->
-                                    <div style="margin-bottom: 5px;">
-                                        <a href="{{route('home.index')}}" >Home</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="{{route('product.product-list')}}" >Products</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="#">Gifts</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="#" >Reviews</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="{{route('home.kamagra-glossary')}}" >Encyclopedia</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="#" >Advice</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="#" >FAQ</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="{{route('home.contact_us')}}" >Contact</a>
-                                    </div>
+<!-- Copyright -->
+<div class="footer-copy">
+    <div class="container text-center">
+        <p>2025 © SMART LOGISTIK kft., Hegedus Gyula utca 13, 1136 Budapest, Hungary, All rights reserved</p>
+    </div>
+</div>
 
-                                    <!-- Row 2 -->
-                                    <div style="margin-bottom: 5px;">
-                                        <a href="#" >GDPR</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="#" >Terms and Conditions</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="#">Payment</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="#" >Exchanges & Returns</a>
-                                    </div>
-
-                                    <!-- Row 3 -->
-                                    <div>
-                                        <a href="#" >Discreet handling</a>
-                                        <span style=" margin: 0 5px;">|</span>
-                                        <a href="#" >Shipping & Delivery</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="#" >Legal Notice</a>
-                                        <span style="margin: 0 5px;">|</span>
-                                        <a href="#" >Information</a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Copyright Section -->
-                    <div style="background: #f8f8f8; padding: 20px 0; border-top: 1px solid #eee;">
-                         <div class="container text-center">
-                             <p style="margin: 0; font-size: 12px; color: #999;">2025 © SMART LOGISTIK kft., Hegedus Gyula utca 13, 1136 Budapest, Hungary, All rights reserved</p>
-                         </div>
-                    </div>
 
                     <!-- Old Footer Commented Out as requested -->
                     <!-- 

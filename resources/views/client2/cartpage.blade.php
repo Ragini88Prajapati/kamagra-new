@@ -26,7 +26,7 @@
           </td>
 
           <td align="center">
-            <input type="text" name="item[164]" value="2" size="2" class="form-input-text" style="text-align: center; width: 24px;" fdprocessedid="yq7gz6">
+            <input type="text" name="item[164]" value="2" size="2" class="forminputtext" style="text-align: center; width: 24px;" fdprocessedid="yq7gz6">
             <span class="unit">St.</span>
           </td>
 
@@ -65,7 +65,7 @@
     type="text"
     name="item_discount"
     id="item_discount"
-    class="item_discount"
+   class="forminputtext"
    
   />
 
