@@ -29,14 +29,14 @@ use App\Models\Client\Product;
 @section('content')
 
 <div class="container">
-    <div class="menu_custom row">
+    <div class="menu_custom">
         <!-- /.header_category -->
         <!-- /.header_slider -->
     </div>
 </div>
 <div class="container">
-    <div class="menu_custom  row">
-        <div class="col-lg-12 col-md-12 col-12">
+    <div class="menu_custom">
+        <div class="col-lg-12 col-md-12 col-12" style="margin-bottom: 20px">
             <div class="header_slider bannerslider-height nofloat mb-4 image-banner-height">
                 <article class="boss_slider image-banner-height" >
                     <div class="tp-banner-container image-banner-height">
@@ -46,7 +46,8 @@ use App\Models\Client\Product;
                                 @forelse ($banners as $item)
 
                                 <li class="image-banner-height" data-link="#" data-target="_self" data-transition="3dcurtain-horizontal" data-slotamount="7" data-masterspeed="500" data-saveperformance="on">
-                                    <!-- MAIN IMAGE --><img src="{{$item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''}}" alt="slidebg1" data-lazyload="{{$item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''}}" data-bgposition="left center" data-kenburns="off" data-duration="14000" data-ease="Linear.easeNone" data-bgpositionend="right center" />
+                                    <!-- MAIN IMAGE -->
+                                     <img src="{{$item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''}}" alt="slidebg1" data-lazyload="{{$item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''}}" data-bgposition="left center" data-kenburns="off" data-duration="14000" data-ease="Linear.easeNone" data-bgpositionend="right center" />
                                   
                                     <div class="tp-caption big_white sft customout rs-parallaxlevel-0" data-x="342" data-y="54" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="400" data-start="500" data-end="5000" data-endspeed="400" data-easing="easeOutBack" data-endeasing="easeOutBack" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index: 2;"><img src="{{asset('/assets/client2/images/').'/dummy.png'}}" alt="" data-lazyload="{{asset('/assets/client2/images/slide/').'/line_caption.png'}}" />
                                     </div>
@@ -65,20 +66,24 @@ use App\Models\Client\Product;
                                         data-kenburns="off" data-duration="14000" data-ease="Linear.easeNone"
                                         data-bgpositionend="right center" />
                                   
-                                    <div class="tp-caption big_white sfr customout rs-parallaxlevel-0" data-x="598"
-                                        data-y="32"
-                                        data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                                        data-speed="400" data-start="500" data-end="5000" data-endspeed="400"
-                                        data-easing="easeOutBack" data-endeasing="easeOutBack" data-elementdelay="0.1"
-                                        data-endelementdelay="0.1" style="z-index: 2;"><img src="images/dummy.png"
+                                        <div class="tp-caption big_white sfr customout rs-parallaxlevel-0"
+                                        data-x="598"
+                                            data-y="32"
+                                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                            data-speed="400" data-start="500" data-end="5000" data-endspeed="400"
+                                            data-easing="easeOutBack" data-endeasing="easeOutBack" data-elementdelay="0.1"
+                                            data-endelementdelay="0.1" style="z-index: 2;">
+                                        <img src="images/dummy.png"
                                             alt="" data-lazyload="images/slide/line_caption1.png" /> </div>
                                     <!-- LAYER NR. 7 -->
-                                    <div class="tp-caption big_white sfr customout rs-parallaxlevel-0" data-x="683"
+                                    <div class="tp-caption big_white sfr customout rs-parallaxlevel-0"
+                                         data-x="683"
                                         data-y="32"
                                         data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
                                         data-speed="400" data-start="500" data-end="5000" data-endspeed="400"
                                         data-easing="easeOutBack" data-endeasing="easeOutBack" data-elementdelay="0.1"
-                                        data-endelementdelay="0.1" style="z-index: 2;"><img src="images/dummy.png"
+                                        data-endelementdelay="0.1" style="z-index: 2;">
+                                        <img src="images/dummy.png"
                                             alt="" data-lazyload="images/slide/line_caption1.png" /> </div>
                                 </li> --}}
                             </ul>
@@ -232,7 +237,7 @@ use App\Models\Client\Product;
       </div>
     </div>
  </div>
-        <div id="column-left" class="col-sm-3 col-md-3 col-lg-3">
+        <div id="column-left" class="col-sm-3 col-md-3 col-lg-3 hidden-xs">
             <div class="header_category  nofloat " style="margin-bottom: 20px;">
                 <div id="boss-menu-category" class="box">
                     <div class="box-content">
@@ -279,9 +284,9 @@ use App\Models\Client\Product;
                 
                 <!-- Bestsellers Grid -->
                 <!-- Light Blue Header for Bestsellers -->
-                <div style="background: #aeddf5; padding: 10px 15px; margin-bottom: 15px;">
+                <!-- <div style="background: #aeddf5; padding: 10px 15px; margin-bottom: 15px;">
                      <h3 style="margin: 0; font-size: 16px; font-weight: bold; color: #000;">Bestsellers</h3>
-                </div>
+                </div> -->
                 
                 <div class="row" style="margin-bottom: 30px;">
                     @if(isset($best_product) && count($best_product) > 0)
@@ -523,9 +528,9 @@ use App\Models\Client\Product;
             </div>
 
             <!-- Medical Disclaimer -->
-            <div class="medical-disclaimer" style="border: 1px solid #bcecff; background-color: #eaf8ff; padding: 15px; margin-bottom: 20px;">
+            <div class="medical-disclaimer" style="border: 1px solid #bcecff; background-color: white; padding: 15px; margin-bottom: 20px;">
                 <h4 style="color: #31708f; font-size: 15px; font-weight: bold; margin: 0 0 5px 0;">Medical disclaimer</h4>
-                <p style="font-size: 12px; color: #333; line-height: 1.4; margin: 0;">
+                <p style="font-size: 13px; color: #333; line-height: 1.4; margin: 0;">
                     You should always consult your doctor or another healthcare professional before taking any medication, supplement, or treatment for a health problem, whether offered on this website or elsewhere. If you have or suspect you have a medical problem, you should see your doctor immediately. For all products and/or services purchased through this website, you should carefully read all instructions before use.
                 </p>
             </div>
@@ -535,12 +540,6 @@ use App\Models\Client\Product;
 
         </div><!-- /#content -->
     </div><!-- /#content -->
-
-    <div class="row">
-        <div class="banner-bottoms" style="margin-top:20px;">
-            <img src="{{asset('/assets/client_new/fdooter_bottom.png')}}" alt="" srcset="">
-        </div>
-    </div>
 
 </div>
 

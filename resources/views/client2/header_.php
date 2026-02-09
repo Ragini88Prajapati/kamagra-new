@@ -86,7 +86,7 @@
                 <div class="container">
                     <div class="row">
                         <div id="left_top_links" class="nav pull-left"> <a href="#"><i class="fa fa-envelope-o"></i>
-                                <span>EMAIL: info@onlinekamagrastore.com </span></a> </div>
+                         <span>EMAIL: info@onlinekamagrastore.com </span></a> </div>
                         <div id="right_top_links" class="nav pull-right">
                             <div class="bt-language">
                                 <form method="post" enctype="multipart/form-data" class="language">

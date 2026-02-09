@@ -11,18 +11,19 @@ email:     	info@themepunch.com
 website:   	http://www.themepunch.com
 -----------------------------------------------------------------------------*/
 
-.header_slider .tp-banner-container {
+.header_slider {
     max-width: 100%;
     overflow: hidden;
     padding: 0;
-    position: relative;
+   
     width: 100%;
 }
 
-.header_slider .boss_slider {
+
+/* .header_slider .boss_slider {
     margin-left: auto;
     margin-right: auto;
-}
+} */
 
 
 /*************************

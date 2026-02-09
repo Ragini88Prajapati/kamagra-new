@@ -4684,10 +4684,20 @@ textarea.input-group-sm>.input-group-btn>.btn {
     padding: 10px 15px
 }
 
-.nav>li>a:focus,
-.nav>li>a:hover {
-    text-decoration: none;
-    background-color: #eee
+.nav>li>a:hover{
+     color: #ffffff; 
+     background-color: transparent; 
+      text-decoration: underline;
+      text-decoration-color: #ffffff; 
+      text-underline-offset: 4px;
+}
+.nav>li>a:focus
+{
+   color: #ffffff; 
+     background-color: transparent; 
+      text-decoration: underline;
+      text-decoration-color: #ffffff; 
+      text-underline-offset: 4px;
 }
 
 .nav>li.disabled>a {

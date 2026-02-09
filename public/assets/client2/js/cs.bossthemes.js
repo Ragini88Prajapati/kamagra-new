@@ -92,6 +92,7 @@ jQuery(document).ready(function($) {
 	$(".open-bt-mobile,.close-panel").click(function(){
 		$('body').toggleClass('openNav');
 	});
+	
 	$('.nav-pills li.parent > p').click(function(){
 
 		if ($(this).text() == '+'){

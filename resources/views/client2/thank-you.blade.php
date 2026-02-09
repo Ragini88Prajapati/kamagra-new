@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="thank-you-section">
+<!-- <section class="thank-you-section">
     <div class="container">
         <div class="row d-flex align-items-center thankyou-row">
             <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 text-center">
@@ -25,12 +25,12 @@
 
                     </div>
                 </div>
-            </div><!-- /#content -->
+            </div>
 
-        </div><!-- /.row -->
+        </div>
 
-    </div><!-- /.container -->
-</section>
+    </div>
+</section> -->
 
 <div class="emptybackround"></div>
 <div class="cart-container">

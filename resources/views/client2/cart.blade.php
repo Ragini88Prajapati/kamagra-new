@@ -9,10 +9,10 @@ use App\Models\Client\Product;
     <div class="row">
         
         <!-- Left Sidebar -->
-        <div id="column-left" class="col-sm-3 col-md-3 col-lg-3">
+        <div id="column-left" class="col-sm-3 col-md-3 col-lg-3 hidden-xs">
             
             <!-- Login Block -->
-            <div class="login-block" style="background: #eaf8ff; border: 1px solid #bce8f1; padding: 15px; margin-bottom: 20px;">
+            <div class="login-block" style="background: #eaf8ff; border: 1px solid #bce8f1; padding: 15px; margin-bottom: 20px; ">
                 @auth
                 <h3 style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; color: #000;">{{ Auth::user()->name }}</h3>
                 <div style="margin-bottom: 10px; font-size: 12px;">

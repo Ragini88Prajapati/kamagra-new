@@ -609,6 +609,7 @@
 @media only screen and (max-width: 767px) {
     .openNav #bt_container {
         overflow: visible;
+        
     }
     /*header*/
     .boss_header.boss_scroll,

@@ -64,6 +64,7 @@ use App\Models\Client\Product;
      <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/indexblade.css') }}" />
       <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/cartpage.css') }}" />
       <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/ordercompleted.css') }}" />
+       <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/header.css') }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/bossblog.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -134,31 +135,30 @@ use App\Models\Client\Product;
 
     <div id="bt_header" class="" style="width: 100%;">
             <!-- Desktop Header -->
-            <header class="d-none d-md-block" style="background: #f0f8ff; padding: 15px 0 0 0;">
+          <!--  <header class="d-none d-md-block" style="background: #f0f8ff; height: 85px;">
                 <div class="container">
                     <div class="row align-items-center" style="display: flex; align-items: center;">
-                        <!-- Logo -->
+                      
                         <div class="col-md-4">
                             <a href="{{route('home.index')}}">
                                 <img src="https://www.kamagraoriginal.to/images/logo.png?v=10" alt="Kamagra Original" style="max-height: 55px;">
                             </a>
                         </div>
                         
-                        <!-- Center Banners -->
+                      
                         <div class="col-md-5">
                             <div style="display: flex; align-items: center; justify-content: center;">
-                                <!-- Customers Banner -->
-                                <div style="display: flex; align-items: center; margin-right: 15px; height: 46px; border-radius: 20px 0 0 20px; overflow: hidden;">
-                                     <!-- German Flag Gradient -->
+                              
+                                 <div style="display: flex; align-items: center; margin-right: 15px; height: 46px; border-radius: 20px 0 0 20px; overflow: hidden;">                                   
                                      <div style="padding: 0; width: 60px; height: 100%; background: linear-gradient(to bottom, #000 33%, #d00 33%, #d00 66%, #fc0 66%); border-radius: 25px 0 0 25px;"></div>
                                      <div style="background: #008be3; color: white; height: 100%; padding: 2px 15px 2px 10px; font-family: 'Open Sans', sans-serif; line-height: 1.1; border-radius: 0 25px 25px 0; position: relative; left: -10px; display: flex; flex-direction: column; justify-content: center;">
                                          <span style="font-size: 11px; display: block;">Mehr als</span>
                                          <strong style="font-size: 16px; display: block; line-height: 0.9;">18 000</strong>
                                          <span style="font-size: 10px; display: block;">zufriedene Kunden</span>
                                      </div>
-                                </div>
-                                
-                                <!-- Shipping Banner -->
+                                </div> 
+                                <img src="https://www.kamagraoriginal.to/images/zakaznici-de.png">
+                              
                                 <div style="display: flex; height: 42px; align-items: center;">
                                      <div style="background: #004b8d; color: white; padding: 0 15px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: bold; font-family: 'Open Sans', sans-serif; text-transform: uppercase;">
                                          <i class="fa fa-truck" style="margin-right: 8px; font-size: 16px;"></i> VERSAND IN EU
@@ -170,7 +170,7 @@ use App\Models\Client\Product;
                             </div>
                         </div>
 
-                        <!-- Right Links -->
+                      
                         <div class="col-md-3 text-right" style="text-align: right;">
                             <div style="font-size: 12px; color: #003e6d; font-weight: bold; font-family: 'Open Sans', sans-serif; display: flex; align-items: center; justify-content: flex-end; margin-bottom: 20px;">
                                 <a href="{{route('home.signup')}}" style="color: #004b8d; text-decoration: none;">Register</a> 
@@ -181,7 +181,56 @@ use App\Models\Client\Product;
                         </div>
                     </div>
                 </div>
-            </header>
+            </header>-->
+
+            <div id="header" class="hidden-xs">
+
+  <div id="header-content">
+
+    <a id="logo" href="https://www.kamagraoriginal.to/de/de">
+      <img src="https://www.kamagraoriginal.to/images/logo.png?v=10" alt="Kamagra Original">
+    </a>
+
+    <img id="logo3" width="199" height="83"
+         src="https://www.kamagraoriginal.to/images/zakaznici-de.png"
+         alt="Kamagra Zakaznici Banner">
+
+    <a id="logo2" href="https://www.kamagraoriginal.to/de/versand-lieferung">
+      <img width="404" height="54"
+           src="https://www.kamagraoriginal.to/images/doprava-de.jpg"
+           alt="Kamagra Original Shipping Banner">
+    </a>
+
+    <span id="language">
+      <img width="25"
+           src="https://www.kamagraoriginal.to/images/flag-de.png"
+           style="cursor: pointer;"
+           onclick="$('#language-list').toggle(200);">
+    </span>
+
+    <div id="language-list" class="list" style="display: none;">
+      <a href="#"><img src="https://www.kamagraoriginal.to/images/flag-en.png"></a>
+      <a href="#"><img src="https://www.kamagraoriginal.to/images/flag-de.png"></a>
+      <a href="#"><img src="https://www.kamagraoriginal.to/images/flag-at.png"></a>
+      <a href="#"><img src="https://www.kamagraoriginal.to/images/flag-fr.png"></a>
+      <a href="#"><img src="https://www.kamagraoriginal.to/images/flag-ch.png"></a>
+      <a href="#"><img src="https://www.kamagraoriginal.to/images/flag-nl.png"></a>
+      <a href="#"><img src="https://www.kamagraoriginal.to/images/flag-it.png"></a>
+      <a href="#"><img src="https://www.kamagraoriginal.to/images/flag-es.png"></a>
+      <a href="#"><img src="https://www.kamagraoriginal.to/images/flag-pt.png"></a>
+      <a href="#"><img src="https://www.kamagraoriginal.to/images/flag-ro.png"></a>
+      <a href="#"><img src="https://www.kamagraoriginal.to/images/flag-sl.png"></a>
+    </div>
+
+    <span id="login-register">
+      <a href="https://www.kamagraoriginal.to/de/anmeldung">Register</a>
+      &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <a href="https://www.kamagraoriginal.to/de/ihr-konto">login</a>
+    </span>
+
+  </div>
+</div>
+
 
             <!-- Navigation Bar -->
             <div class="nav-bar-dark d-none d-md-block" style="background-color: #001e3c; border-bottom: none;">
@@ -189,14 +238,49 @@ use App\Models\Client\Product;
                     <div class="row">
                         <div class="col-md-12">
                             <ul class="nav" style="display: flex; align-items: center; padding: 0; margin: 0; list-style: none; width: 100%;">
-                                <li style="border-right: 1px solid rgba(255,255,255,0.1);"><a href="{{route('home.index')}}" style="color: white; font-weight: bold; padding: 12px 25px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">Home</a></li>
-                                <li style="border-right: 1px solid rgba(255,255,255,0.1);"><a href="{{route('product.product-list')}}" style="color: white; font-weight: bold; padding: 12px 25px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">Products</a></li>
-                                <li style="border-right: 1px solid rgba(255,255,255,0.1);"><a href="#" style="color: white; font-weight: bold; padding: 12px 25px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">Gifts</a></li>
-                                <li style="border-right: 1px solid rgba(255,255,255,0.1);"><a href="#" style="color: white; font-weight: bold; padding: 12px 25px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">Reviews</a></li>
-                                <li style="border-right: 1px solid rgba(255,255,255,0.1);"><a href="{{route('home.kamagra-glossary')}}" style="color: white; font-weight: bold; padding: 12px 25px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">Encyclopedia</a></li>
-                                <li style="border-right: 1px solid rgba(255,255,255,0.1);"><a href="#" style="color: white; font-weight: bold; padding: 12px 25px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">Advice</a></li>
-                                <li style="border-right: 1px solid rgba(255,255,255,0.1);"><a href="#" style="color: white; font-weight: bold; padding: 12px 25px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">FAQ</a></li>
-                                <li style="border-right: 1px solid rgba(255,255,255,0.1);"><a href="{{route('home.contact_us')}}" style="color: white; font-weight: bold; padding: 12px 25px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">Contact</a></li>
+                                <li style="border-right: 1px solid rgba(255,255,255,0.1);">
+                                    <a href="{{route('home.index')}}" 
+                                    style="color: white; font-weight: bold; padding: 0px 10px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                    Home
+                                </a></li>
+                                <span class="straight">|</span>
+                                <li style="border-right: 1px solid rgba(255,255,255,0.1);">
+                                    <a href="{{route('product.product-list')}}" 
+                                    style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                    Products
+                                </a></li>
+                               <span class="straight">|</span>
+                                <li style="border-right: 1px solid rgba(255,255,255,0.1);">
+                                    <a href="#" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                        Gifts</a>
+                                    </li>
+                                    <span class="straight">|</span>
+                                <li style="border-right: 1px solid rgba(255,255,255,0.1);">
+                                    <a href="#" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                        Reviews
+                                    </a></li>
+                                    <span class="straight">|</span>
+                                <li style="border-right: 1px solid rgba(255,255,255,0.1);">
+                                    <a href="{{route('home.kamagra-glossary')}}" 
+                                    style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                    Encyclopedia
+                                </a></li>
+                                <span class="straight">|</span>
+                                <li style="border-right: 1px solid rgba(255,255,255,0.1);">
+                                    <a href="#" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                        Advice
+                                    </a></li>
+                                    <span class="straight">|</span>
+                                <li style="border-right: 1px solid rgba(255,255,255,0.1);">
+                                    <a href="#" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                        FAQ
+                                    </a></li>
+                                    <span class="straight">|</span>
+                                <li style="border-right: 1px solid rgba(255,255,255,0.1);">
+                                    <a href="{{route('home.contact_us')}}"
+                                     style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                     Contact
+                                    </a></li>
                                 
                                 <li style="margin-left: auto; display: flex; align-items: center;">
                                     <a href="{{route('product.show-cart')}}" id="desktop-cart-link" style="color: white; font-weight: normal; padding: 10px 0; text-decoration: none; display: block; font-size: 13px; font-family: 'Open Sans', sans-serif; display: flex; align-items: center;">
@@ -215,6 +299,8 @@ use App\Models\Client\Product;
                     </div>
                 </div>
             </div>
+
+            
 
             <div class="bt-mobile">
                 <div class="menu_mobile"> <a class="close-panel"><i class="fa fa-times-circle"></i></a>
@@ -332,27 +418,23 @@ use App\Models\Client\Product;
             </div>
 
             <header class="d-block d-md-none mobile-header">
-                <div class="container">
+                <div class="container" style="margin-top:5px">
                     <div class="row d-flex align-items-center mob-header-rowdblock">
-                        <div class="col-xs-7  col-sm-6 pdding-00">
+                       
+                    <div class="col-xs-7 col-md-6 pdding-00">
                             <div id="logo " class="desktop-logo">
                                 <a href="{{route('home.index')}}">
-                                    <!-- <img src="images/logo.png" title="Drug Store" alt="Drug Store" class="img-responsive" /> -->
-                                    {{-- <span>OKS</span> --}}
-                                    <!-- <img src="{{asset('/assets/client2/images/new-latest-logo.png')}}"
-                                        alt="OnlineKamagraStore" style="
-                                    width: 80px;
-                                "> -->
-                                    <p>kamagrakaufenstore</p>
-
+                                    <img src="https://www.kamagraoriginal.to/images/logo.png?v=10"
+                                        alt="OnlineKamagraStore" >
                                 </a>
                             </div>
 
                         </div>
 
-                        <div class="col-xs-3  col-sm-4 cart-column text-end-carts">
+                        <div class="col-xs-3  col-md-4 cart-column text-end-carts">
                             <div id="cart" class="btn-group btn-block cart-icons header-cartbtn ">
-                                <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle cart-mobile-view"><i class="fa fa-shopping-cart"></i>
+                                <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle cart-mobile-view">
+                                    <i class="fa fa-shopping-cart"></i>
                                     <span id="cart-total" class="cart-total">
                                         {{$cart_data['cart_total_quantity']}} Artikel -
                                         €{{$cart_data['cart_total_price']}}</span>
@@ -418,9 +500,10 @@ use App\Models\Client\Product;
                         </div>
                         <div class="col-xs-2 col-sm-2 pdding-00">
                             <div class="open-menu">
-                                <a class="open-bt-mobile"><i class="fa fa-bars"></i></a>
+                                <a class="open-bt-mobile" >
+                                    <i class="fa fa-bars"></i>
+                                </a>
                             </div>
-
                         </div>
 
 
@@ -439,11 +522,11 @@ use App\Models\Client\Product;
             </div><!-- End bt_header -->
 
             <!-- <div id="google_translate_element" style="margin: 10px 0; text-align: right;"></div> -->
-            <div id="bt_container" class="bt-wide " style="padding-bottom: 40px; min-height: 600px;">
+            <div id="bt_container" class="bt-wide" style="padding-bottom: 40px; min-height: 600px;">
                 @yield('content')
             </div>
 
-           <div id="bt_footer" style="background: #eaf8ff; border-top: 1px solid #ddd; padding: 40px 0;">
+           <div id="bt_footer">
 
                 <footer>
                     <!-- New Footer Design matching Screenshot -->
@@ -746,6 +829,8 @@ use App\Models\Client\Product;
             })();
         </script> -->
         <!--End of Tawk.to Script-->
+
+        
         @yield('scripts')
         @if(session()->has('msg'))
         <script>

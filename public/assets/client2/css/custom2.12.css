@@ -1,3 +1,9 @@
+@media (max-width: 767px) {
+  #column-left {
+    display: none !important;
+  }
+}
+
 @media screen and (min-width: 1400px) {
     /* blog-comment  */
     .comment-list-div li.item {
@@ -841,7 +847,7 @@
     }
     /* order-summary end  */
     .bannerslider-height .tp-banner {
-        height: 350px !important;
+        height: 250px !important;
     }
     .d-lg-block {
         display: block !important;
@@ -1518,9 +1524,17 @@
     .bt-service-icon i {
         font-size: 30px;
     }
-    .bannerslider-height .tp-banner {
+    .bannerslider-height  {
         height: 270px !important;
     }
+  .tp-banner img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    background: #000; /* optional */
+}
+
+
     .boss-blog-featured .box-heading h1,
     .bt-featured-pro .box-heading h1,
     .bt-product-category .box-heading h1,
@@ -5308,7 +5322,7 @@
         font-size: 10px;
     }
     .desktop-logo img {
-        width: 40px !important;
+       width: 220px !important;
     }
     /* blog-comment  */
     .comment-list-div li.item {
@@ -6469,12 +6483,7 @@ footer .bt-footer-bottom.bggreen-footer {
     .reviews-mobile{
         display: none;
     }
-    .tp-banner-container .image-banner-height{
-
-        height:33vh !important;
-        width:100% !important;
-        margin-top: 5px !important;
-    }
+  
     .cart-mobile-view i{
         color: white !important;
     }
