@@ -399,16 +399,48 @@
         color: #7F447A;
     }
     .openNav #bt_container:before {
-        background: #000000;
-        content: "";
+         background: #000000;
+        /* content: ""; */ 
         height: 100%;
         left: 0;
         opacity: 0.5;
-        position: absolute;
+        /* position: absolute; */
         top: 0;
         width: 100%;
         z-index: 999;
     }
+
+/* .left-popup-msg{
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 300px;
+    height: 100%;
+    background: #fff;
+    z-index: 1000;
+    transition: left .3s ease;
+} */
+ .left-popup-msg{
+    position: fixed;
+    padding:5px;
+    right: 0;
+    left: -320px;
+    width: 240px;
+    height: 100vh;        /* full screen height */
+    background: #fff;
+    z-index: 1000;
+    transition: left .3s ease;
+    overflow-y: auto;     /* ⭐ THIS ENABLES SCROLL */
+    overflow-x: hidden;
+   
+}
+
+
+/* show only when openNav class added */
+.openNav .left-popup-msg{
+    left: 0;
+}
+
     /* .openNav #bt_container {
         right: 0;
         transform: translate3d(90%, 0px, 0px);
@@ -420,21 +452,20 @@
     } */
     .menu_mobile .close-panel {
         position: absolute;
-        right: 5px;
+        right: 50px;
         text-align: center;
         top: 5px;
-        width: 25px;
+        width: 38px;
         z-index: 9999;
         color: #fff;
         display: block;
         cursor: pointer;
+        
     }
     .close-panel i {
-        font-size: 22px;
+        font-size: 32px;
     }
-    .close-panel:hover {
-        color: #7F447A
-    }
+   
     .mega-menu>ul.nav {
         background: #343434;
     }

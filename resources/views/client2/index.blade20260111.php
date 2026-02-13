@@ -383,7 +383,8 @@ use App\Models\Client\Product;
             </div>
             <!-- Bestsellers Moved to Content -->
 
-        </div><!-- /#column-left -->
+        </div>
+        <!-- /#column-left -->
         
         <div id="content" class="col-sm-9 col-md-9 col-lg-9">
 

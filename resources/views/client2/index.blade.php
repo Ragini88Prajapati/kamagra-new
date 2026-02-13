@@ -28,12 +28,67 @@ use App\Models\Client\Product;
 
 @section('content')
 
-<div class="container">
+<!-- /.header_category -->
+<!-- /.header_slider -->
+<!-- <div class="container">
     <div class="menu_custom">
-        <!-- /.header_category -->
-        <!-- /.header_slider -->
+         <h1>hello</h1>
+    </div>
+</div> -->
+<div id="bt_container">
+    <div class="left-popup-msg">
+       <div class="close-panel">
+
+           <i class="fa fa-times "></i>
+       </div>
+      
+        <div class="header_categorymobile nofloat" style="margin-bottom:20px;">
+            <div id="boss-menu-category" class="box">
+                <div class="box-content">
+                    <ul class="box-category boss-menu-cate new-iconarrow sidemenu-medicine" style="list-style:none;padding:0;border:1px solid #ddd;border-top:3px solid #0088cc;">
+
+                        @forelse($categories as $category)
+                            <li style="background:#aeddf5;padding:10px 15px;font-weight:bold;color:#003e6d;font-size:16px;border-bottom:1px solid #fff;">
+                                {{ $category->name }}
+                            </li>
+
+                            @php
+                                $products = \App\Models\Client\Product::where('category_id',$category->id)
+                                    ->where('status',1)
+                                    ->select('name','slug')
+                                    ->get();
+                            @endphp
+
+                            @forelse($products as $product)
+                                <li>
+                                    <a href="{{ route('client.product.product-preview',[$product->slug]) }}"
+                                       style="display:block;padding:8px 15px;border-bottom:1px solid #eee;text-decoration:none;color:#003e6d;font-weight:bold;font-size:13px;">
+                                       <i class="fa fa-angle-right"></i>
+                                       {{ $product->name }}
+                                    </a>
+                                </li>
+                            @empty
+                                <li style="padding:8px 15px;color:#666;font-style:italic;border-bottom:1px solid #eee;">
+                                    No products available
+                                </li>
+                            @endforelse
+
+                        @empty
+                            <li style="padding:15px;text-align:center;color:#666;">
+                                No categories available
+                            </li>
+                        @endforelse
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
+
+
+
 <div class="container">
     <div class="menu_custom">
         <div class="col-lg-12 col-md-12 col-12" style="margin-bottom: 20px">

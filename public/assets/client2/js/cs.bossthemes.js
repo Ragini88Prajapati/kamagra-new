@@ -89,9 +89,12 @@ jQuery(document).ready(function($) {
     dataAnimate();
   }
   
-	$(".open-bt-mobile,.close-panel").click(function(){
-		$('body').toggleClass('openNav');
-	});
+	// $(".open-bt-mobile,.close-panel").click(function(){
+	// 	$('body').toggleClass('openNav');
+	// });
+	$(document).on("click",".open-bt-mobile,.close-panel",function(){
+    $("body").toggleClass("openNav");
+});
 	
 	$('.nav-pills li.parent > p').click(function(){
 

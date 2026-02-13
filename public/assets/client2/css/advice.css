@@ -1,0 +1,47 @@
+.articles-preview-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Title full width */
+.articles-preview-title {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+   
+}
+
+/* Paragraph left side (75%) */
+.articles-preview-preview {
+    width: 75%;
+    order: 1;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+.articles-preview-preview p {
+    font-size: 1.0em;
+    line-height: 150%;
+    margin: 0 0 5px;
+}
+
+/* Image right side (25%) */
+.articles-preview-image {
+    width: 25%;
+    order: 2;
+}
+
+.articles-preview-image img {
+    width: 90%;
+    height: auto;
+    display: block;
+}
+
+/* Read more bottom full width */
+.articles-preview-link {
+    width: 100%;
+    order: 3;
+       margin-top: -30px;
+}

@@ -82,6 +82,43 @@
 
     <div id="bt_container" class="bt-wide">
         <div id="bt_header" class="">
+
+        <div id="column-left" class="col-sm-3 col-md-3 col-lg-3 hidden-xs">
+            <div class="header_category  nofloat " style="margin-bottom: 20px;">
+                <div id="boss-menu-category" class="box">
+                    <div class="box-content">
+                        <ul class="box-category boss-menu-cate new-iconarrow sidemenu-medicine" style="list-style: none; padding: 0; border: 1px solid #ddd; border-top: 3px solid #0088cc;">
+                            @forelse($categories as $category)
+                                <li style="background: #aeddf5; padding: 10px 15px; font-weight: bold; color: #003e6d; font-size: 16px; border-bottom: 1px solid #fff;">
+                                    {{ $category->name }}
+                                </li>
+                                @php
+                                    $products = \App\Models\Client\Product::where('category_id', $category->id)
+                                        ->where('status', 1)
+                                        ->select('name', 'slug')
+                                        ->get();
+                                @endphp
+                                @forelse($products as $product)
+                                    <li>
+                                        <a href="{{ route('client.product.product-preview', [$product->slug]) }}" style="display: block; padding: 8px 15px; border-bottom: 1px solid #eee; text-decoration: none; color: #003e6d; font-weight: bold; font-size: 13px;">
+                                            <i class="fa fa-angle-right" style="margin-right: 5px;"></i> {{ $product->name }}
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li style="padding: 8px 15px; color: #666; font-style: italic; border-bottom: 1px solid #eee;">
+                                        No products available
+                                    </li>
+                                @endforelse
+                            @empty
+                                <li style="padding: 15px; text-align: center; color: #666;">
+                                    No categories available
+                                </li>
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
             <nav id="top">
                 <div class="container">
                     <div class="row">
@@ -285,7 +322,7 @@
                     <div class="row d-flex align-items-center mob-header-rowdblock">
                         <div class="col-xs-3 ">
                             <a class="open-bt-mobile"><i class="fa fa-bars"></i></a>
-
+                              <button class="close-panel">Close</button>
                         </div>
                         <div class="col-xs-6 ">
                             <div id="logo " class="desktop-logo">

@@ -70,6 +70,49 @@ Route::get('/gift', function () {
 Route::get('/review', function () {
     return view('client2.reviewpage');
 })->name('page.information');
+Route::get('/encyclopedia', function () {
+    return view('client2.encyclopedia');
+})->name('page.information');
+
+
+Route::get('/advice', function () {
+    return view('client2.advice');
+})->name('page.information');
+Route::get('/faq', function () {
+    return view('client2.faq');
+})->name('page.information');
+Route::get('/contact', function () {
+    return view('client2.contact');
+})->name('page.information');
+Route::get('/gdpr', function () {
+    return view('client2.gdpr');
+})->name('page.information');
+Route::get('/term', function () {
+    return view('client2.termcondition');
+})->name('page.information');
+Route::get('/pay', function () {
+    return view('client2.payment');
+})->name('page.information');
+
+Route::get('/exchange', function () {
+    return view('client2.exchange');
+})->name('page.information');
+
+Route::get('/discreet', function () {
+    return view('client2.discreethandling');
+})->name('page.information');
+
+Route::get('/shipping', function () {
+    return view('client2.shipping');
+})->name('page.information');
+
+Route::get('/legal', function () {
+    return view('client2.legalnotice');
+})->name('page.information');
+
+Route::get('/information', function () {
+    return view('client2.information');
+})->name('page.information');
 
 //ragini
 Route::get('/category/{category_id}/products', 'Client\ProductController@productsByCategory')->name('client2.category-product');

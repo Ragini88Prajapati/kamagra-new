@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/cartpage.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/ordercompleted.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/giftpage.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/advice.css') }}" />
 </head>
 <body>
 

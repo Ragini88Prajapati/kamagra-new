@@ -1,7 +1,14 @@
+@media(min-width:768px){
+    .left-popup-msg{
+        display:none !important;
+    }
+}
+
 @media screen and (min-width: 768px) and (max-width: 992px) {
     #search .form-control {
         width: 258px;
     }
+    
 }
 
 /* Mobile only */
@@ -47,6 +54,8 @@
     color: #fff;
     cursor: pointer;
 }
+
+
     .display-none-account {
         display: none !important;
     }
