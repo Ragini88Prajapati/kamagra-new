@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Models\Client\Product;
+use App\Models\Admin\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductVariant extends Model

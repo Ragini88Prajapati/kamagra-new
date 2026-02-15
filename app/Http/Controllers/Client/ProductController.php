@@ -21,6 +21,7 @@ class ProductController extends Controller
 
     public function index()
     {
+        // dd('jfj');
         $getdata = request()->input();
         $getdata_gender  =  array();
         $getdata_product_type = array();
