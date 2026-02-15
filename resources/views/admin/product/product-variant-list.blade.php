@@ -50,11 +50,8 @@ use App\Models\Admin\Product;
                             <tbody>
                                 @if(isset($product_list) && is_object($product_list))
                                 @foreach($product_list as $value)
-                                @php
-                                    $prod_data=Product::where('id',$value->product_id)->first();
-                                @endphp
                                 <tr>
-                                    <td>{{$prod_data->name}}</td>
+                                    <td>{{ $value->product ? $value->product->name : 'N/A' }}</td>
                                     <td>{{ isset($value->count) &&  !empty($value->count) ? $value->count  :  '' }}
                                     </td>
                                     <td>{{ isset($value->unit_type) &&  !empty($value->unit_type) ? $value->unit_type  :  '' }}
