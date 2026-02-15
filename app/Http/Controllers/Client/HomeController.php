@@ -244,9 +244,30 @@ class HomeController extends Controller
         $data = array();
 
         $data['categories'] = Category::select('id', 'name')->where('status', 1)->get(); //ragini
-        $data['order_id']=request()->input('order_id'); 
+        $data['order_id'] = request()->input('order_id'); 
         $data['user_id'] = session('user_id'); // Debug here
         $data['shipping_firstname'] = session('shipping_firstname'); // Debug here
+        
+        // Fetch order details if order_id is available
+        if (!empty($data['order_id'])) {
+            // The order_id from the route is likely the auto_order_id (human-readable order ID)
+            $data['order_data'] = \App\Models\Client\Order::where('auto_order_id', $data['order_id'])->first();
+            
+            // If not found by auto_order_id, try to find by the actual database ID
+            if (!$data['order_data']) {
+                $data['order_data'] = \App\Models\Client\Order::find($data['order_id']);
+            }
+        } else {
+            $data['order_data'] = null;
+        }
+        
+        // Bank details for payment
+        $data['bank_details'] = [
+            'account_name' => env('BANK_ACCOUNT_NAME', 'LABORE s.r.o'),
+            'iban' => env('BANK_IBAN', 'SK90 8330 0000 0020 0293 1879'),
+            'swift_bic' => env('BANK_SWIFT_BIC', 'FIOZSKBAXXX'),
+            'reference_code' => env('BANK_REFERENCE_CODE', '781793')
+        ];
         // $data['user_id'] = $request->input('user_id'); // Retrieve user_id
         // $data['shipping_firstname'] = $request->input('shipping_firstname'); // Retrieve shipping_firstname
     
