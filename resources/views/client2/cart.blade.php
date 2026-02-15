@@ -345,6 +345,12 @@ function fnRecalculate(formName) {
 }
 
 function fnConfirmOrder() {
+    // Check if terms agreement checkbox is checked
+    if (!document.getElementById('agreement').checked) {
+        alert('Please agree to the terms and conditions to proceed to checkout.');
+        return false;
+    }
+    
     // Redirect to checkout page when confirm order is clicked
     window.location.href = "{{ route('home.checkout_form') }}";
 }
