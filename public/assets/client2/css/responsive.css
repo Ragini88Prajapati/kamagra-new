@@ -686,13 +686,13 @@
         display: block;
     }
     #cart {
-        width: auto;
-        float: none;
+        width: 10px;
+        /* float: none; */
         /* position: absolute; */
-        right: 15px;
+        /* right: 15px; */
         /* top: 38px; */
-        margin-left: 0;
-        padding-top: 0;
+        /* margin-left: 0;
+        padding-top: 0; */
     }
     .right-to-left #cart {
         left: 15px;
@@ -707,7 +707,7 @@
     #top .pull-right ul.list-inline > li.dropdown > a {
         width: 30px;
         height: 30px;
-        border: 1px solid #dedede;
+        /* border: 1px solid #dedede; */
         text-align: center;
     }
     #cart > .btn {

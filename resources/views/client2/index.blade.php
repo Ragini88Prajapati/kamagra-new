@@ -37,10 +37,10 @@ use App\Models\Client\Product;
 </div> -->
 <div id="bt_container">
     <div class="left-popup-msg">
-       <div class="close-panel">
+       <!-- <div class="close-panel">
 
            <i class="fa fa-times "></i>
-       </div>
+       </div> -->
       
         <div class="header_categorymobile nofloat" style="margin-bottom:20px;">
             <div id="boss-menu-category" class="box">
@@ -88,9 +88,28 @@ use App\Models\Client\Product;
 </div>
 
 
+<div class="offer-bar">
+    
+    <div class="offer-links">
+        <a href="https://www.kamagraoriginal.to/de/produktdetails/generic-viagra-sildenafil-citrate/cobra-120-mg-daily-de">
+           TAGESANGEBOT
+        </a>
+
+        <a href="https://www.kamagraoriginal.to/de/produktdetails/bevorzugte-multipacks">
+           Multipacks - Sonderangebote
+        </a>
+    </div>
+
+    <div class="offer-search">
+        <i class="fa fa-search"></i>
+    </div>
+
+</div>
+
 
 <div class="container">
     <div class="menu_custom">
+
         <div class="col-lg-12 col-md-12 col-12" style="margin-bottom: 20px">
             <div class="header_slider bannerslider-height nofloat mb-4 image-banner-height">
                 <article class="boss_slider image-banner-height" >

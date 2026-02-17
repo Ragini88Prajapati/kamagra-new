@@ -86,7 +86,7 @@ use App\Models\Client\Product;
         }
 
         .btn.btn-gray,
-        #cart>.btn,
+        /* #cart>.btn, */
         .jGrowl-button .buttons .btn,
         .compare-info .btn-wishlist,
         #cart .dropdown-menu .cart_bottom .buttons .btn {
@@ -418,7 +418,7 @@ use App\Models\Client\Product;
             </div>
 
             <header class="d-block d-md-none mobile-header">
-                <div class="container" style="margin-top:5px">
+                <div  style="margin-top:5px">
                     <div class="row d-flex align-items-center mob-header-rowdblock">
                        
                     <div class="col-xs-7 col-md-6 pdding-00">
@@ -501,7 +501,9 @@ use App\Models\Client\Product;
                         <div class="col-xs-2 col-sm-2 pdding-00">
                             <div class="open-menu">
                                 <a class="open-bt-mobile" >
-                                    <i class="fa fa-bars"></i>
+                                    <!-- <i class="fa fa-bars"></i> -->
+                                      <i class="fa fa-bars" id="openIcon"></i>
+                                     <i class="fa fa-times" id="closeIcon" style="display:none;"></i>
                                 </a>
                             </div>
                         </div>

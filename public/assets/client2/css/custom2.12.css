@@ -1,7 +1,64 @@
+.offer-bar{
+    display:none;
+}
+.menu-open .fa-bars{ display:none; }
+.menu-open .fa-times{ display:inline-block; }
+
+.fa-times{ display:none; }
+
+
 @media (max-width: 767px) {
   #column-left {
     display: none !important;
   }
+  .header_slider,
+    .image-banner-height,
+    .tp-banner-container,
+    .tp-banner,
+    .tp-banner ul,
+    .tp-banner li{
+        height:520px !important;
+    }
+
+    /* make image fit nicely */
+    .tp-banner img{
+        width:100% !important;
+        height:100% !important;
+        object-fit:cover;
+    }
+
+    /* optional caption resize for mobile */
+    .tp-caption{
+        transform:scale(.75);
+        transform-origin:center;
+    }
+    .offer-bar{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        background-color: #1e93d1;
+        color: #fff;
+        padding: 8px 3px;
+        margin: 0;
+        font-size: 1em;
+       padding-left: 20px;
+        padding-right: 26px;
+        line-height: 1;
+        font-weight: bold;
+    }
+
+    .offer-links a{
+        color:#fff;
+        margin-right:15px;
+        font-size:14px;
+        text-decoration:none;
+    }
+
+    .offer-search i{
+        color:#fff;
+        font-size:18px;
+        cursor:pointer;
+    }
 }
 
 @media screen and (min-width: 1400px) {
@@ -4353,7 +4410,7 @@
         font-size: 10px;
     }
     .desktop-logo img {
-        width: 40px !important;
+        width: 220px !important;
     }
     /* blog-comment  */
     .comment-list-div li.item {
@@ -4621,7 +4678,7 @@
         align-items: center;
     }
     .cart-column .cart-icons {
-        margin-left: 0px !important;
+        margin-left: 55px !important;
         float: unset !important;
         padding-bottom: 0px !important;
         right: 0 !important;
@@ -5572,7 +5629,7 @@
     }
     header {
         border-bottom: 1px solid #e4e4e4;
-        padding: 8px 0 15px 10px;
+        padding: 9px 5px 9px 20px;
         background-color: #f8f8f8;
         border-top: 1px solid #e4e4e4;
         font-size: 15px;
@@ -6484,9 +6541,7 @@ footer .bt-footer-bottom.bggreen-footer {
         display: none;
     }
   
-    .cart-mobile-view i{
-        color: white !important;
-    }
+  
     .desktop-logo a p{
         font-family: "Sevillana", cursive !important;
     }

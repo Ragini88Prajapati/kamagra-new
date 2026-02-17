@@ -889,13 +889,13 @@ header {
     text-transform: uppercase;
     background: #ef4056;
     padding: 0 25px;
-    border: 1px solid #ef4056;
+    /* border: 1px solid #ef4056; */
     height: 50px;
 }
 
 #cart>.btn i {
     margin-right: 0.5em;
-    font-size: 15px;
+    font-size: 25px;
 }
 
 #cart>.btn:hover,
@@ -1782,7 +1782,7 @@ footer .bt-footer-bottom {
     color: #ffffff;
     background-color: #363636;
     background-repeat: repeat-x;
-    border-color: #222222 #222222 #000000;
+    /* border-color: #222222 #222222 #000000; */
 }
 
 .btn-inverse:hover,
@@ -4191,7 +4191,7 @@ a.forgotten:hover {
     -moz-border-radius: 2px;
 }
 
-.btn,
+/* .btn, */
 .compare-info .btn-cart {
     background: #7F447A;
     border: 1px solid #7F447A;
@@ -5939,7 +5939,7 @@ footer .form-control {
     color: #ffffff
 }
 
-.btn,
+/* .btn, */
 .btn.btn-gray:hover,
 #cart>.btn:hover,
 #cart.open>.btn,
@@ -5956,7 +5956,7 @@ footer .form-control {
 }
 
 .btn.btn-gray,
-#cart>.btn,
+/* #cart>.btn, */
 .jGrowl-button .buttons .btn,
 .compare-info .btn-wishlist,
 #cart .dropdown-menu .cart_bottom .buttons .btn {
@@ -5972,7 +5972,7 @@ footer .form-control {
 }
 
 .btn.btn-gray,
-#cart>.btn,
+/* #cart>.btn, */
 .jGrowl-button .buttons .btn,
 .compare-info .btn-wishlist,
 #cart .dropdown-menu .cart_bottom .buttons .btn {
