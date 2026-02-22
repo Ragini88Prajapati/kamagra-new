@@ -902,8 +902,9 @@
         display: none;
     }
     #content.col-sm-12,
-    .boss-blog-featured,
-    .bt-product-category {
+    .boss-blog-featured
+    /* .bt-product-category  */
+    {
         padding: 0 15px;
     }
     .bt-staticblock-shopnow > div {

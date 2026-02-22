@@ -7,6 +7,7 @@
 .fa-times{ display:none; }
 
 
+
 @media (max-width: 767px) {
   #column-left {
     display: none !important;
@@ -61,7 +62,11 @@
     }
 }
 
+
 @media screen and (min-width: 1400px) {
+.tp-bgimg{
+    height:240px !important;
+}
     /* blog-comment  */
     .comment-list-div li.item {
         display: flex;
@@ -6549,4 +6554,107 @@ footer .bt-footer-bottom.bggreen-footer {
         width: 96%;
         margin: 15px auto !important;
     }
+}
+
+@media screen and (min-width: 1200px) {
+.tp-bgimg{
+    height:240px !important;
+}
+.image-banner-height{
+     height:240px !important;
+}
+
+#module_20 form {
+    padding: 6px 20px;
+}
+    .module-wrapper {
+        border: 1px solid #A0D9F7;
+        background-color: #FFF;
+        margin: 0 0 20px;
+    }
+ .module-wrapper-20 {
+    border: 1px solid #A0D9F7;
+    background-color: #FFF;
+    margin: 0px -15px 20px;
+}
+.module20_text {
+    color: #333;
+    width: 400px;
+    padding: 0px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 6px;
+}
+.module20_submit {
+    color: #FFF;
+    font-weight: 700;
+    padding: 2px 15px;
+    background-color: #F46000;
+    border: 1px solid #EB5600;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.multipacsmobile{
+background: #aeddf5;
+    padding: 12px 155px;
+    margin: 0 -15px;
+}
+}
+@media screen and (min-width: 768px) {
+
+.desktop-view{
+ display: block;
+}
+.mobile-view{
+ display: none;
+}
+
+}
+
+@media screen and (max-width: 767px) {
+
+.desktop-view{
+ display: none;
+}
+.mobile-view{
+ display: block;
+}
+.align-items-center {
+        align-items: center;
+    }
+.flag img{
+    width: 28px;      /* adjust size here */
+    height: auto;     /* keeps proportions */
+    object-fit: contain;
+}
+
+.cart-inner{
+    display:flex;
+    align-items:center;
+}
+
+.mobilecart{
+    display: flex;
+}
+.hide-mobile{
+display:none !important;
+}
+.price-box{
+    text-align:center;
+}
+
+.price-box .btn{
+    margin:0px 0 0;
+    display:block;
+}
+
+.multipacsmobile{
+    background: #aeddf5;
+    padding: 14px 214px;
+    margin: 0px -62px;
+}
+
 }

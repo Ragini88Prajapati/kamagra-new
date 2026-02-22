@@ -1,4 +1,4 @@
-@extends('layouts.client_plain')
+<!-- @extends('layouts.client_plain')
 
 @section('content')
 <div class="emptybackround"></div>
@@ -196,4 +196,4 @@
 
 </div>
 
-@endsection
+@endsection -->

@@ -217,6 +217,71 @@ class HomeController extends Controller
         $data = array();
         return $this->_display('client2.delivery-information', $data);
     }
+     public function reviews()
+    {
+        $data = array();
+        return $this->_display('client2.reviewpage', $data);
+    }
+     public function Gifts()
+    {
+        $data = array();
+        return $this->_display('client2.giftpage', $data);
+    }
+    public function Advice()
+    {
+        $data = array();
+        return $this->_display('client2.advice', $data);
+    }
+    public function FAQ()
+    {
+        $data = array();
+        return $this->_display('client2.faq', $data);
+    }
+    public function Contact()
+    {
+        $data = array();
+        return $this->_display('client2.contact', $data);
+    }
+    public function GDPR()
+    {
+        $data = array();
+        return $this->_display('client2.gdpr', $data);
+    }
+    public function TermCondition()
+    {
+        $data = array();
+        return $this->_display('client2.termcondition', $data);
+    }
+    public function Payment()
+    {
+        $data = array();
+        return $this->_display('client2.payment', $data);
+    }
+    public function Exchange()
+    {
+        $data = array();
+        return $this->_display('client2.exchange', $data);
+    }
+    public function DiscreetHandling()
+    {
+        $data = array();
+        return $this->_display('client2.discreethandling', $data);
+    }
+    public function Shipping()
+    {
+        $data = array();
+        return $this->_display('client2.shipping', $data);
+    }
+    public function LegalNotice()
+    {
+        $data = array();
+        return $this->_display('client2.legalnotice', $data);
+    }
+    public function Information()
+    {
+        $data = array();
+        return $this->_display('client2.information', $data);
+    }
     public function kamagra_glossary()
     {
         $data = array();

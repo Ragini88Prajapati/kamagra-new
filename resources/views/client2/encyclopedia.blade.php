@@ -1,4 +1,9 @@
-@extends('layouts.client_plain')
+@php
+use App\StaticContent;
+$data=StaticContent::where('title','kamagra_glossary')->first();
+@endphp
+@extends('layouts.client2')
+
 
 @section('content')
 

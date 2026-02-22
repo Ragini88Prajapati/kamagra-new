@@ -64,6 +64,8 @@ use App\Models\Client\Product;
      <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/indexblade.css') }}" />
       <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/cartpage.css') }}" />
       <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/ordercompleted.css') }}" />
+       <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/giftpage.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/advice.css') }}" />
        <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/header.css') }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/bossblog.css') }}" />
@@ -117,72 +119,8 @@ use App\Models\Client\Product;
 </head>
 
 <body class="bt-home-page">
-    <!-- <div id="bt_loading">
-        <div class="bt-loading">
-            <div id="circularG">
-                <div id="circularG_1" class="circularG"> </div>
-                <div id="circularG_2" class="circularG"> </div>
-                <div id="circularG_3" class="circularG"> </div>
-                <div id="circularG_4" class="circularG"> </div>
-                <div id="circularG_5" class="circularG"> </div>
-                <div id="circularG_6" class="circularG"> </div>
-                <div id="circularG_7" class="circularG"> </div>
-                <div id="circularG_8" class="circularG"> </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- /#bt_loading -->
 
     <div id="bt_header" class="" style="width: 100%;">
-            <!-- Desktop Header -->
-          <!--  <header class="d-none d-md-block" style="background: #f0f8ff; height: 85px;">
-                <div class="container">
-                    <div class="row align-items-center" style="display: flex; align-items: center;">
-                      
-                        <div class="col-md-4">
-                            <a href="{{route('home.index')}}">
-                                <img src="https://www.kamagraoriginal.to/images/logo.png?v=10" alt="Kamagra Original" style="max-height: 55px;">
-                            </a>
-                        </div>
-                        
-                      
-                        <div class="col-md-5">
-                            <div style="display: flex; align-items: center; justify-content: center;">
-                              
-                                 <div style="display: flex; align-items: center; margin-right: 15px; height: 46px; border-radius: 20px 0 0 20px; overflow: hidden;">                                   
-                                     <div style="padding: 0; width: 60px; height: 100%; background: linear-gradient(to bottom, #000 33%, #d00 33%, #d00 66%, #fc0 66%); border-radius: 25px 0 0 25px;"></div>
-                                     <div style="background: #008be3; color: white; height: 100%; padding: 2px 15px 2px 10px; font-family: 'Open Sans', sans-serif; line-height: 1.1; border-radius: 0 25px 25px 0; position: relative; left: -10px; display: flex; flex-direction: column; justify-content: center;">
-                                         <span style="font-size: 11px; display: block;">Mehr als</span>
-                                         <strong style="font-size: 16px; display: block; line-height: 0.9;">18 000</strong>
-                                         <span style="font-size: 10px; display: block;">zufriedene Kunden</span>
-                                     </div>
-                                </div> 
-                                <img src="https://www.kamagraoriginal.to/images/zakaznici-de.png">
-                              
-                                <div style="display: flex; height: 42px; align-items: center;">
-                                     <div style="background: #004b8d; color: white; padding: 0 15px; height: 100%; display: flex; align-items: center; font-size: 13px; font-weight: bold; font-family: 'Open Sans', sans-serif; text-transform: uppercase;">
-                                         <i class="fa fa-truck" style="margin-right: 8px; font-size: 16px;"></i> VERSAND IN EU
-                                     </div>
-                                     <div style="background: #e31e24; color: white; padding: 0 15px; height: 100%; display: flex; align-items: center; font-size: 14px; font-weight: bold; font-family: 'Open Sans', sans-serif; text-transform: uppercase;">
-                                         NUR 10€
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                      
-                        <div class="col-md-3 text-right" style="text-align: right;">
-                            <div style="font-size: 12px; color: #003e6d; font-weight: bold; font-family: 'Open Sans', sans-serif; display: flex; align-items: center; justify-content: flex-end; margin-bottom: 20px;">
-                                <a href="{{route('home.signup')}}" style="color: #004b8d; text-decoration: none;">Register</a> 
-                                <span style="color: #004b8d; margin: 0 5px;">|</span> 
-                                <a href="{{route('login')}}" style="color: #004b8d; text-decoration: none;">Log in</a>
-                                <img src="{{asset('assets/client2/images/flags/de.png')}}" alt="DE" style="height: 12px; margin-left: 10px; border: 1px solid #ccc;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>-->
-
             <div id="header" class="hidden-xs">
 
   <div id="header-content">
@@ -251,12 +189,12 @@ use App\Models\Client\Product;
                                 </a></li>
                                <span class="straight">|</span>
                                 <li style="border-right: 1px solid rgba(255,255,255,0.1);">
-                                    <a href="#" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                    <a href="{{route('home.giftpage')}}" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
                                         Gifts</a>
                                     </li>
                                     <span class="straight">|</span>
                                 <li style="border-right: 1px solid rgba(255,255,255,0.1);">
-                                    <a href="#" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                    <a href="{{route('home.reviewpage')}}" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
                                         Reviews
                                     </a></li>
                                     <span class="straight">|</span>
@@ -267,12 +205,12 @@ use App\Models\Client\Product;
                                 </a></li>
                                 <span class="straight">|</span>
                                 <li style="border-right: 1px solid rgba(255,255,255,0.1);">
-                                    <a href="#" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                    <a href="{{route('home.advice')}}" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
                                         Advice
                                     </a></li>
                                     <span class="straight">|</span>
                                 <li style="border-right: 1px solid rgba(255,255,255,0.1);">
-                                    <a href="#" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
+                                    <a href="{{route('home.faq')}}" style="color: white; font-weight: bold; padding: 0px 17px; text-decoration: none; display: block; font-size: 13px; text-transform: none; font-family: 'Open Sans', sans-serif;">
                                         FAQ
                                     </a></li>
                                     <span class="straight">|</span>
@@ -416,105 +354,114 @@ use App\Models\Client\Product;
                     <!-- /.menubar -->
                 </div>
             </div>
+            
+                                    <!-- <div class="col-xs-3  col-md-4 cart-column text-end-carts">
+                                        <div id="cart" class="btn-group btn-block cart-icons header-cartbtn ">
+                                            <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle cart-mobile-view">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                <span id="cart-total" class="cart-total">
+                                                    {{$cart_data['cart_total_quantity']}} Artikel -
+                                                    €{{$cart_data['cart_total_price']}}</span>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right carts-latest">
+                                                @if (isset($cart_data['cart_product_list']) &&
+                                                !empty($cart_data['cart_product_list']))
+                                                @foreach ($cart_data['cart_product_list'] as $item)
+                                                @php
+                                                $prod_data=Product::where('id',$item['product_id'])->first();
+                                                @endphp
+                                                <li>
+                                                    <table class="table table-striped">
+                                                        <tr>
+                                                            <td class="text-left image">
+                                                                <div class="image">
+                                                                    <a href="product-detail.php"><img src="{{asset('/assets/images/product/').'/'.$prod_data->image}}" alt="{{$prod_data->name}}" title="{{$prod_data->name}}" class="img-thumbnail" />
+                                                                    </a>
+                                                                    <div class="remove delete-product" data-product="{{$item['id']}}">
+                                                                        <button type="button" title="Remove" class="btn-danger"><i class="fa fa-times"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-left name">
+                                                                <a href="product-detail.php">{{$prod_data->name}}</a>
+                                                                {{-- <br /> - <small>Color Pink</small> --}}
+                                                                <div class="color-red">{{$item['quantity']}} x <span class="price color-red">€{{$item['price']}}</span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </li>
+                                                @endforeach
+                                                <li>
+                                                    <div class="cart_bottom">
+                                                        <table class="minicart_total">
+                                                            <tr>
+                                                                <td class="text-left"><span class="color-red">Zwischensumme</span>
+                                                                </td>
+                                                                <td class="text-right color-red">€{{$cart_data['cart_total_price']}}
+                                                                </td>
+                                                            </tr>
+            
+                                                            <tr>
+                                                                <td class="text-left"><span class="color-red">Gesamt</span>
+                                                                </td>
+                                                                <td class="text-right color-red">€{{$cart_data['cart_total_price']}}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <div class="buttons">
+                                                            <span class="cart_bt"><a href="{{route('product.show-cart')}}" class="btn">Warenkorb ansehen</a></span>
+                                                            <span class="checkout_bt"><a class="btn btn-shopping" href="{{route('home.checkout_form')}}">Kasse</a></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                @else
+                                                Einkaufswagen ist leer!
+                                                @endif
+                                            </ul>
+                                        </div>
+                                    </div> -->
 
             <header class="d-block d-md-none mobile-header">
                 <div  style="margin-top:5px">
                     <div class="row d-flex align-items-center mob-header-rowdblock">
                        
-                    <div class="col-xs-7 col-md-6 pdding-00">
+                    <div class="col-xs-7 col-md-6 pdding-00 mobilecart">
                             <div id="logo " class="desktop-logo">
                                 <a href="{{route('home.index')}}">
                                     <img src="https://www.kamagraoriginal.to/images/logo.png?v=10"
                                         alt="OnlineKamagraStore" >
                                 </a>
                             </div>
+                            <img style="flagimg" src="https://www.kamagraoriginal.to/images/flag-de.png" alt="">
 
                         </div>
+                         <!-- <div class="col-xs-1 col-md-1 pdding-00 cart-column ">
+                             </div> -->
+                             <div class="col-xs-3 col-xs-5 cart-column text-end-carts">
 
-                        <div class="col-xs-3  col-md-4 cart-column text-end-carts">
-                            <div id="cart" class="btn-group btn-block cart-icons header-cartbtn ">
-                                <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="btn btn-inverse btn-block btn-lg dropdown-toggle cart-mobile-view">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    <span id="cart-total" class="cart-total">
-                                        {{$cart_data['cart_total_quantity']}} Artikel -
-                                        €{{$cart_data['cart_total_price']}}</span>
-                                </button>
-                                <ul class="dropdown-menu pull-right carts-latest">
-                                    @if (isset($cart_data['cart_product_list']) &&
-                                    !empty($cart_data['cart_product_list']))
-                                    @foreach ($cart_data['cart_product_list'] as $item)
-                                    @php
-                                    $prod_data=Product::where('id',$item['product_id'])->first();
-                                    @endphp
-                                    <li>
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <td class="text-left image">
-                                                    <div class="image">
-                                                        <a href="product-detail.php"><img src="{{asset('/assets/images/product/').'/'.$prod_data->image}}" alt="{{$prod_data->name}}" title="{{$prod_data->name}}" class="img-thumbnail" />
-                                                        </a>
-                                                        <div class="remove delete-product" data-product="{{$item['id']}}">
-                                                            <button type="button" title="Remove" class="btn-danger"><i class="fa fa-times"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-left name">
-                                                    <a href="product-detail.php">{{$prod_data->name}}</a>
-                                                    {{-- <br /> - <small>Color Pink</small> --}}
-                                                    <div class="color-red">{{$item['quantity']}} x <span class="price color-red">€{{$item['price']}}</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </li>
-                                    @endforeach
-                                    <li>
-                                        <div class="cart_bottom">
-                                            <table class="minicart_total">
-                                                <tr>
-                                                    <td class="text-left"><span class="color-red">Zwischensumme</span>
-                                                    </td>
-                                                    <td class="text-right color-red">€{{$cart_data['cart_total_price']}}
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="text-left"><span class="color-red">Gesamt</span>
-                                                    </td>
-                                                    <td class="text-right color-red">€{{$cart_data['cart_total_price']}}
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <div class="buttons">
-                                                <span class="cart_bt"><a href="{{route('product.show-cart')}}" class="btn">Warenkorb ansehen</a></span>
-                                                <span class="checkout_bt"><a class="btn btn-shopping" href="{{route('home.checkout_form')}}">Kasse</a></span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    @else
-                                    Einkaufswagen ist leer!
-                                    @endif
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xs-2 col-sm-2 pdding-00">
+                                     <div id="cart" class="btn-group btn-block cart-icons header-cartbtn">
+                              <a href="/product/cart" class="btn btn-inverse btn-block btn-lg cart-mobile-view">
+                                 <i class="fa fa-shopping-cart"></i>
+                                  <span id="cart-total" class="cart-total">
+                                      {{$cart_data['cart_total_quantity']}} Artikel -
+                                      €{{$cart_data['cart_total_price']}}
+                                  </span>
+                              </a>
+                                
+                         </div>
+                      </div>
+                        <div class="col-xs-2 col-md-1 pdding-00">
                             <div class="open-menu">
                                 <a class="open-bt-mobile" >
-                                    <!-- <i class="fa fa-bars"></i> -->
+                                  
                                       <i class="fa fa-bars" id="openIcon"></i>
                                      <i class="fa fa-times" id="closeIcon" style="display:none;"></i>
                                 </a>
                             </div>
                         </div>
-
-
                     </div>
-
-
-                    <!-- /#cart -->
-
-                    <!-- /#boss-search -->
                 </div>
 
             </header>
@@ -534,7 +481,7 @@ use App\Models\Client\Product;
                 <footer>
                     <!-- New Footer Design matching Screenshot -->
                   <div class="footer-new">
-    <div class="container">
+                   <div class="container">
         <div class="row footer-row">
             
             <!-- Logo Left -->
@@ -553,37 +500,37 @@ use App\Models\Client\Product;
                     <span>|</span>
                     <a href="{{route('product.product-list')}}">Products</a>
                     <span>|</span>
-                    <a href="#">Gifts</a>
+                    <a href="{{route('home.giftpage')}}">Gifts</a>
                     <span>|</span>
-                    <a href="#">Reviews</a>
+                    <a href="{{route('home.reviewpage')}}">Reviews</a>
                     <span>|</span>
                     <a href="{{route('home.kamagra-glossary')}}">Encyclopedia</a>
                     <span>|</span>
-                    <a href="#">Advice</a>
+                    <a href="{{route('home.advice')}}">Advice</a>
                     <span>|</span>
-                    <a href="#">FAQ</a>
+                    <a href="{{route('home.faq')}}">FAQ</a>
                     <span>|</span>
-                    <a href="{{route('home.contact_us')}}">Contact</a>
+                    <a href="{{route('home.contact')}}">Contact</a>
                 </div>
 
                 <div class="footer-links-row">
-                    <a href="#">GDPR</a>
+                    <a href="{{route('home.gdpr')}}">GDPR</a>
                     <span>|</span>
-                    <a href="#">Terms and Conditions</a>
+                    <a href="{{route('home.termcondition')}}">Terms and Conditions</a>
                     <span>|</span>
-                    <a href="#">Payment</a>
+                    <a href="{{route('home.payment')}}">Payment</a>
                     <span>|</span>
-                    <a href="#">Exchanges & Returns</a>
+                    <a href="{{route('product.product-list')}}">Exchanges & Returns</a>
                 </div>
 
                 <div class="footer-links-row">
-                    <a href="#">Discreet handling</a>
+                    <a href="{{route('home.discreethandling')}}">Discreet handling</a>
                     <span>|</span>
-                    <a href="#">Shipping & Delivery</a>
+                    <a href="{{route('home.shipping')}}">Shipping & Delivery</a>
                     <span>|</span>
-                    <a href="#">Legal Notice</a>
+                    <a href="{{route('home.legalnotice')}}">Legal Notice</a>
                     <span>|</span>
-                    <a href="#">Information</a>
+                    <a href="{{route('home.information')}}">Information</a>
                 </div>
 
             </div>
@@ -597,206 +544,9 @@ use App\Models\Client\Product;
         <p>2025 © SMART LOGISTIK kft., Hegedus Gyula utca 13, 1136 Budapest, Hungary, All rights reserved</p>
     </div>
 </div>
-
-
-                    <!-- Old Footer Commented Out as requested -->
-                    <!-- 
-                    <div class="bt-footer-middle" style="display: none;">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-4 col-xs-12 col-lg-6"> 
-                                    <div class="footer-block">
-                                        <div class="box-content">
-                                            <ul class="list-unstyled">
-                                                <li> <a href="{{route('home.index')}}"><span class="menu-title">Home</span></a>
-                                                </li>
-                                                <li> <a href="{{route('product.product-list')}}"><span class="menu-title">Produkte</span></a>
-                                                </li>
-                                                <li> <a href="{{route('home.kamagra-glossary')}}"><span class="menu-title">Enzyklopädie</span></a>
-                                                </li>
-                                                <li> <a href="{{route('home.contact_us')}}"><span class="menu-title">Kontakt</span></a>
-                                                </li>
-                                                <li> <a href="{{route('home.sexual-enhance')}}"><span class="menu-title">Potenzmittel</span></a>
-                                                </li>
-                                                <li> <a href="{{route('home.blog')}}"><span class="menu-title">bloggen</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-xs-12 col-lg-3">
-                                    <div class="bt-newsletter">
-                                        
-                                    </div>
-                                </div>
-                                <div class="footer-email col-xs-12 col-lg-3">
-                                    <h3>SCHREIBEN SIE UNS EINE E-MAIL</h3>
-                                    <p>
-                                        <a href="mailto:support@onlinekamagrastore.com" class="w-100">support@onlinekamagrastore.com</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   <div class="bt-footer-bottom bggreen-footer" style="display: none;">
-                   </div> 
-                   -->
-                </footer>
-            </div>
-                                                        <!-- </li>
-                                                        <li> <a href="{{route('home.sexual-enhance')}}"><span class="menu-title">Potenzmittel</span></a>
-                                                        </li>
-                                                        <li> <a href="{{route('home.blog')}}"><span class="menu-title">bloggen</span></a>
-                                                        </li> -->
-                                                    <!-- </ul>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                        <!-- /.col-sm-4 -->
-                                        <!-- <div class="col-sm-4 col-xs-12 col-lg-3">
-                                           
-                                            <div class="bt-newsletter">
-                                                <div class="footer-newsletter">
-                                                    <div class="title">
-                                                        <h3>NEWSLETTER ABONNIEREN</h3>
-                                                        <p>Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen
-                                                            Gutschein mit 10 % Rabatt auf Ihre nächste Bestellung. Fügen
-                                                            Sie hier Ihren Text hinzu</p>
-                                                    </div>
-                                                    <div>
-                                                        <div class="newsletter-content">
-                                                            <div id="frm_subscribe">
-                                                                <form action="{{route('home.save_newsletter')}}" method="POST" enctype="multipart/form-data" id="newslettter_form">
-                                                                    @csrf
-                                                                    <table>
-                                                                        <tr>
-                                                                            <td>
-                                                                                <div class="boss-newsletter">
-                                                                                    {{-- <form > --}}
-
-                                                                                    <input class="form-control input-new" size="50" type="text" placeholder="Geben Sie hier Ihre E-Mail-Adresse ein" name="subscribe_email" id="subscribe_email" style="border-color: #7F447A!important;">
-                                                                                    <button class="btn btn-new" type="submit" style="border-color: #7F447A!important;    background: #7F447A!important;"><i class="fa fa-paper-plane"></i></button>
-                                                                                    {{-- </form> --}}
-                                                                                </div>
-                                                                            </td>
-                                                                        </tr>
-                                                                        {{-- <tr style="display:none;">
-                                                                            <td>
-                                                                                <input class="form-control input-new" size="50"
-                                                                                    type="text" value="Geben Sie hier Ihre E-Mail-Adresse ein"
-                                                                                    name="subscribe_name" id="subscribe_name">
-                                                                            </td>
-                                                                        </tr> --}}
-                                                                        <tr>
-                                                                            <td id="subscribe_result"></td>
-                                                                        </tr>
-                                                                    </table>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                        <!-- /.col-sm-4 -->
-                                        <!-- <div class="footer-social col-xs-4">
-                                            <h3>Follow us</h3>
-                                            <ul>
-                                                <li><a class="facebook" href="https://www.facebook.com/" title="Facebook"><i
-                                                            class="fa fa-facebook"></i></a>
-                                                </li>
-                                                <li><a class="pinterest" href="https://www.pinterest.com/" title="Pinterest"><i
-                                                            class="fa fa-pinterest"></i></a>
-                                                </li>
-                                                <li><a class="twitter" href="https://twitter.com/" title="Twiter"><i
-                                                            class="fa fa-twitter"></i></a>
-                                                </li>
-                                                <li><a class="google" href="https://plus.google.com/" title="Google plus"><i
-                                                            class="fa fa-google-plus"></i></a>
-                                                </li>
-                                                <li><a class="rss" href="https://www.rss.com/" title="RSS"><i class="fa fa-rss"></i></a>
-                                                </li>
-                                                <li><a class="youtube" href="https://www.youtube.com/" title="YouTube"><i
-                                                            class="fa fa-youtube"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>/.col-sm-4 -->
-                                        <!-- <div class="footer-email col-xs-12 col-lg-3">
-                                            <h3>SCHREIBEN SIE UNS EINE E-MAIL</h3>
-                                            <p>
-                                                <a href="mailto:support@onlinekamagrastore.com" class="w-100">support@onlinekamagrastore.com</a>
-                                            </p>
-                                            <a href="//www.dmca.com/Protection/Status.aspx?ID=58f44135-ceda-40d3-95bd-8c84e1d8798a" title="DMCA.com Protection Status" class="dmca-badge"> <img src="https://images.dmca.com/Badges/DMCA_badge_grn_60w.png?ID=58f44135-ceda-40d3-95bd-8c84e1d8798a" alt="DMCA.com Protection Status" /></a>
-                                            <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
-                                        </div> -->
-                                    <!-- </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- /.bt-footer-middle -->
-                        <!-- <div class="bt-footer-bottom bggreen-footer">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="link">
-                                        <ul class="list-unstyled">
-                                            <li><a href="">KONTAKTIERE UNS</a></li>
-                                            <li><a href="#">Seitenverzeichnis</a></li>
-                                            <li><a href="#">Marken</a></li>
-                                            <li><a href="#">Mitgliedsorganisationen</a></li>
-                                            <li><a href="#">Sonderangebote</a></li>
-                                            <li><a href="#">Newsletter</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="powered-payment">
-                                        <div class="row">
-                                            <div class="powered col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <div id="powered">
-                                                    <p>© {{date('Y')}}kamagra kaufen store.
-                                                    .
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="payment col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <ul>
-                                                    {{-- <li>
-                                                        <a title="Visa" href="#" class="visa"><img alt="Visa"
-                                                                src="{{asset('/assets/client2/images/visa.jpg')}}">
-                                                    </a>
-                                                    </li>
-                                                    <li>
-                                                        <a title="MasterCard" href="#" class="masterCard"><img alt="MasterCard" src="{{asset('/assets/client2/images/master_card.jpg')}}" />
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a title="Paypal" href="#" class="paypal"><img alt="Paypal" src="{{asset('/assets/client2/images/paypal.jpg')}}">
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a title="Merican" href="#" class="merican"><img alt="Merican" src="{{asset('/assets/client2/images/american.jpg')}}" />
-                                                        </a>
-                                                    </li> --}}
-                                                    <li>
-                                                        <a title="DHL" href="#" class="dhl"><img alt="DHL" src="{{asset('/assets/client2/images/dhl.jpg')}}">
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a title="DHL" href="#" class="dhl"><img alt="DHL" src="{{asset('/assets/client2/images/bank_transfer.jpg')}}" style="
-                                                                width: 38px;
-                                                                object-fit: contain;
-                                                            ">
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- /.bt-footer-bottom -->
+                    
                     </footer>
-                </div><!-- /#bt_footer -->
-                <!-- <div id="back_top" class="back_top" title="Back To Top"><span><i class="fa fa-angle-up"></i></span>
-                </div> -->
+                </div>
             </div>
         </div>
         <script src="{{ asset('assets/client2/js/jquery-2.1.1.min.js') }}"></script>
