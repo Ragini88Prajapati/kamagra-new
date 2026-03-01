@@ -164,10 +164,20 @@ use App\ProductVariant;
     </div>
 
      <div class="purchase-row">
-  <div class="price">
-    <span style="color:black; font-weight: 400;">Price:</span>
-    <strong>€{{$product_data->price ?? $product_data->min_price}}</strong>
-  </div>
+    <!-- old code comment by 20260228 -->
+    <!-- <div class="price"> 
+      <span style="color:black; font-weight: 400;">Price:</span>
+      <strong>€{{$product_data->price ?? $product_data->min_price}}</strong>
+    </div> -->
+
+    <div class="price">
+      <span style="color:black; font-weight: 400;">Price:</span>
+      <?php
+      $firstVariant = \App\ProductVariant::where('product_id', $product_data->id)->orderBy('price', 'asc')->first();
+      $displayPrice = $firstVariant ? $firstVariant->price : ($product_data->price ?? 0);
+      ?>
+      <strong>€{{ number_format($displayPrice) }}</strong>
+    </div>
 
   <div class="basket-count">
     <input type="number" name="cnt" id="cnt" value="1" min="1">

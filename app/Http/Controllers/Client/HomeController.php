@@ -220,11 +220,50 @@ class HomeController extends Controller
      public function reviews()
     {
         $data = array();
+        $data['categories'] = Category::select('id', 'name')->where('status', 1)->get();
+        $data['reviews'] = \App\Models\Client\ProductReview::where('approved', true)
+            ->with('product')
+            ->orderBy('created_at', 'desc')
+            ->limit(20)
+            ->get();
         return $this->_display('client2.reviewpage', $data);
     }
      public function Gifts()
     {
         $data = array();
+        $data['categories'] = Category::select('id', 'name')->where('status', 1)->get();
+        
+        // Fetch products for different gift thresholds
+        $data['gifts_20'] = Product::where('status', 1)
+            ->whereHas('productVariant', function($query) {
+                $query->where('price', '<=', 1500); // Assuming price in cents, 15 euros max for gift
+            })
+            ->with(['productVariant' => function($query) {
+                $query->orderBy('price', 'asc')->limit(3);
+            }, 'category'])
+            ->limit(3)
+            ->get();
+            
+        $data['gifts_50'] = Product::where('status', 1)
+            ->whereHas('productVariant', function($query) {
+                $query->where('price', '<=', 1500); // Assuming price in cents, 15 euros max for gift
+            })
+            ->with(['productVariant' => function($query) {
+                $query->orderBy('price', 'asc')->limit(3);
+            }, 'category'])
+            ->limit(3)
+            ->get();
+            
+        $data['gifts_150'] = Product::where('status', 1)
+            ->whereHas('productVariant', function($query) {
+                $query->where('price', '<=', 1500); // Assuming price in cents, 15 euros max for gift
+            })
+            ->with(['productVariant' => function($query) {
+                $query->orderBy('price', 'asc')->limit(3);
+            }, 'category'])
+            ->limit(3)
+            ->get();
+        
         return $this->_display('client2.giftpage', $data);
     }
     public function Advice()
@@ -404,5 +443,31 @@ class HomeController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage())->withInput();
         }
+    }
+
+    public function search(Request $request)
+    {
+        $searchQuery = $request->input('text');
+        
+        $data = array();
+        $data['categories'] = Category::select('id', 'name')->where('status', 1)->get();
+        
+        if (!empty($searchQuery)) {
+            $data['products'] = Product::where('status', 1)
+                ->where(function($query) use ($searchQuery) {
+                    $query->where('name', 'LIKE', '%' . $searchQuery . '%')
+                          ->orWhere('subtitle', 'LIKE', '%' . $searchQuery . '%');
+                })
+                ->select('name', 'slug', 'id', 'mrp', 'price', 'subtitle', 'discount', 'image', 'image_path', 'gender_id')
+                ->paginate(20);
+        } else {
+            $data['products'] = Product::where('status', 1)
+                ->select('name', 'slug', 'id', 'mrp', 'price', 'subtitle', 'discount', 'image', 'image_path', 'gender_id')
+                ->paginate(20); // Return empty paginator with all products when no search query
+        }
+        
+        $data['search_query'] = $searchQuery;
+        
+        return $this->_display('client2.search-results', $data);
     }
 }

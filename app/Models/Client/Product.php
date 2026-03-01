@@ -57,4 +57,9 @@ class Product extends Model
     {
         return $this->approvedReviews()->count();
     }
+    
+    public function productVariant()
+    {
+        return $this->hasMany(\App\ProductVariant::class, 'product_id');
+    }
 }

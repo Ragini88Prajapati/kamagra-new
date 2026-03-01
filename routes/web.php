@@ -352,5 +352,6 @@ Route::get('/blog', 'Client\HomeController@blog')->name('home.blog');
 Route::get('/blog/{url}', 'Client\HomeController@blog_detail')->name('home.blog-detail');
 Route::post('/blog-review-save', 'Client\HomeController@saveBlogReview')->name('home.blog-review-save');
 Route::post('/product-review-save', 'Client\HomeController@saveProductReview')->name('home.product-review-save');
+Route::get('/search', 'Client\HomeController@search')->name('home.search');
 
 Route::get('/sitemap.xml', 'Client\HomeController@sitemapXml');

@@ -114,7 +114,7 @@ use App\Models\Client\Product;
 
                                 <li class="image-banner-height" data-link="#" data-target="_self" data-transition="3dcurtain-horizontal" data-slotamount="7" data-masterspeed="500" data-saveperformance="on">
                                     <!-- MAIN IMAGE -->
-                                     <img src="{{$item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''}}" alt="slidebg1" data-lazyload="{{$item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''}}" data-bgposition="left center" data-kenburns="off" data-duration="14000" data-ease="Linear.easeNone" data-bgpositionend="right center" />
+                                     <img src="{{($item->desktop_image!=''? asset('/assets/images/banner/').'/'.$item->desktop_image:($item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''))}}" alt="slidebg1" data-lazyload="{{($item->desktop_image!=''? asset('/assets/images/banner/').'/'.$item->desktop_image:($item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''))}}" data-bgposition="left center" data-kenburns="off" data-duration="14000" data-ease="Linear.easeNone" data-bgpositionend="right center" />
                                   
                                     <div class="tp-caption big_white sft customout rs-parallaxlevel-0" data-x="342" data-y="54" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="400" data-start="500" data-end="5000" data-endspeed="400" data-easing="easeOutBack" data-endeasing="easeOutBack" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index: 2;"><img src="{{asset('/assets/client2/images/').'/dummy.png'}}" alt="" data-lazyload="{{asset('/assets/client2/images/slide/').'/line_caption.png'}}" />
                                     </div>
@@ -173,7 +173,7 @@ use App\Models\Client\Product;
 
                                 <li class="image-banner-height" data-link="#" data-target="_self" data-transition="3dcurtain-horizontal" data-slotamount="7" data-masterspeed="500" data-saveperformance="on">
                                     <!-- MAIN IMAGE -->
-                                     <img src="{{$item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''}}" alt="slidebg1" data-lazyload="{{$item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''}}" data-bgposition="left center" data-kenburns="off" data-duration="14000" data-ease="Linear.easeNone" data-bgpositionend="right center" />
+                                     <img src="{{($item->mobile_image!=''? asset('/assets/images/banner/').'/'.$item->mobile_image:($item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''))}}" alt="slidebg1" data-lazyload="{{($item->mobile_image!=''? asset('/assets/images/banner/').'/'.$item->mobile_image:($item->image_name!=''? asset('/assets/images/banner/').'/'.$item->image_name:''))}}" data-bgposition="left center" data-kenburns="off" data-duration="14000" data-ease="Linear.easeNone" data-bgpositionend="right center" />
                                   
                                     <div class="tp-caption big_white sft customout rs-parallaxlevel-0" data-x="342" data-y="54" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="400" data-start="500" data-end="5000" data-endspeed="400" data-easing="easeOutBack" data-endeasing="easeOutBack" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index: 2;"><img src="{{asset('/assets/client2/images/').'/dummy.png'}}" alt="" data-lazyload="{{asset('/assets/client2/images/slide/').'/line_caption.png'}}" />
                                     </div>
@@ -236,11 +236,18 @@ use App\Models\Client\Product;
         <div class="daily-deal-right">
           <div class="daily-deal">
             <!-- Image -->
-          <div class="deal-image">
+          <!-- <div class="deal-image">
            <img src="https://www.kamagraoriginal.to/images/product/200/sildalist-120mg-blister.jpg"
              onerror="this.src='{{asset('/assets/images/product/'.($product_list[0]->image ?? 'default.jpg'))}}'"
              alt="Sildalist">
-         </div>
+         </div> -->
+
+        <div class="deal-image">
+            <img 
+                src="https://www.kamagraoriginal.to/images/product/200/sildalist-120mg-blister.jpg"
+                onerror="this.onerror=null; this.src='{{ asset('/assets/images/product/' . (optional($product_list[0] ?? null)->image ?? 'default.jpg')) }}';"
+                alt="Sildalist">
+        </div>
 
     <!-- RIGHT : Text + Price -->
     <div class="deal-info">
@@ -443,24 +450,27 @@ use App\Models\Client\Product;
 
         <div id="module_20" class="module-wrapper-20">
         <div class="hidden-xs">
-         <form method="get" action="https://www.kamagraoriginal.to/de/suchergebnisse" class="search-form">
+        <form method="get" action="{{ route('home.search') }}" class="search-form">
 
-         <label for="searchInput">Product name:</label>
+            <label for="searchInput">Product name:</label>
 
-      <input 
-        type="text" 
-        id="searchInput" 
-        name="text" 
-        maxlength="100" 
-        required
-        class="module20_text"
-      >
+            <input 
+                type="text" 
+                id="searchInput" 
+                name="text" 
+                maxlength="100" 
+                required
+                class="module20_text"
+                placeholder="Search products..."
+            >
 
-      <button type="submit" class="module20_submit">SEEK</button>
+            <button type="submit" class="module20_submit">SEEK</button>
 
-    </form>
-  </div>
+        </form>
+    </div>
 </div>
+
+
 
             <!-- Bestsellers Section (Moved to Main Content) & Main Products -->
              
@@ -959,6 +969,40 @@ $(document).ready(function() {
             }
         });
     });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.querySelector('.search-form');
+    if (searchForm) {
+        // Prevent form submission to keep filtering on the same page
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Add event listener for real-time filtering as user types
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const productCards = document.querySelectorAll('.product-card-multipack, .product-card-bestseller');
+                
+                productCards.forEach(card => {
+                    const productName = card.querySelector('.product-title')?.textContent.toLowerCase() || '';
+                    const productSubtitle = card.querySelector('.product-subtitle') ? 
+                        card.querySelector('.product-subtitle').textContent.toLowerCase() : '';
+                    
+                    if (productName.includes(searchTerm) || productSubtitle.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+    }
 });
 </script>
 @endsection

@@ -34,7 +34,8 @@
                         <table id="product-list" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Image</th>
+                                    <th>Desktop Image</th>
+                                    <th>Mobile Image</th>
                                     <th>Title</th>
                                     <th>short Title</th>
                                     <th>URL</th>
@@ -47,7 +48,10 @@
                                 <tr>
                                     <td>
                                         {{-- {{ isset($value->image_name) &&  !empty($value->image_name) ? $value->image_name  :  '' }} --}}
-                                        <img src="{{$value->image_name!=''? asset('/assets/images/banner/').'/'.$value->image_name:''}}" style="width:100px;">
+                                        <img src="{{($value->desktop_image!=''? asset('/assets/images/banner/').'/'.$value->desktop_image:($value->image_name!=''? asset('/assets/images/banner/').'/'.$value->image_name:''))}}" style="width:100px;">
+                                    </td>
+                                    <td>
+                                        <img src="{{($value->mobile_image!=''? asset('/assets/images/banner/').'/'.$value->mobile_image:($value->image_name!=''? asset('/assets/images/banner/').'/'.$value->image_name:''))}}" style="width:100px;">
                                     </td>
                                     <td>
                                         {{ isset($value->title) &&  !empty($value->title) ? $value->title  :  '' }}

@@ -18,25 +18,45 @@ class AdminBannerController extends Controller
     }
     public function store(Request $request){
         $validated_request = request()->validate([
-            'image' => 'mimes:jpeg,jpg,png|required',
+            'desktop_image' => 'mimes:jpeg,jpg,png|required',
+            'mobile_image' => 'mimes:jpeg,jpg,png|required',
         ]);
 
         
-        // echo public_path().'/assets/images/banner';exit;
-        if($request->hasFile('image')) {
-            $file = $request->file('image');
-            $imagename = rand(100000000,999999999).time().$file->getClientOriginalName();
-            $file->move(public_path().'/assets/images/banner', $imagename);
+        // Handle image uploads
+        // The desktop image is stored in the desktop_image column
+        if($request->hasFile('desktop_image')) {
+            $file = $request->file('desktop_image');
+            $desktop_imagename = $file->getClientOriginalName();
+            
+            // Attempt to move the file and check for success
+            if (!$file->move(public_path().'/assets/images/banner', $desktop_imagename)) {
+                return redirect()->back()->withErrors(['desktop_image' => 'Failed to upload desktop image.']);
+            }
         }else{
-            $imagename = '';
+            $desktop_imagename = '';
         }
+        
+        if($request->hasFile('mobile_image')) {
+            $file = $request->file('mobile_image');
+            $mobile_imagename = $file->getClientOriginalName();
+            
+            // Attempt to move the file and check for success
+            if (!$file->move(public_path().'/assets/images/banner', $mobile_imagename)) {
+                return redirect()->back()->withErrors(['mobile_image' => 'Failed to upload mobile image.']);
+            }
+        }else{
+            $mobile_imagename = '';
+        }
+        
         $title= !empty(request()->input('title'))?request()->input('title'):'';
         $short_title=  !empty(request()->input('short_title'))?request()->input('short_title'):'';
         $url= !empty(request()->input('url'))?request()->input('url'):'';
 
         $saveData=  AdminBannerModel::insert([
             // 'profile_pic'=>$validator['profile_pic'],
-            'image_name'=>$imagename,
+            'desktop_image'=>$desktop_imagename,
+            'mobile_image'=>$mobile_imagename,
             'title'=>$title,
             'short_title'=>$short_title,
             'url'=>$url,
@@ -53,20 +73,39 @@ class AdminBannerController extends Controller
     }
     public function update(Request $request){
         // $validated_request = request()->validate([
-        //     'image' => 'mimes:jpeg,jpg,png|required',
+        //     'desktop_image' => 'mimes:jpeg,jpg,png|required',
         // ]);
 
         
         // echo public_path().'/assets/images/banner';exit;
-        if($request->hasFile('image')) {
-            $file = $request->file('image');
-            $imagename = rand(100000000,999999999).time().$file->getClientOriginalName();
-            $file->move(public_path().'/assets/images/banner', $imagename);
-            $saveData=  AdminBannerModel::where('id',request()->input('product_id'))->update([
-                // 'profile_pic'=>$validator['profile_pic'],
-                'image_name'=>$imagename,
-            ]);
+        $updates = [];
+        if($request->hasFile('desktop_image')) {
+            $file = $request->file('desktop_image');
+            $imagename = $file->getClientOriginalName();
+            
+            // Attempt to move the file and check for success
+            if (!$file->move(public_path().'/assets/images/banner', $imagename)) {
+                return redirect()->back()->withErrors(['desktop_image' => 'Failed to upload desktop image.']);
+            }
+            $updates['desktop_image'] = $imagename;
         }
+        
+        if($request->hasFile('mobile_image')) {
+            $file = $request->file('mobile_image');
+            $mobile_imagename = $file->getClientOriginalName();
+            
+            // Attempt to move the file and check for success
+            if (!$file->move(public_path().'/assets/images/banner', $mobile_imagename)) {
+                return redirect()->back()->withErrors(['mobile_image' => 'Failed to upload mobile image.']);
+            }
+            $updates['mobile_image'] = $mobile_imagename;
+        }
+        
+        // Only update image fields if new files were uploaded
+        if (!empty($updates)) {
+            AdminBannerModel::where('id',request()->input('product_id'))->update($updates);
+        }
+        
         $title= !empty(request()->input('title'))?request()->input('title'):'';
         $short_title=  !empty(request()->input('short_title'))?request()->input('short_title'):'';
         $url= !empty(request()->input('url'))?request()->input('url'):'';
@@ -77,7 +116,7 @@ class AdminBannerController extends Controller
             'title'=>$title,
             'short_title'=>$short_title,
             'url'=>$url,
-            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
 

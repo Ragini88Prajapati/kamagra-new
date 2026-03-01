@@ -83,8 +83,8 @@
 .purchase-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    /* justify-content: space-between; */
+    gap: 50px;
     margin: 15px 0;
 }
 

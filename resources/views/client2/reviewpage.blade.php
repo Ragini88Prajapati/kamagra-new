@@ -115,17 +115,143 @@ use App\Models\Client\Product;
         <div id="content" class="col-sm-9 col-md-9 col-lg-9">
 
 <div class="cart-container">
-
     <h1>Kamagra Original experiences and reviews</h1>
     <p style="font-size: 13px; color: #071D35; font-family: Arial, Helvetica, sans-serif; line-height: 1.35;">
-     
-	We value our customers and offer them gifts for a happy sex life.
-     Simply order €20 or more and choose from a wide variety of gifts.
-      We'll delight you with a present, and you'll make your partner happy too.
+        Here at Kamagra Original, we've been serving you for over 10 years and have delivered more than 18,000 orders.
+        Customer satisfaction and 100% delivery reliability are our top priorities. 
+        We offer independent user reviews and genuine customer testimonials so you can see what they have to say about our products and services.
     </p>
+    <p style="font-size: 13px; color: #071D35; font-family: Arial, Helvetica, sans-serif; line-height: 1.35;">
+        Check out our latest reviews:
+    </p>
+
+
+    
+    <!-- Reviews Section -->
+    <div class="reviews-section" style="margin-top: 30px;">
+        @if(isset($reviews) && count($reviews) > 0)
+            @php
+                $initialReviews = $reviews->take(10);
+                $remainingReviews = $reviews->slice(10);
+            @endphp
+            
+            <!-- Initial 10 reviews -->
+            <div id="initial-reviews">
+                @foreach($initialReviews as $review)
+                <div class="review-item" style="border: 1px solid #ddd; border-radius: 5px; padding: 20px; margin-bottom: 20px; background: #f9f9f9;">
+                    <!-- Review Header -->
+                    <div class="review-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                        <div class="reviewer-info">
+                            <h4 style="margin: 0 0 5px 0; color: #333;">{{ $review->name }}</h4>
+                            @if($review->product)
+                                <p style="margin: 0; color: #666; font-size: 14px;">Reviewed: {{ $review->product->name }}</p>
+                            @endif
+                        </div>
+                        <div class="review-rating">
+                            <div class="stars" style="display: flex;">
+                                @for($i = 1; $i <= 5; $i++)
+                                    @if($i <= $review->rating)
+                                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                                    @else
+                                        <span style="color: #ddd; font-size: 20px;">★</span>
+                                    @endif
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review Content -->
+                    <div class="review-content">
+                        <p style="margin: 0; line-height: 1.6; color: #444; font-size: 14px;">
+                            {{ $review->comment }}
+                        </p>
+                    </div>
+                    
+                    <!-- Review Date -->
+                    <div class="review-date" style="margin-top: 15px; font-size: 12px; color: #888; text-align: right;">
+                        Posted on {{ date('F j, Y', strtotime($review->created_at)) }}
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            
+            <!-- Hidden remaining reviews -->
+            <div id="remaining-reviews" style="display: none;">
+                @foreach($remainingReviews as $review)
+                <div class="review-item" style="border: 1px solid #ddd; border-radius: 5px; padding: 20px; margin-bottom: 20px; background: #f9f9f9;">
+                    <!-- Review Header -->
+                    <div class="review-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                        <div class="reviewer-info">
+                            <h4 style="margin: 0 0 5px 0; color: #333;">{{ $review->name }}</h4>
+                            @if($review->product)
+                                <p style="margin: 0; color: #666; font-size: 14px;">Reviewed: {{ $review->product->name }}</p>
+                            @endif
+                        </div>
+                        <div class="review-rating">
+                            <div class="stars" style="display: flex;">
+                                @for($i = 1; $i <= 5; $i++)
+                                    @if($i <= $review->rating)
+                                        <span style="color: #FFD700; font-size: 20px;">★</span>
+                                    @else
+                                        <span style="color: #ddd; font-size: 20px;">★</span>
+                                    @endif
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review Content -->
+                    <div class="review-content">
+                        <p style="margin: 0; line-height: 1.6; color: #444; font-size: 14px;">
+                            {{ $review->comment }}
+                        </p>
+                    </div>
+                    
+                    <!-- Review Date -->
+                    <div class="review-date" style="margin-top: 15px; font-size: 12px; color: #888; text-align: right;">
+                        Posted on {{ date('F j, Y', strtotime($review->created_at)) }}
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            
+            <!-- Show More Button -->
+            @if(count($reviews) > 10)
+            <div class="text-center" style="margin-top: 20px;">
+                <button id="show-more-btn" class="btn btn-primary" style="background: #0088cc; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px;">
+                    Show More Reviews ({{ count($reviews) - 10 }} more)
+                </button>
+            </div>
+            @endif
+        @else
+            <div class="no-reviews" style="text-align: center; padding: 40px; color: #666;">
+                <h3>No reviews available yet</h3>
+                <p>Be the first to share your experience with Kamagra Original products!</p>
+            </div>
+        @endif
+    </div>
 </div>
 
 </div>
 </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const showMoreBtn = document.getElementById('show-more-btn');
+        const remainingReviews = document.getElementById('remaining-reviews');
+        
+        if (showMoreBtn && remainingReviews) {
+            showMoreBtn.addEventListener('click', function() {
+                // Show the hidden reviews
+                remainingReviews.style.display = 'block';
+                
+                // Hide the button
+                this.style.display = 'none';
+            });
+        }
+    });
+</script>
 @endsection
