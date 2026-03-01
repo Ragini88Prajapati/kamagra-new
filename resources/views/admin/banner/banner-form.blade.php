@@ -70,29 +70,34 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="image">Image</label>
-                                    <?php
-                                        $image  = isset($product_data->image_name) && !empty($product_data->image_name) ? $product_data->image_name : "";
-                                        $image_path  = isset($product_data->image_path) && !empty($product_data->image_path) ? $product_data->image_path : "";
-                                        $is_image_present = true;
-                                        // if(Storage::url($image_path.$image) == '/storage/'){
-                                        //     $is_image_present = true;
-                                        // }
-                                        if(!empty($image)){
-                                            $is_image_present = false;
-                                        }
-                                        
-                                    ?>
-                                    <input type="file" name="image" id="image" class="form-control" accept="image/*" oninput="bannerimage.src=window.URL.createObjectURL(this.files[0])">
-                                    @error('image')
-                                    <label id="image-error" class="error" for="image">{{ $message }}</label>
+                                    <label for="desktop_image">Desktop Image</label>
+                                    <input type="file" name="desktop_image" id="desktop_image" class="form-control" accept="image/*" oninput="desktopImagePreview.src=window.URL.createObjectURL(this.files[0])">
+                                    @error('desktop_image')
+                                    <label id="desktop_image-error" class="error" for="desktop_image">{{ $message }}</label>
                                     @enderror
                                     <?php
-                                        if(isset($action)&&$action  == 'update'){
+                                        if(isset($action)&&$action  == 'update' && !empty($product_data->desktop_image)){
                                     ?>
-                                    <img src="{{$product_data->image_name!=''? asset('/assets/images/banner/').'/'.$product_data->image_name:''}}" style="width:100px;">
+                                    <img src="{{$product_data->desktop_image!=''? asset('/assets/images/banner/').'/'.$product_data->desktop_image:''}}" style="width:100px;">
                                     <?php  } ?>
-                                    <img src="" id="bannerimage" style="width:100px;">
+                                    <img src="" id="desktopImagePreview" style="width:100px;">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="mobile_image">Mobile Image</label>
+                                    <input type="file" name="mobile_image" id="mobile_image" class="form-control" accept="image/*" oninput="mobileImagePreview.src=window.URL.createObjectURL(this.files[0])">
+                                    @error('mobile_image')
+                                    <label id="mobile_image-error" class="error" for="mobile_image">{{ $message }}</label>
+                                    @enderror
+                                    <?php
+                                        if(isset($action)&&$action  == 'update' && !empty($product_data->mobile_image)){
+                                    ?>
+                                    <img src="{{$product_data->mobile_image!=''? asset('/assets/images/banner/').'/'.$product_data->mobile_image:''}}" style="width:100px;">
+                                    <?php  } ?>
+                                    <img src="" id="mobileImagePreview" style="width:100px;">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -138,44 +143,22 @@
 <script>
     $('#product-form').validate({
         rules:{
-            name:{
+            title:{
                 required:true,
                 maxlength:255
             },
-            subtitle:{
+            short_title:{
                 required:true,
                 maxlength:255
             },
-            brand:{
-                required:true
-            },
-            gender:{
-                required:true
-            },
-            <?php
-            if($is_image_present){
-?>
-image:{
-                required:true
-            },
-<?php
-            }
-            ?>
-            
-            mrp:{
+            url:{
                 required:true,
-                digits: true
             },
-            discount:{
-                required:true,
-                digits: true
+            desktop_image: {
+                accept: "jpg,png,jpeg,gif"
             },
-            price:{
-                required:true,
-                digits: true
-            },
-            product_type:{
-                required:true
+            mobile_image: {
+                accept: "jpg,png,jpeg,gif"
             }
         },
         submitHandler:function(form){
@@ -183,46 +166,4 @@ image:{
             return true;
         }
     });
-
-    $('.add-product-img').on('click',function(){
-        var cloneDiv = $("#product-img-clone-div").attr('style','').attr('id','');
-        cloneDiv = cloneDiv.attr('style','').attr('id','');
-        testCloneDiv = '<div class="col-md-6"><div class="row"><div class="col-md-11"><input type="file" name="product_image[]" multiple class="form-control"  accept="image/*"></div><div class="col-md-1"><span class="fa fa-minus remove-product-img"></span></div></div></div>';
-        $(this).parent().parent().parent().parent().append(testCloneDiv);
-    });
-
-    $(document.body).on('click','.remove-product-img',function(){
-        $(this).parent().parent().parent().remove();
-    });
-
-    $('#mrp').on('change',function(){
-        var mrp_value = $(this).val();
-        var discount = $("#discount").val();
-        
-        calculate_price(mrp_value,discount);
-    });
-
-    $("#discount").on('change',function(){
-        var mrp_value = $('#mrp').val();
-        var discount = $(this).val();
-        
-        calculate_price(mrp_value,discount);
-    });
-
-
-    function calculate_price(mrp_value,discount){
-        
-        if(mrp_value ==  '' || typeof(mrp_value) == 'undefined'){
-            mrp_value = 0;   
-        }
-
-        if(discount ==  '' || typeof(discount) == 'undefined'){
-            discount = 0;   
-        }
-        // console.log(discount);
-        
-        var  price = mrp_value - ((discount/100) * mrp_value);
-        $('#price').val(price);
-    }
 </script>
-@endsection

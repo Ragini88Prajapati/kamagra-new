@@ -1,6 +1,132 @@
-@extends('layouts.client_plain')
+@php
+use App\Models\Client\Product;
+
+@endphp
+@extends('layouts.client2')
 
 @section('content')
+
+<div id="bt_container">
+    <div class="left-popup-msg">
+       <div id="module_559" class="module-wrapper module-wrapper-559">
+          <img src="https://www.kamagraoriginal.to/images/SIDE-bitcoin-DE.png" alt="Bitcoin payment" style="width: 275px;">
+        </div>
+        <div class="header_categorymobile nofloat" style="margin-bottom:20px;">
+                <div id="boss-menu-category" class="box">
+                    <div class="box-content">
+                        <ul class="box-category boss-menu-cate new-iconarrow sidemenu-medicine" style="list-style: none; padding: 0; border: 1px solid #ddd; border-top: 3px solid #0088cc;">
+                            @forelse($categories ?? [] as $category)
+                                <li style="background: #aeddf5; padding: 10px 15px; font-weight: bold; color: #003e6d; font-size: 16px; border-bottom: 1px solid #fff;">
+                                    {{ $category->name }}
+                                </li>
+                                @php
+                                    $products = \App\Models\Client\Product::where('category_id', $category->id)
+                                        ->where('status', 1)
+                                        ->select('name', 'slug')
+                                        ->get();
+                                @endphp
+                                @forelse($products as $product)
+                                    <li>
+                                        <a href="{{ route('client.product.product-preview', [$product->slug]) }}" style="display: block; padding: 8px 15px; border-bottom: 1px solid #eee; text-decoration: none; color: #003e6d; font-weight: bold; font-size: 13px;">
+                                            <i class="fa fa-angle-right" style="margin-right: 5px;"></i> {{ $product->name }}
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li style="padding: 8px 15px; color: #666; font-style: italic; border-bottom: 1px solid #eee;">
+                                        No products available
+                                    </li>
+                                @endforelse
+                            @empty
+                                <li style="padding: 15px; text-align: center; color: #666;">
+                                    No categories available
+                                </li>
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        
+        <!-- Left Sidebar -->
+        <div id="column-left" class="col-sm-3 col-md-3 col-lg-3 hidden-xs">
+            
+            <!-- Login Block -->
+            <div id="module_559" class="module-wrapper module-wrapper-559">
+          <img src="https://www.kamagraoriginal.to/images/SIDE-bitcoin-DE.png" alt="Bitcoin payment" style="width: 275px;">
+        </div>
+         <!-- Login Block -->
+            <div class="login-block" style="background-color: #FFF; border: 1px solid #A0D9F7; margin: 0 0 20px; ">
+                @auth
+                <h3 style="margin: 0 0 10px 0; font-size: 14px; border-bottom: 2px solid #9EC8FA; background-color: #A0D9F7; line-height: 25px; padding: 5px 15px;font-weight: 700; color: #000;">{{ Auth::user()->name }}</h3>
+                <div style="margin-bottom: 10px; font-size: 12px;">
+                    <p style="color: #333; margin-bottom: 5px;">Welcome, {{ Auth::user()->name }}!</p>
+                    <a href="{{route('home.user-profile')}}" style="color: #006eb7; text-decoration: none;">My Account</a><br>
+                    <a href="{{route('logout')}}" style="color: #006eb7; text-decoration: none;">Logout</a>
+                </div>
+                @else
+                <h3 style="margin: 0 0 10px 0; font-size: 14px; border-bottom: 2px solid #9EC8FA; background-color: #A0D9F7; line-height: 25px; padding: 5px 15px;font-weight: 700; color: #000;">Login</h3>
+                <form action="{{ route('client.authenticate') }}" method="post" style="padding: 10px;">
+                    @csrf
+                    <div style="margin-bottom: 5px; display: flex">
+                        <label style="font-weight: normal; font-size: 12px; color: #333; width: 35%;">E-mail:</label>
+                        <input type="text" name="email" required style="width: 100%; border: 1px solid #ccc; border: 1px solid #9EC8FA; width: 60%;">
+                    </div>
+                    <div style="margin-bottom: 10px;  display: flex">
+                        <label style="font-weight: normal; font-size: 12px; color: #333; width: 35%;">Password:</label>
+                        <input type="password" name="password" required style="idth: 100%; border: 1px solid #ccc;  border: 1px solid #9EC8FA;  width: 60%;">
+                    </div>
+                    <button type="submit" style="background: #e96e00; color: white; border: 1px solid #d45500; padding: 2px 10px; font-weight: bold; font-size: 12px; border-radius: 2px; margin-left: 75px;">Log in</button>
+                    <div style="margin-top: 10px; font-size: 15px; font-weight: bold;">
+                        <a href="{{route('home.signup')}}" style="color: #006eb7;">Register</a><br>
+                        <a href="{{route('home.forgetPassPage')}}" style="color: #006eb7;">Forgot your password?</a>
+                    </div>
+                </form>
+                @endauth
+            </div>
+
+            <!-- Categories Menu -->
+            <div class="header_category  nofloat " style="margin-bottom: 20px;">
+                <div id="boss-menu-category" class="box">
+                    <div class="box-content">
+                        <ul class="box-category boss-menu-cate new-iconarrow sidemenu-medicine" style="list-style: none; padding: 0; border: 1px solid #ddd; border-top: 3px solid #0088cc;">
+                            @forelse($categories ?? [] as $category)
+                                <li style="background: #aeddf5; padding: 10px 15px; font-weight: bold; color: #003e6d; font-size: 16px; border-bottom: 1px solid #fff;">
+                                    {{ $category->name }}
+                                </li>
+                                @php
+                                    $products = \App\Models\Client\Product::where('category_id', $category->id)
+                                        ->where('status', 1)
+                                        ->select('name', 'slug')
+                                        ->get();
+                                @endphp
+                                @forelse($products as $product)
+                                    <li>
+                                        <a href="{{ route('client.product.product-preview', [$product->slug]) }}" style="display: block; padding: 8px 15px; border-bottom: 1px solid #eee; text-decoration: none; color: #003e6d; font-weight: bold; font-size: 13px;">
+                                            <i class="fa fa-angle-right" style="margin-right: 5px;"></i> {{ $product->name }}
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li style="padding: 8px 15px; color: #666; font-style: italic; border-bottom: 1px solid #eee;">
+                                        No products available
+                                    </li>
+                                @endforelse
+                            @empty
+                                <li style="padding: 15px; text-align: center; color: #666;">
+                                    No categories available
+                                </li>
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /#column-left -->
+        
+        <!-- Main Content -->
+        <div id="content" class="col-sm-9 col-md-9 col-lg-9">
 
 <div class="cart-container">
 
@@ -24,9 +150,6 @@
              they differ in their duration and length of action. The choice between the two depends on how much flexibility,
               spontaneity, or predictability men desire in their sex lives.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -52,12 +175,10 @@
              Although these substances belong to the same class of drugs, they work differently.
              Choosing the right one can help make intimacy more relaxed, controllable, and enjoyable, so these differences are important.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
+  
     </div>
 </div>
 
@@ -79,9 +200,6 @@
             including preventing severe forms of the disorder and empowering men to take immediate control of their sexual health.
              It is an effective, non-invasive first step in treating erection problems.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -106,9 +224,6 @@
            improving blood flow through the same powerful pathway. Differences in their speed of action, duration of effect, 
            and interactions with food and drink make choosing between them an important, individual decision.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -133,9 +248,6 @@
              confidence so they can last longer in bed. By understanding the underlying factors and applying practical techniques and tips,
              men can improve their control, deepen intimacy, and build a more satisfying sexual connection with their partner.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -162,9 +274,6 @@
            Research suggests a complex relationship,
             with moderation and individual factors playing a significant role in sexual health.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -189,9 +298,6 @@
             dysfunction by promoting blood circulation, reducing stress, and supporting cardiovascular health. Medical solutions such as 
            medications or therapies can complement exercise in the treatment of impotence in men.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -216,9 +322,6 @@
             sleep affects the body in complex ways and can directly impair erectile function. As our understanding of this relationship grows, this topic deserves more attention,
             especially in cases where men experience sexual difficulties despite the absence of other obvious health problems.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -244,9 +347,6 @@
             While well-known brand-name medications like Viagra and Cialis remain popular, a number of powerful
             generic alternatives from Asia have transformed the global market by offering comparable efficacy at a fraction of the cost.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -271,9 +371,6 @@
              lifestyle and dietary factors. There is growing evidence that diet can play an important role in the prevention and
              treatment of erectile problems. A healthy diet can improve blood flow, hormonal balance, and cardiovascular health.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -298,9 +395,6 @@
             and chronic stress, can contribute to erectile dysfunction. These factors impair blood flow, disrupt hormone balance,
             and damage the vascular and nervous systems, thereby reducing sexual performance and increasing the risk of impotence.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -325,13 +419,12 @@
            or health problems like diabetes or low testosterone, or for psychological reasons such as stress, anxiety,
             or performance anxiety during sex. Distraction, lack of arousal, or relationship dynamics can also contribute.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
     </div>
+
+  
 </div>
 
  <div class="articles-preview-item">
@@ -353,13 +446,11 @@
             impair normal bodily function, particularly
             affecting the endothelium and the bioavailability of nitric oxide, which is essential for a healthy erection.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
     </div>
+
 </div>
 
  <div class="articles-preview-item">
@@ -381,9 +472,6 @@
              many treatments have been developed to address the underlying health problems.
             However, many modern medications can also cause erectile dysfunction.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -409,9 +497,6 @@
               and loss of libido, and can be a sign of progressive erectile dysfunction.
              Understanding the link between testosterone and erectile dysfunction can help in choosing the right treatment approach.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -436,9 +521,6 @@
             This can restrict blood flow to the penis,
             which in turn can lead to impotence. Furthermore, studies suggest that smoking may increase the risk of erectile dysfunction.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -464,9 +546,6 @@
             leads to a host of health problems. Excessive alcohol consumption impairs 
           the body systems responsible for a healthy erection, leading to erectile dysfunction in both the short and long term.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -492,9 +571,6 @@
              physiological and psychological factors that contribute to this condition. With effective treatment
              options and open communication, men can manage this problem and enjoy a fulfilling sex life well into old age.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -518,9 +594,6 @@
        High blood pressure (hypertension) and erectile dysfunction are two conditions that frequently occur together, particularly in
         middle-aged and older men. The prevalence of these conditions is increasing, reflecting a general trend in public health.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -545,9 +618,6 @@
              One of the less frequently discussed, 
             but nonetheless consequential, effects of obesity is its link to erectile dysfunction.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -571,9 +641,6 @@
           While the physical and mental benefits of bodybuilding are well documented,
            the combination of hard training, supplements, and hormonal changes can sometimes lead to problems maintaining erectile function.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -598,9 +665,6 @@
             Even though the modern pharmaceutical industry 
            offers a wide range of treatment options for erectile dysfunction, the woman's role in its treatment should not be underestimated.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -625,9 +689,6 @@
             weakens self-esteem, and puts a strain on intimate relationships.
              While the slogan "The fastest potency enhancer" suggests a unique solution, the reality is more nuanced.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -652,9 +713,6 @@
              to revolutionize the intimate experience. Let's explore the benefits and intricacies
              of these potency enhancers by examining their mechanism of action, effectiveness, and impact on sexual satisfaction.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -680,9 +738,6 @@
             sexual health and improve your intimacy. 
           Knowing your options allows you to make informed choices to improve your health and overall well-being.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -708,9 +763,6 @@
             your sensitive healthcare expenses.
             By using cryptocurrency, buyers can enjoy greater privacy, as transactions are not linked to personal banking information.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -736,9 +788,6 @@
              oral medication for impotence. 
            Even today, it remains the most popular and reliable option for many men.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -763,9 +812,6 @@
           offering an effective solution to a widespread problem.
            However, while these drugs promise rapid relief in many cases, they also carry risks and require careful medical consultation.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -790,9 +836,6 @@
              Through the study of its clinical efficacy and safety profile, as well as through discussions with the manufacturer,
              we have gained a comprehensive understanding of its role in improving the quality of life for men with sexual problems.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -817,9 +860,6 @@
             Clinical trials have repeatedly confirmed the efficacy of vardenafil in improving erectile function, 
            increasing sexual performance, and enhancing overall sexual satisfaction.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -844,9 +884,6 @@
            their sexual experiences. It was specifically developed for women and can be 
           an effective treatment for female sexual dysfunction, including problems with arousal, desire, and orgasm.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -872,9 +909,6 @@
               today's medications offer effective relief to millions of men. 
             With such a wide range of effective medications available, there's sure to be the right treatment for you.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -898,9 +932,6 @@
            Kamagra Oral Jelly is a popular remedy for erectile dysfunction, offering a convenient alternative to traditional tablets in gel form. Manufactured by Ajanta Pharma, this product increases blood flow to facilitate erections
             and takes effect within 15 to 30 minutes. Its flavored, easy-to-swallow form appeals to men seeking discretion and affordability.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -925,9 +956,6 @@
             and tests to identify possible causes, both physical and psychological. Early diagnosis is crucial, as it not only aids in the
             treatment of the condition but also addresses broader health issues, leading to an improvement in overall well-being.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -952,9 +980,6 @@
             erection problems but simply want to enjoy sexual activity for a longer period.
              Cenforce ensures that you maintain an erection for four to six hours, giving your sex life a boost.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -980,9 +1005,6 @@
             causes can help men overcome the condition through medical treatment,
            lifestyle changes, or psychological support, thereby improving both sexual function and overall well-being.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1008,9 +1030,6 @@
               Its convenient jelly format, lower price compared to brand-name medications,
              and rapid absorption into the bloodstream make it an attractive alternative to traditional pills.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1034,9 +1053,6 @@
             Erectile dysfunction is often seen as a condition affecting older men, but it is increasingly becoming a problem for younger men as well. For men under 40, this condition can be confusing, frustrating, and worrying. Although this age group is generally physically healthy,
              various physical and psychological factors can lead to erection problems, which is why it is important to address this issue openly.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1062,9 +1078,6 @@
              end of the 20th century, many new erectile dysfunction medications have come onto the market.
             One of the most popular is certainly Kamagra, but does it promise the same results as Viagra?
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1089,9 +1102,6 @@
             anxiety, and relationship difficulties. The cause can be a combination of psychological and biological factors, but the good news is that it is treatable. With a range of behavioral techniques, medical options, 
            and lifestyle changes, men can regain control and improve both their sexual health and self-confidence.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1117,13 +1127,11 @@
            are intended to help women experiencing problems with sexual desire and arousal.
            While these medications offer new possibilities, they also raise important questions about their effectiveness and safety.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
     </div>
+
 </div>
 
 <div class="articles-preview-item">
@@ -1142,9 +1150,6 @@
         <p>
            Erectile dysfunction is a widespread condition affecting millions of men worldwide. It is characterized by the inability to achieve or maintain an erection sufficient for sexual activity and can significantly impact a man's quality of life, self-esteem, and relationships. However, it is not an inevitable part of aging, and there are effective ways to combat it.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1168,13 +1173,11 @@
            Medicine today offers numerous safe, documented, personalized, proven, and effective treatment options for erectile dysfunction. 
            These range from lifestyle changes to pharmacological and surgical treatments, as well as new and experimental therapies.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
     </div>
+
 </div>
 
 <div class="articles-preview-item">
@@ -1194,9 +1197,6 @@
           Vidalista is a medication developed by Centurion Laboratories for the treatment of erectile dysfunction. Containing the proven PDE5 inhibitor Tadalafil, Vidalista improves blood flow to the penis, enabling men to achieve and maintain an erection.
            It is available in various forms and dosages, offering an effective and affordable treatment option.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1220,9 +1220,6 @@
            Sexual goals are often overlooked when it comes to New Year's resolutions, and that's a missed opportunity. Like every other area of ​​our lives, 
            from health to finances, our sex life doesn't thrive without regular nurturing, motivation, and goals.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1246,9 +1243,6 @@
             A fulfilling sex life is an important part of overall well-being, even as we age. Kamagra Gold offers an effective solution for erectile dysfunction, helping men regain their confidence and enjoy intimate moments with their partner.
              Discover how this effective and affordable medication can reignite the spark in your life and make every moment truly golden.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1271,9 +1265,6 @@
         <p>Kamagra is a popular medication often touted as a treatment for erectile dysfunction, promising to restore confidence and improve sexual performance. Marketed as a cheaper alternative to Viagra, Kamagra achieves the same effect by increasing blood flow to the genital area.
              This article examines what Kamagra supposedly does, how it works, how it is taken, and the results it achieves for its users.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1297,9 +1288,6 @@
            Diabetes, a chronic condition affecting millions of people worldwide, can have far-reaching consequences for sexual health. Understanding the link between 
            diabetes and sexual health is crucial for managing these issues and improving overall well-being and intimate relationships.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1323,9 +1311,6 @@
             Our best-selling erectile dysfunction medications have helped countless men regain their confidence and improve their sexual health. From popular and reliable prescription drugs to affordable generic alternatives, our best-selling products enjoy customer trust due to their
              effectiveness and competitive pricing. Explore our bestsellers and find the right solution to improve your sex life.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1349,9 +1334,6 @@
            Sexual dysfunction can have a profound impact on a person's quality of life and relationships, making effective treatment essential. Understanding the underlying causes and available treatment
             options allows individuals and couples to find tailored solutions to improve sexual health and intimacy.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1375,9 +1357,6 @@
           “A satisfying sex life can promote good emotional health, which in turn can promote good physical health ,” 
           says Dr. Julia Heiman, director of the Kinsey Institute for Research in Sex, Gender and Reproduction at Indiana University.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1427,13 +1406,11 @@
         <p>
            Generic Cialis contains tadalafil and is an affordable, approved treatment for erectile dysfunction and benign prostatic hyperplasia. It increases blood flow to the penis, helping you achieve and maintain an erection when sexually stimulated. Generic Cialis offers the same effectiveness as the original, lasts up to 36 hours, is inexpensive, and widely available.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
     </div>
+
 </div>
 
 <div class="articles-preview-item">
@@ -1453,9 +1430,6 @@
            The term "female Viagra" refers to treatments that address sexual problems in women, such as decreased desire or arousal difficulties. These include options like flibanserin and bremelanotide, which increase libido, and sildenafil, which enhances physical response.
             Each of these medications targets different aspects and offers women ways to improve their sex lives.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1479,9 +1453,6 @@
            Erectile dysfunction has affected men since the beginning of time, but is often kept secret and stigmatized. Whether caused by physical problems such as diabetes and high blood pressure, by psychological factors such as stress and anxiety,
             or by lifestyle factors such as smoking and lack of exercise, erectile dysfunction is a common but treatable condition.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1506,9 +1477,6 @@
            the inability to achieve or maintain an erection, decreased libido, or reduced sexual satisfaction. It can be caused by physical, psychological, or lifestyle factors and can affect men of all ages. Although challenging, 
            it is a treatable condition that can be managed through appropriate medical and lifestyle modifications.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1532,9 +1500,6 @@
              erection sufficient for sexual intercourse. It can be caused by physical conditions such as reduced 
              blood flow or low hormone levels, or by psychological factors such as stress, anxiety, or depression.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1558,9 +1523,6 @@
            Male erectile dysfunction is defined as the recurrent inability to achieve or maintain a satisfactory erection, and a significant decrease in erectile rigidity during sexual intercourse.
             To meet the diagnostic criteria, symptoms must be present for at least six months and occur in at least 75% of attempts.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1584,9 +1546,6 @@
            Erectile dysfunction medications are treatments or approaches used to address erectile dysfunction or improve potency in men. They include pharmaceutical drugs, natural supplements, lifestyle changes, and alternative methods, 
            all aimed at improving erectile function or libido. They are tailored to individual needs and available in various forms.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1611,9 +1570,6 @@
              has garnered significant attention due to its affordability and effectiveness. Given its growing popularity among men suffering from erectile dysfunction, it is necessary to provide a comprehensive 
             overview of the drug, including its history, available forms and dosages, potential side effects, and safety considerations.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1637,9 +1593,6 @@
             Viagra is a medication used to treat erectile dysfunction, a condition affecting many men. It was approved by the U.S. Food and Drug Administration (FDA) on March 27, 1998,
              and was the first oral medication specifically developed to treat ED, offering a new treatment option for those affected.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1663,9 +1616,6 @@
            Sexual potency refers to the ability to effectively perform and enjoy sexual activity. In men, this often means achieving and maintaining an erection; in women, it includes arousal and satisfaction. It combines physical abilities 
            such as hormonal and vascular health with psychological readiness and reflects vitality, desire, and confidence in sexual contexts.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1689,9 +1639,6 @@
            Tadalafil is a medication used to treat erectile dysfunction, benign prostatic hyperplasia, and pulmonary arterial hypertension. As an FDA- and EMA-approved PDE5 inhibitor,
             it increases blood flow to the penis during sexual stimulation, thus helping to achieve and maintain an erection.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1715,9 +1662,6 @@
            Levitra is a fast-acting medication for erectile dysfunction that begins to work in as little as 10 minutes. Its active ingredient, vardenafil, increases blood flow
             to achieve and maintain an erection. Levitra works well with food, has fewer side effects, and is effective for men with diabetes.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1741,9 +1685,6 @@
            Vardenafil is a medication primarily used to treat erectile dysfunction (ED) in adult men. It belongs to the class of PDE5 inhibitors. Vardenafil works by relaxing blood vessels and increasing
             blood flow to the penis during sexual stimulation, making it a reliable and effective option for maintaining healthy sexual performance.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1767,13 +1708,11 @@
             Dapoxetine is the first fast-acting medication specifically developed and approved for the treatment of premature ejaculation. As a selective serotonin reuptake inhibitor (SSRI), it increases serotonin levels, thus delaying ejaculation.
              When taken before sexual intercourse, it helps delay ejaculation, improve control, and alleviate discomfort.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
     </div>
+
 </div>
 
 <div class="articles-preview-item">
@@ -1793,9 +1732,6 @@
            Generic Viagra, also known as sildenafil, is a medication used to treat erectile dysfunction. It increases blood flow to the penis during sexual stimulation.
             It is equivalent to the brand-name Viagra in terms of effectiveness and safety, but significantly cheaper.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
@@ -1819,15 +1755,15 @@
            Cialis is a widely used medication for treating erectile dysfunction, pulmonary arterial hypertension, and the symptoms of benign prostatic hyperplasia. It increases blood flow to certain areas of the body,
             thus helping to achieve and maintain an erection. Cialis is known for its long duration of action, lasting up to 36 hours.
         </p>
-    </div>
-
-    <div class="articles-preview-link">
         <a style=" color: #075BAF; text-decoration: none" href="https://www.kamagraoriginal.to/de/artikeln/tadalafil-vs-vardenafil-517-i2267">
             Read more
         </a>
     </div>
 </div>
 
-
+</div>
+</div>
+</div>
 
 </div>
+@endsection

@@ -1,4 +1,9 @@
-@extends('layouts.client_plain')
+@php
+use App\StaticContent;
+$data=StaticContent::where('title','kamagra_glossary')->first();
+@endphp
+@extends('layouts.client2')
+
 
 @section('content')
 
@@ -15,3 +20,4 @@
 		For products that do not require a prescription, you have the right to return them within 14 days.
 	</p>
 </div>
+@endsection

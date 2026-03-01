@@ -1,10 +1,72 @@
+.offer-bar{
+    display:none;
+}
+.menu-open .fa-bars{ display:none; }
+.menu-open .fa-times{ display:inline-block; }
+
+.fa-times{ display:none; }
+
+
+
 @media (max-width: 767px) {
   #column-left {
     display: none !important;
   }
+  .header_slider,
+    .image-banner-height,
+    .tp-banner-container,
+    .tp-banner,
+    .tp-banner ul,
+    .tp-banner li{
+        height:520px !important;
+    }
+
+    /* make image fit nicely */
+    .tp-banner img{
+        width:100% !important;
+        height:100% !important;
+        object-fit:cover;
+    }
+
+    /* optional caption resize for mobile */
+    .tp-caption{
+        transform:scale(.75);
+        transform-origin:center;
+    }
+    .offer-bar{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        background-color: #1e93d1;
+        color: #fff;
+        padding: 8px 3px;
+        margin: 0;
+        font-size: 1em;
+       padding-left: 20px;
+        padding-right: 26px;
+        line-height: 1;
+        font-weight: bold;
+    }
+
+    .offer-links a{
+        color:#fff;
+        margin-right:15px;
+        font-size:14px;
+        text-decoration:none;
+    }
+
+    .offer-search i{
+        color:#fff;
+        font-size:18px;
+        cursor:pointer;
+    }
 }
 
+
 @media screen and (min-width: 1400px) {
+.tp-bgimg{
+    height:240px !important;
+}
     /* blog-comment  */
     .comment-list-div li.item {
         display: flex;
@@ -4353,7 +4415,7 @@
         font-size: 10px;
     }
     .desktop-logo img {
-        width: 40px !important;
+        width: 220px !important;
     }
     /* blog-comment  */
     .comment-list-div li.item {
@@ -4621,7 +4683,7 @@
         align-items: center;
     }
     .cart-column .cart-icons {
-        margin-left: 0px !important;
+        margin-left: 55px !important;
         float: unset !important;
         padding-bottom: 0px !important;
         right: 0 !important;
@@ -5572,7 +5634,7 @@
     }
     header {
         border-bottom: 1px solid #e4e4e4;
-        padding: 8px 0 15px 10px;
+        padding: 9px 5px 9px 20px;
         background-color: #f8f8f8;
         border-top: 1px solid #e4e4e4;
         font-size: 15px;
@@ -6484,9 +6546,7 @@ footer .bt-footer-bottom.bggreen-footer {
         display: none;
     }
   
-    .cart-mobile-view i{
-        color: white !important;
-    }
+  
     .desktop-logo a p{
         font-family: "Sevillana", cursive !important;
     }
@@ -6494,4 +6554,110 @@ footer .bt-footer-bottom.bggreen-footer {
         width: 96%;
         margin: 15px auto !important;
     }
+}
+
+@media screen and (min-width: 1200px) {
+.tp-bgimg{
+    height:240px !important;
+}
+.image-banner-height{
+     height:240px !important;
+}
+
+#module_20 form {
+    padding: 6px 20px;
+}
+    .module-wrapper {
+        border: 1px solid #A0D9F7;
+        background-color: #FFF;
+        margin: 0 0 20px;
+    }
+ .module-wrapper-20 {
+    border: 1px solid #A0D9F7;
+    background-color: #FFF;
+    margin: 0px -15px 20px;
+}
+.module20_text {
+    color: #333;
+    width: 400px;
+    padding: 0px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 6px;
+}
+.module20_text::placeholder {
+    font-size: 12px; /* reduce size */
+}
+.module20_submit {
+    color: #FFF;
+    font-weight: 700;
+    padding: 2px 15px;
+    background-color: #F46000;
+    border: 1px solid #EB5600;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.multipacsmobile{
+background: #aeddf5;
+    padding: 12px 155px;
+    margin: 0 -15px;
+}
+}
+@media screen and (min-width: 768px) {
+
+.desktop-view{
+ display: block;
+}
+.mobile-view{
+ display: none;
+}
+
+}
+
+@media screen and (max-width: 767px) {
+
+.desktop-view{
+ display: none;
+}
+.mobile-view{
+ display: block;
+}
+.align-items-center {
+        align-items: center;
+    }
+.flag img{
+    width: 28px;      /* adjust size here */
+    height: auto;     /* keeps proportions */
+    object-fit: contain;
+}
+
+.cart-inner{
+    display:flex;
+    align-items:center;
+}
+
+.mobilecart{
+    display: flex;
+}
+.hide-mobile{
+display:none !important;
+}
+.price-box{
+    text-align:center;
+}
+
+.price-box .btn{
+    margin:0px 0 0;
+    display:block;
+}
+
+.multipacsmobile{
+    background: #aeddf5;
+    padding: 14px 214px;
+    margin: 0px -62px;
+}
+
 }

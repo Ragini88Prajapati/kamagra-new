@@ -60,7 +60,7 @@ h4,
 h5,
 h6,
 p {
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
 }
 
 body {
@@ -85,7 +85,7 @@ h2 {
     line-height: 20px;
     font-weight: 700;
     color: #000;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 h3 {
@@ -107,7 +107,7 @@ h3 {
 /* default font size */
 
 .fa {
-    font-size: 14px;
+    font-size: 10px;
 }
 
 
@@ -447,7 +447,7 @@ a:focus {
 
 ul,
 ol {
-    list-style-type: none;
+    /* list-style-type: none; */
     padding: 0;
     margin: 0;
 }
@@ -686,7 +686,9 @@ span.hidden-lg {
     color: #434343;
 }
 
-.currency .dropdown-menu .btn:hover {
+.currency .dropdown-menu
+ /* .btn:hover */
+  {
     color: #ef4056;
 }
 
@@ -889,22 +891,22 @@ header {
     text-transform: uppercase;
     background: #ef4056;
     padding: 0 25px;
-    border: 1px solid #ef4056;
+    /* border: 1px solid #ef4056; */
     height: 50px;
 }
 
 #cart>.btn i {
     margin-right: 0.5em;
-    font-size: 15px;
+    font-size: 25px;
 }
 
 #cart>.btn:hover,
 #cart.open>.btn {
-    background-color: #7F447A;
+    /* background-color: #7F447A;
     color: #fff;
     border: 1px solid #7F447A;
     box-shadow: none;
-    text-shadow: none;
+    text-shadow: none; */
 }
 
 .btn:active {
@@ -1782,7 +1784,7 @@ footer .bt-footer-bottom {
     color: #ffffff;
     background-color: #363636;
     background-repeat: repeat-x;
-    border-color: #222222 #222222 #000000;
+    /* border-color: #222222 #222222 #000000; */
 }
 
 .btn-inverse:hover,
@@ -4191,14 +4193,16 @@ a.forgotten:hover {
     -moz-border-radius: 2px;
 }
 
-.btn,
+/* .btn, */
 .compare-info .btn-cart {
     background: #7F447A;
     border: 1px solid #7F447A;
 }
 
-.btn:hover,
-.compare-info .btn-cart:hover {
+/* .btn:hover, */
+.compare-info 
+/* .btn-cart:hover  */
+{
     background-color: #7F447A;
     color: #fff;
     border: 1px solid #7F447A;
@@ -4277,9 +4281,9 @@ a.forgotten:hover {
     margin-bottom: 25px;
 }
 
-#content p {
+/* #content p {
     padding-top: 10px;
-}
+} */
 
 .drug_info_wrapper {
     padding-top: 20px;
@@ -4398,8 +4402,11 @@ h1.block-title+ul li a {
     margin-right: 20px;
 }
 
-.wishlist-info .table tbody tr td.action .btn-cart:hover,
-.table-responsive .table tbody tr td .btn-cart:hover {
+.wishlist-info .table tbody tr td.action,
+ /* .btn-cart:hover, */
+.table-responsive .table tbody tr td
+ /* .btn-cart:hover */
+  {
     color: #7F447A;
 }
 
@@ -4446,7 +4453,9 @@ h1.block-title+.table tr td {
     border: 1px solid #434343;
 }
 
-.table-responsive .table tbody tr td .btn-cart:hover {
+.table-responsive .table tbody tr td 
+/* .btn-cart:hover  */
+{
     border: 1px solid #7F447A;
 }
 
@@ -5205,7 +5214,7 @@ a.prev {
 }
 
 .bt-product-category {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .bt-featured-pro .boss-category-pro .product-categories-box {
@@ -5235,8 +5244,8 @@ a.prev {
 
 .bt-featured-pro.bt-nprolarge-tabs h3 {
     margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 5px;
+    /* position: relative; */
+    /* padding-bottom: 5px; */
 }
 
 .bt-featured-pro.bt-nprolarge-tabs h3:before {
@@ -5909,54 +5918,64 @@ footer .form-control {
 
 .btn,
 .btn.btn-gray:hover,
-#cart>.btn:hover,
-#cart.open>.btn,
+/* #cart>.btn:hover,
+#cart.open>.btn, */
 .compare-info .btn-cart,
 .compare-info .btn-wishlist:hover {
     background-color: #7F447A
 }
 
-.btn:hover,
+/* .btn:hover, */
 .jGrowl-button .buttons .btn:hover,
-.compare-info .btn-cart:hover,
-#cart .dropdown-menu .cart_bottom .buttons .btn:hover {
+.compare-info 
+/* .btn-cart:hover, */
+#cart .dropdown-menu .cart_bottom .buttons
+ /* .btn:hover  */
+ {
     background-color: #1f7acc
 }
 
 .btn,
 .btn.btn-gray:hover,
-#cart>.btn:hover,
-#cart.open>.btn,
+/* #cart>.btn:hover,
+#cart.open>.btn, */
 .compare-info .btn-cart,
 .compare-info .btn-wishlist:hover {
     color: #ffffff
 }
 
-.btn:hover,
+/* .btn:hover, */
 .jGrowl-button .buttons .btn:hover,
-.compare-info .btn-cart:hover,
-#cart .dropdown-menu .cart_bottom .buttons .btn:hover {
+.compare-info 
+/* .btn-cart:hover, */
+#cart .dropdown-menu .cart_bottom .buttons 
+/* .btn:hover */
+ {
     color: #ffffff
 }
 
-.btn,
+/* .btn, */
 .btn.btn-gray:hover,
-#cart>.btn:hover,
-#cart.open>.btn,
+/* #cart>.btn:hover,
+#cart.open>.btn, */
 .compare-info .btn-cart,
 .compare-info .btn-wishlist:hover {
     border-color: #1f7acc
 }
 
-.btn:hover,
-.jGrowl-button .buttons .btn:hover,
-.compare-info .btn-cart:hover,
-#cart .dropdown-menu .cart_bottom .buttons .btn:hover {
+/* .btn:hover, */
+.jGrowl-button .buttons
+ .btn:hover,
+.compare-info ,
+/* .btn-cart:hover, */
+#cart .dropdown-menu .cart_bottom .buttons
+ /* .btn:hover */
+  {
     border-color: #1f7acc
 }
 
 .btn.btn-gray,
-#cart>.btn,
+/* #cart>.btn, */
 .jGrowl-button .buttons .btn,
 .compare-info .btn-wishlist,
 #cart .dropdown-menu .cart_bottom .buttons .btn {
@@ -5968,15 +5987,15 @@ footer .form-control {
 .jGrowl-button .buttons .btn,
 .compare-info .btn-wishlist,
 #cart .dropdown-menu .cart_bottom .buttons .btn {
-    color: #ffffff
+    /* color: #ffffff */
 }
 
 .btn.btn-gray,
-#cart>.btn,
+/* #cart>.btn, */
 .jGrowl-button .buttons .btn,
 .compare-info .btn-wishlist,
 #cart .dropdown-menu .cart_bottom .buttons .btn {
-    border-color: #119dcb
+    /* border-color: #119dcb */
 }
 
 .button-group .wishlist-compare button {
@@ -6156,13 +6175,13 @@ select,
 a,
 button,
 p {
-    font-family: "Poppins", sans-serif !important;
+    /* font-family: "Poppins", sans-serif !important; */
 }
 
 .sidemenu-medicine {
     background: white;
-    border-radius: 20px;
-    padding: 30px;
+    /* border-radius: 20px;
+    padding: 30px; */
 }
 
 .btn.btn-gray,

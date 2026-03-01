@@ -13,7 +13,7 @@ use App\ProductVariant;
         <div id="column-left" class="col-sm-3 col-md-3 col-lg-3">
             
             <!-- Login Block -->
-            <div class="login-block" style="background: #eaf8ff; border: 1px solid #bce8f1; padding: 15px; margin-bottom: 20px;">
+            <!-- <div class="login-block" style="background: #eaf8ff; border: 1px solid #bce8f1; padding: 15px; margin-bottom: 20px;">
                 @auth
                 <h3 style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; color: #000;">{{ Auth::user()->name }}</h3>
                 <div style="margin-bottom: 10px; font-size: 12px;">
@@ -35,6 +35,38 @@ use App\ProductVariant;
                     </div>
                     <button type="submit" style="background: #e96e00; color: white; border: 1px solid #d45500; padding: 2px 10px; font-weight: bold; font-size: 12px; border-radius: 2px;">Log in</button>
                     <div style="margin-top: 10px; font-size: 11px;">
+                        <a href="{{route('home.signup')}}" style="color: #006eb7;">Register</a><br>
+                        <a href="{{route('home.forgetPassPage')}}" style="color: #006eb7;">Forgot your password?</a>
+                    </div>
+                </form>
+                @endauth
+            </div> -->
+              <div id="module_559" class="module-wrapper module-wrapper-559">
+          <img src="https://www.kamagraoriginal.to/images/SIDE-bitcoin-DE.png" alt="Bitcoin payment" style="width: 275px;">
+        </div>
+         <!-- Login Block -->
+            <div class="login-block" style="background-color: #FFF; border: 1px solid #A0D9F7; margin: 0 0 20px; ">
+                @auth
+                <h3 style="margin: 0 0 10px 0; font-size: 14px; border-bottom: 2px solid #9EC8FA; background-color: #A0D9F7; line-height: 25px; padding: 5px 15px;font-weight: 700; color: #000;">{{ Auth::user()->name }}</h3>
+                <div style="margin-bottom: 10px; font-size: 12px;">
+                    <p style="color: #333; margin-bottom: 5px;">Welcome, {{ Auth::user()->name }}!</p>
+                    <a href="{{route('home.user-profile')}}" style="color: #006eb7; text-decoration: none;">My Account</a><br>
+                    <a href="{{route('logout')}}" style="color: #006eb7; text-decoration: none;">Logout</a>
+                </div>
+                @else
+                <h3 style="margin: 0 0 10px 0; font-size: 14px; border-bottom: 2px solid #9EC8FA; background-color: #A0D9F7; line-height: 25px; padding: 5px 15px;font-weight: 700; color: #000;">Login</h3>
+                <form action="{{ route('client.authenticate') }}" method="post" style="padding: 10px;">
+                    @csrf
+                    <div style="margin-bottom: 5px; display: flex">
+                        <label style="font-weight: normal; font-size: 12px; color: #333; width: 35%;">E-mail:</label>
+                        <input type="text" name="email" required style="width: 100%; border: 1px solid #ccc; border: 1px solid #9EC8FA; width: 60%;">
+                    </div>
+                    <div style="margin-bottom: 10px;  display: flex">
+                        <label style="font-weight: normal; font-size: 12px; color: #333; width: 35%;">Password:</label>
+                        <input type="password" name="password" required style="idth: 100%; border: 1px solid #ccc;  border: 1px solid #9EC8FA;  width: 60%;">
+                    </div>
+                    <button type="submit" style="background: #e96e00; color: white; border: 1px solid #d45500; padding: 2px 10px; font-weight: bold; font-size: 12px; border-radius: 2px; margin-left: 75px;">Log in</button>
+                    <div style="margin-top: 10px; font-size: 15px; font-weight: bold;">
                         <a href="{{route('home.signup')}}" style="color: #006eb7;">Register</a><br>
                         <a href="{{route('home.forgetPassPage')}}" style="color: #006eb7;">Forgot your password?</a>
                     </div>
@@ -132,10 +164,20 @@ use App\ProductVariant;
     </div>
 
      <div class="purchase-row">
-  <div class="price">
-    <span style="color:black; font-weight: 400;">Price:</span>
-    <strong>€{{$product_data->price ?? $product_data->min_price}}</strong>
-  </div>
+    <!-- old code comment by 20260228 -->
+    <!-- <div class="price"> 
+      <span style="color:black; font-weight: 400;">Price:</span>
+      <strong>€{{$product_data->price ?? $product_data->min_price}}</strong>
+    </div> -->
+
+    <div class="price">
+      <span style="color:black; font-weight: 400;">Price:</span>
+      <?php
+      $firstVariant = \App\ProductVariant::where('product_id', $product_data->id)->orderBy('price', 'asc')->first();
+      $displayPrice = $firstVariant ? $firstVariant->price : ($product_data->price ?? 0);
+      ?>
+      <strong>€{{ number_format($displayPrice) }}</strong>
+    </div>
 
   <div class="basket-count">
     <input type="number" name="cnt" id="cnt" value="1" min="1">

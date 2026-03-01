@@ -525,9 +525,10 @@
 
 .price-regular {
     background: #ffcc00;
-    padding: 2px 5px;
-    font-size: 11px;
+       padding: 2px 7px;
+    font-size: 12px;
     color: #333;
+    width: 70%;
 }
 
 .price-regular span {
@@ -536,20 +537,36 @@
 
 .price-offer {
     background: #ff6600;
-    padding: 2px 5px;
+    padding: 4px 7px;
     font-size: 13px;
+    color: #fff;
+    /* font-weight: bold; */
+    width: 70%;
+}
+.price-offer span{
+   font-size: 20px;
     color: #fff;
     font-weight: bold;
 }
 
 /* Links */
 .product-more {
-    font-size: 11px;
+    font-size: 13px;
     color: #3498db;
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
     text-decoration: none;
+    text-align: center;
+}
+.product-moreinformation{
+     font-size: 11px;
+    color: #3498db;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    text-decoration: none;
+    line-height: 1.2;
 }
 
 .product-more.disabled {
@@ -565,6 +582,8 @@
     font-weight: bold;
     font-size: 12px;
     padding: 5px 0;
+    margin-top: 15px;
+     width: 100px;
 }
 
 .btn-loading {
@@ -708,7 +727,7 @@
 .reviews-left{
      align-items: center;
         text-align: center;
-        margin-left: 50px;
+        margin-left: 40px;
 }
     /* Keep stars visible and centered */
     .stars-main {
@@ -748,7 +767,10 @@
     .product-title,
     .product-price,
     .offer-text {
-        text-align: center;
+        /* text-align: center; */
+        font-size: 17px;
+        margin-top: 10px;
+        margin-bottom: 15px;
     }
 
     /* Bottom row stacked */

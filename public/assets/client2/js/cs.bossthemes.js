@@ -92,9 +92,24 @@ jQuery(document).ready(function($) {
 	// $(".open-bt-mobile,.close-panel").click(function(){
 	// 	$('body').toggleClass('openNav');
 	// });
-	$(document).on("click",".open-bt-mobile,.close-panel",function(){
+// 	$(document).on("click",".open-bt-mobile,.close-panel",function(){
+//     $("body").toggleClass("openNav");
+// });
+$(document).on("click",".open-bt-mobile,.close-panel",function(){
+
     $("body").toggleClass("openNav");
+
+    // toggle icons
+    if($("body").hasClass("openNav")){
+        $(".fa-bars").hide();
+        $(".fa-times").show();
+    }else{
+        $(".fa-bars").show();
+        $(".fa-times").hide();
+    }
+
 });
+
 	
 	$('.nav-pills li.parent > p').click(function(){
 

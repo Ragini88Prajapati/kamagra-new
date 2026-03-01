@@ -53,66 +53,64 @@ Route::get('/product/cart', 'Client\CartController@show_cart')->name('product.sh
 Route::get('/product/{product_slug}', 'Client\ProductController@product_preview')->name('client.product.product-preview');
 Route::post('/delete-from-cart', 'Client\ProductController@delete_from_cart')->name('product.delete-from-cart');
 
-Route::get('/shoppingsummary', function () {
-    return view('client2.shoppingsummary');
-})->name('shopping.summary');
+//  Route::get('/review', 'Client\HomeController@reviewpage')->name('home.reviewpage');
 
-Route::get('/pageinformation', function () {
-    return view('client2.pageinformation');
-})->name('page.information');
+// Route::get('/pageinformation', function () {
+//     return view('client2.pageinformation');
+// })->name('page.information');
 
-Route::get('/ordercompleted', function () {
-    return view('client2.ordercompleted');
-})->name('page.information');
-Route::get('/gift', function () {
-    return view('client2.giftpage');
-})->name('page.information');
-Route::get('/review', function () {
-    return view('client2.reviewpage');
-})->name('page.information');
-Route::get('/encyclopedia', function () {
-    return view('client2.encyclopedia');
-})->name('page.information');
+// Route::get('/ordercompleted', function () {
+//     return view('client2.ordercompleted');
+// })->name('page.information');
+// Route::get('/gift', function () {
+//     return view('client2.giftpage');
+// })->name('page.information');
+// Route::get('/review', function () {
+//     return view('client2.reviewpage');
+// })->name('page.information');
+// Route::get('/encyclopedia', function () {
+//     return view('client2.encyclopedia');
+// })->name('page.information');
 
 
-Route::get('/advice', function () {
-    return view('client2.advice');
-})->name('page.information');
-Route::get('/faq', function () {
-    return view('client2.faq');
-})->name('page.information');
-Route::get('/contact', function () {
-    return view('client2.contact');
-})->name('page.information');
-Route::get('/gdpr', function () {
-    return view('client2.gdpr');
-})->name('page.information');
-Route::get('/term', function () {
-    return view('client2.termcondition');
-})->name('page.information');
-Route::get('/pay', function () {
-    return view('client2.payment');
-})->name('page.information');
+// Route::get('/advice', function () {
+//     return view('client2.advice');
+// })->name('page.information');
+// Route::get('/faq', function () {
+//     return view('client2.faq');
+// })->name('page.information');
+// Route::get('/contact', function () {
+//     return view('client2.contact');
+// })->name('page.information');
+// Route::get('/gdpr', function () {
+//     return view('client2.gdpr');
+// })->name('page.information');
+// Route::get('/term', function () {
+//     return view('client2.termcondition');
+// })->name('page.information');
+// Route::get('/pay', function () {
+//     return view('client2.payment');
+// })->name('page.information');
 
-Route::get('/exchange', function () {
-    return view('client2.exchange');
-})->name('page.information');
+// Route::get('/exchange', function () {
+//     return view('client2.exchange');
+// })->name('page.information');
 
-Route::get('/discreet', function () {
-    return view('client2.discreethandling');
-})->name('page.information');
+// Route::get('/discreet', function () {
+//     return view('client2.discreethandling');
+// })->name('page.information');
 
-Route::get('/shipping', function () {
-    return view('client2.shipping');
-})->name('page.information');
+// Route::get('/shipping', function () {
+//     return view('client2.shipping');
+// })->name('page.information');
 
-Route::get('/legal', function () {
-    return view('client2.legalnotice');
-})->name('page.information');
+// Route::get('/legal', function () {
+//     return view('client2.legalnotice');
+// })->name('page.information');
 
-Route::get('/information', function () {
-    return view('client2.information');
-})->name('page.information');
+// Route::get('/information', function () {
+//     return view('client2.information');
+// })->name('page.information');
 
 //ragini
 Route::get('/category/{category_id}/products', 'Client\ProductController@productsByCategory')->name('client2.category-product');
@@ -307,13 +305,28 @@ Route::post('/getState', 'Client\UserController@getState')->name('user.getState'
 
 
 Route::get('/checkout_form', 'Client\PaymentGatewayController@checkout_form')->name('home.checkout_form');
+
 Route::get('/address_form', 'Client\HomeController@address_form')->name('home.address_form');
 Route::get('/privacy-policy', 'Client\HomeController@privacy_policy')->name('home.privacy-policy');
 Route::get('/terms-and-refund-policy', 'Client\HomeController@terms_and_refund_policy')->name('home.terms-and-refund-policy');
 
 Route::get('/contact-us', 'Client\HomeController@contact_us')->name('home.contact_us');
 
+Route::get('/giftpage', 'Client\HomeController@Gifts')->name('home.giftpage');
+Route::get('/advice', 'Client\HomeController@Advice')->name('home.advice');
+Route::get('/faq', 'Client\HomeController@FAQ')->name('home.faq');
+Route::get('/contact', 'Client\HomeController@Contact')->name('home.contact');
+Route::get('/gdpr', 'Client\HomeController@GDPR')->name('home.gdpr');
+Route::get('/termcondition', 'Client\HomeController@TermCondition')->name('home.termcondition');
+Route::get('/payment', 'Client\HomeController@Payment')->name('home.payment');
+Route::get('/exchange', 'Client\HomeController@Exchange')->name('home.exchange');
+Route::get('/reviewpage', 'Client\HomeController@reviews')->name('home.reviewpage');
+Route::get('/discreethandling', 'Client\HomeController@DiscreetHandling')->name('home.discreethandling');
+Route::get('/shipping', 'Client\HomeController@Shipping')->name('home.shipping');
+Route::get('/legalnotice', 'Client\HomeController@LegalNotice')->name('home.legalnotice');
+Route::get('/information', 'Client\HomeController@Information')->name('home.information');
 Route::get('/kamagra-glossary', 'Client\HomeController@kamagra_glossary')->name('home.kamagra-glossary');
+
 Route::get('sexual-enhance', 'Client\HomeController@sexual_enhance')->name('home.sexual-enhance');
 Route::get('/partner', 'Client\HomeController@partner_page')->name('home.partner');
 Route::get('/partner-register', 'Client\HomeController@partner_register')->name('home.partner-register');
@@ -339,5 +352,6 @@ Route::get('/blog', 'Client\HomeController@blog')->name('home.blog');
 Route::get('/blog/{url}', 'Client\HomeController@blog_detail')->name('home.blog-detail');
 Route::post('/blog-review-save', 'Client\HomeController@saveBlogReview')->name('home.blog-review-save');
 Route::post('/product-review-save', 'Client\HomeController@saveProductReview')->name('home.product-review-save');
+Route::get('/search', 'Client\HomeController@search')->name('home.search');
 
 Route::get('/sitemap.xml', 'Client\HomeController@sitemapXml');

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,8 +9,7 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
 
-    <!-- your css -->
-    <!-- shopping summary -->
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/shoppingsummary.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/pageinformation.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/client2/css/cartpage.css') }}" />
@@ -25,4 +24,4 @@
     </div>
 
 </body>
-</html>
+</html> -->
