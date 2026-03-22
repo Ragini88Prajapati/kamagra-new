@@ -945,7 +945,7 @@ $(document).ready(function() {
                     }
                     
                     // Show success message
-                    alert('Product added to cart successfully!');
+                   alert('Product added to cart successfully!');
                     
                     // Reload page to update cart dropdown
                     console.log('Reloading page...');

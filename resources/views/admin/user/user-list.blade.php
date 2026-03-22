@@ -1,6 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
+@php
+use Illuminate\Support\Str;
+@endphp
+@section('head')
+<link href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+@endsection
 
 <div class="content-wrapper" style="min-height: 234px;">
     <section class="content-header">
@@ -18,6 +24,7 @@
             </div>
         </div>
     </section>
+    
     <section class="content">
         <div class="row">
             <div class="col-12">
@@ -43,7 +50,8 @@
                             <button type="submit" class="btn bg-gradient-primary">Search</button>
                         </form>
 
-                        <table id="example1" class="table table-bordered table-striped">
+                        <!-- <table id="example1" class="table table-bordered table-striped"> -->
+                              <table id="category-list" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -82,7 +90,7 @@
                             </tbody>
                         </table>
 
-                        {{ isset($user_list) && is_object($user_list) ? $user_list->links(): '' }}
+                        <!-- {{ isset($user_list) && is_object($user_list) ? $user_list->links(): '' }} -->
                     </div>
                 </div>
             </div>

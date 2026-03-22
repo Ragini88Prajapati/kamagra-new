@@ -11506,7 +11506,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .content-wrapper,
 }
 
 .content-wrapper {
-    background: #7F447A
+    background: #1e93d1
 }
 
 .content-wrapper>.content {
@@ -11778,7 +11778,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .content-wrapper,
 }
 
 [class*=sidebar-dark] .brand-link {
-    border-bottom: 1px solid #7F447A;
+    border-bottom: 1px solid #1e93d1;
     color: rgba(255, 255, 255, .8)
 }
 
@@ -12642,7 +12642,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .content-wrapper,
 }
 
 [class*=sidebar-dark] .btn-sidebar:focus {
-    background: #7F447A
+    background: #1e93d1
 }
 
 [class*=sidebar-light] .btn-sidebar, [class*=sidebar-light] .form-control-sidebar {
@@ -13176,7 +13176,7 @@ body.text-sm .control-sidebar {
 }
 
 .control-sidebar-light {
-    color: #7F447A
+    color: #1e93d1
 }
 
 .control-sidebar-light {
@@ -16022,7 +16022,7 @@ textarea.form-control.is-warning {
 }
 
 .card.bg-dark .bootstrap-datetimepicker-widget table td.active, .card.bg-dark .bootstrap-datetimepicker-widget table td.active:hover, .card.bg-gradient-dark .bootstrap-datetimepicker-widget table td.active, .card.bg-gradient-dark .bootstrap-datetimepicker-widget table td.active:hover {
-    background: #7F447A;
+    background: #1e93d1;
     color: #fff
 }
 
@@ -16972,7 +16972,7 @@ textarea.form-control.is-warning {
 }
 
 .card.bg-gradient-gray-dark .bootstrap-datetimepicker-widget table td.active, .card.bg-gradient-gray-dark .bootstrap-datetimepicker-widget table td.active:hover, .card.bg-gray-dark .bootstrap-datetimepicker-widget table td.active, .card.bg-gray-dark .bootstrap-datetimepicker-widget table td.active:hover {
-    background: #7F447A;
+    background: #1e93d1;
     color: #fff
 }
 
@@ -28500,7 +28500,7 @@ a.text-muted:hover {
     border-radius: 30px;
 }
 .login-card-body button{
-    background: #7F447A !important;
+    background: #1e93d1 !important;
     width: 100% !important;
 }
 .login-box .card{
@@ -28510,7 +28510,7 @@ a.text-muted:hover {
     color: #fff;
 }
 .sidebar-dark-primary{
-    background-color: #7F447A !important;
+    background-color: #1e93d1 !important;
 }
 .nav-item i~p{
     margin-left: 10px !important;
@@ -28545,7 +28545,7 @@ a.text-muted:hover {
 }
 .paginate_button.next,.paginate_button.previous{
     text-decoration: none;
-    background-color: #7F447A;
+    background-color: #1e93d1;
     padding: 7px 11px;
     border-radius: 10px;
     margin: 0px 10px;

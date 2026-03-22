@@ -125,7 +125,7 @@ use App\Models\Client\Product;
 
   <div id="header-content">
 
-    <a id="logo" href="https://www.kamagraoriginal.to/de/de">
+    <a id="logo" href="{{ route('home.index') }}">
       <img src="https://www.kamagraoriginal.to/images/logo.png?v=10" alt="Kamagra Original">
     </a>
 
@@ -237,6 +237,10 @@ use App\Models\Client\Product;
                     </div>
                 </div>
             </div>
+           <div class="hide-mobile"
+     style="background-color: #208eccc2; border-bottom: none; padding: 15px">
+</div>
+
 
             
 
@@ -434,7 +438,9 @@ use App\Models\Client\Product;
                                         alt="OnlineKamagraStore" >
                                 </a>
                             </div>
+                              <a href="{{route('home.index')}}">
                             <img style="flagimg" src="https://www.kamagraoriginal.to/images/flag-de.png" alt="">
+                            </a>
 
                         </div>
                          <!-- <div class="col-xs-1 col-md-1 pdding-00 cart-column ">

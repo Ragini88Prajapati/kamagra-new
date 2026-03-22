@@ -49,7 +49,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Message</th>
-                                    {{-- <th>Reset Login</th> --}}
+                                   <th>Reset Login</th>
 
                                     <th>Action</th>
                                 </tr>
@@ -78,7 +78,7 @@
                             </tbody>
                         </table>
 
-                        {{ isset($user_list) && is_object($user_list) ? $user_list->links(): '' }}
+                        <!-- {{ isset($user_list) && is_object($user_list) ? $user_list->links(): '' }} -->
                     </div>
                 </div>
             </div>
