@@ -1,0 +1,510 @@
+@php
+use App\Models\Client\Product;
+
+@endphp
+@extends('layouts.client2')
+
+@section('content')
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        
+        <!-- Left Sidebar -->
+        <!-- <div id="column-left" class="col-sm-3 col-md-3 col-lg-3 hidden-xs">
+            <div class="login-block" style="background: #eaf8ff; border: 1px solid #bce8f1; padding: 15px; margin-bottom: 20px; ">
+                @auth
+                <h3 style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; color: #000;">{{ Auth::user()->name }}</h3>
+                <div style="margin-bottom: 10px; font-size: 12px;">
+                    <p style="color: #333; margin-bottom: 5px;">Welcome, {{ Auth::user()->name }}!</p>
+                    <a href="{{route('home.user-profile')}}" style="color: #006eb7; text-decoration: none;">My Account</a><br>
+                    <a href="{{route('logout')}}" style="color: #006eb7; text-decoration: none;">Logout</a>
+                </div>
+                @else
+                <h3 style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; color: #000;">Login</h3>
+                <form action="{{ route('client.authenticate') }}" method="post">
+                    @csrf
+                    <div style="margin-bottom: 5px;">
+                        <label style="font-weight: normal; font-size: 12px; color: #333;">E-mail:</label>
+                        <input type="text" name="email" required style="width: 100%; border: 1px solid #ccc; padding: 2px;">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label style="font-weight: normal; font-size: 12px; color: #333;">Password:</label>
+                        <input type="password" name="password" required style="width: 100%; border: 1px solid #ccc; padding: 2px;">
+                    </div>
+                    <button type="submit" style="background: #e96e00; color: white; border: 1px solid #d45500; padding: 2px 10px; font-weight: bold; font-size: 12px; border-radius: 2px;">Log in</button>
+                    <div style="margin-top: 10px; font-size: 11px;">
+                        <a href="{{route('home.signup')}}" style="color: #006eb7;">Register</a><br>
+                        <a href="{{route('home.forgetPassPage')}}" style="color: #006eb7;">Forgot your password?</a>
+                    </div>
+                </form>
+                @endauth
+            </div>
+            <div class="header_category  nofloat " style="margin-bottom: 20px;">
+                <div id="boss-menu-category" class="box">
+                    <div class="box-content">
+                        <ul class="box-category boss-menu-cate new-iconarrow sidemenu-medicine" style="list-style: none; padding: 0; border: 1px solid #ddd; border-top: 3px solid #0088cc;">
+                            @forelse($categories ?? [] as $category)
+                                <li style="background: #aeddf5; padding: 10px 15px; font-weight: bold; color: #003e6d; font-size: 16px; border-bottom: 1px solid #fff;">
+                                    {{ $category->name }}
+                                </li>
+                                @php
+                                    $products = \App\Models\Client\Product::where('category_id', $category->id)
+                                        ->where('status', 1)
+                                        ->select('name', 'slug')
+                                        ->get();
+                                @endphp
+                                @forelse($products as $product)
+                                    <li>
+                                        <a href="{{ route('client.product.product-preview', [$product->slug]) }}" style="display: block; padding: 8px 15px; border-bottom: 1px solid #eee; text-decoration: none; color: #003e6d; font-weight: bold; font-size: 13px;">
+                                            <i class="fa fa-angle-right" style="margin-right: 5px;"></i> {{ $product->name }}
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li style="padding: 8px 15px; color: #666; font-style: italic; border-bottom: 1px solid #eee;">
+                                        No products available
+                                    </li>
+                                @endforelse
+                            @empty
+                                <li style="padding: 15px; text-align: center; color: #666;">
+                                    No categories available
+                                </li>
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div> -->
+
+         <div id="column-left" class="col-sm-3 col-md-3 col-lg-3 hidden-xs">
+
+        <div id="module_559" class="module-wrapper module-wrapper-559">
+          <img src="https://www.kamagraoriginal.to/images/SIDE-bitcoin-DE.png" alt="Bitcoin payment" style="width: 275px;">
+        </div>
+         <!-- Login Block -->
+            <div class="login-block" style="background-color: #FFF; border: 1px solid #A0D9F7; margin: 0 0 20px; ">
+                @auth
+                <h3 style="margin: 0 0 10px 0; font-size: 14px; border-bottom: 2px solid #9EC8FA; background-color: #A0D9F7; line-height: 25px; padding: 5px 15px;font-weight: 700; color: #000;">{{ Auth::user()->name }}</h3>
+                <div style="margin-bottom: 10px; font-size: 12px;">
+                    <p style="color: #333; margin-bottom: 5px;">Welcome, {{ Auth::user()->name }}!</p>
+                    <a href="{{route('home.user-profile')}}" style="color: #006eb7; text-decoration: none;">My Account</a><br>
+                    <a href="{{route('logout')}}" style="color: #006eb7; text-decoration: none;">Logout</a>
+                </div>
+                @else
+                <h3 style="margin: 0 0 10px 0; font-size: 14px; border-bottom: 2px solid #9EC8FA; background-color: #A0D9F7; line-height: 25px; padding: 5px 15px;font-weight: 700; color: #000;">Login</h3>
+                <form action="{{ route('client.authenticate') }}" method="post" style="padding: 10px;">
+                    @csrf
+                    <div style="margin-bottom: 5px; display: flex">
+                        <label style="font-weight: normal; font-size: 12px; color: #333; width: 35%;">E-mail:</label>
+                        <input type="text" name="email" required style="width: 100%; border: 1px solid #ccc; border: 1px solid #9EC8FA; width: 60%;">
+                    </div>
+                    <div style="margin-bottom: 10px;  display: flex">
+                        <label style="font-weight: normal; font-size: 12px; color: #333; width: 35%;">Password:</label>
+                        <input type="password" name="password" required style="idth: 100%; border: 1px solid #ccc;  border: 1px solid #9EC8FA;  width: 60%;">
+                    </div>
+                    <button type="submit" style="background: #e96e00; color: white; border: 1px solid #d45500; padding: 2px 10px; font-weight: bold; font-size: 12px; border-radius: 2px; margin-left: 75px;">Log in</button>
+                    <div style="margin-top: 10px; font-size: 15px; font-weight: bold;">
+                        <a href="{{route('home.signup')}}" style="color: #006eb7;">Register</a><br>
+                        <a href="{{route('home.forgetPassPage')}}" style="color: #006eb7;">Forgot your password?</a>
+                    </div>
+                </form>
+                @endauth
+            </div>
+
+            <!-- Categories Menu -->
+            <div class="header_category  nofloat " style="margin-bottom: 20px;">
+                <div id="boss-menu-category" class="box">
+                    <div class="box-content">
+                        <ul class="box-category boss-menu-cate new-iconarrow sidemenu-medicine" style="list-style: none;  border: 1px solid #ddd; border-top: 3px solid #0088cc;">
+                            @forelse($categories as $category)
+                                <li style="background: #aeddf5; padding: 5px 15px; font-weight: bold; color: #075BAF; font-size: 13px; border-bottom: 1px solid #fff;">
+                                    {{ $category->name }}
+                                </li>
+                                @php
+                                    $products = \App\Models\Client\Product::where('category_id', $category->id)
+                                        ->where('status', 1)
+                                        ->select('name', 'slug')
+                                        ->get();
+                                @endphp
+                                @forelse($products as $product)
+                                    <li>
+                                        <a href="{{ route('client.product.product-preview', [$product->slug]) }}" style="display: block; padding: 3px 7px 3px 7px; border-bottom: 1px solid #eee; text-decoration: none; color: #003e6d; font-weight: bold; font-size: 13px;">
+                                            <i class="fa fa-angle-right" style="margin-right: 5px;"></i> {{ $product->name }}
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li style="padding: 5px 10px 5px 7px; color: #666; font-style: italic; border-bottom: 1px solid #eee;">
+                                        No products available
+                                    </li>
+                                @endforelse
+                            @empty
+                                <li style="padding: 5px 10px 5px 7px; text-align: center; color: #666;">
+                                    No categories available
+                                </li>
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Bestsellers Moved to Content -->
+
+        </div>
+        <!-- /#column-left -->
+        
+        <!-- Main Content -->
+        <div id="content" class="col-sm-9 col-md-9 col-lg-9">
+            
+            <div class="emptybackround"></div>
+            <div class="cart-container">
+                <h1>Einkaufswagen</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" class="shop-basket-items">
+            <thead>
+                <tr>
+                    <th width="52%" align="left">Produktname</th>
+                    <th width="13%" align="center">CROWD</th>
+                    <th width="15%" align="right">PREIS</th>
+                    <th width="15%" align="right">INSGESAMT</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (isset($cart_product_list) && !empty($cart_product_list))
+                @foreach ($cart_product_list as $item)
+                @php
+                $prod_data=Product::where('id',$item['product_id'])->first();
+                @endphp
+                <tr>
+                    <td class="product-name">
+                        <a href="#">
+                            {{$prod_data->name}}
+                        </a>
+                    </td>
+
+                    <td align="center">
+                        <input type="text" name="quantity[]" data-product="{{$item['id']}}" value="{{$item['quantity']}}" size="2" class="form-input-text" style="text-align: center; width: 24px;">
+                        <span class="unit">St.</span>
+                    </td>
+
+                    <td>€{{$item['price']}}</td>
+
+                    <td>€{{$item['total_price']}}</td>
+
+                    <td class="remove" data-product="{{$item['id']}}" style="cursor: pointer; font-weight: bold; color: #000; text-align: center;">X</td>
+                </tr>
+                @endforeach
+                @else
+                <tr>
+                    <td colspan="5">Cart is Empty!</td>
+                </tr>
+                @endif
+
+                <tr>
+                    <td colspan="5">
+                        <select name="gift" id="gift" onchange="fnSubmitForm('basketform');">
+                            <option value="0" class="gift-placeholder">
+                                Bitte wählen Sie Ihr Geschenk aus
+                            </option>
+
+                            <option value="219">
+                                GIFT: 3 PACKS OF KAMAGRA ORAL JELLY 100 WORTH €72 FREE
+                            </option>
+
+                            <option value="303">
+                                GIFT: 3 PACKS OF CENFORCE 100 WORTH €50 FREE
+                            </option>
+
+                            <option value="305">
+                                GIFT: 3 PACKS OF VIDALISTA 20 WORTH €50 FREE
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="5">
+                        <input
+                            type="text"
+                            name="item_discount"
+                            id="item_discount"
+                            class="form-input-text"
+                            placeholder="Gutscheincode eingeben"
+                        />
+
+                        <button
+                            type="button"
+                            class="basket-button"
+                            onclick="fnCoupon(true);"
+                        >
+                            Gutschein verwenden
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+
+        <div class="payment">
+            <div class="payment-label">
+                Zahlungsmethode:
+            </div>
+
+            <div class="payment-options">
+                <label class="payment-option">
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="bank_transfer"
+                        checked
+                        onclick="fnSubmitForm('basketform');"
+                    />
+                    Überweisung
+                    <img src="https://www.kamagraoriginal.to/images/logo-bank_transfer.png" alt="Banküberweisung" />
+                </label>
+
+                <label class="payment-option">
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="crypto"
+                        onclick="fnSubmitForm('basketform');"
+                    />
+                    Bitcoin <span class="discount">(10% Rabatt)</span>
+                    <img src="https://www.kamagraoriginal.to/images/logo-crypto.png" alt="Bitcoin" />
+                </label>
+            </div>
+        </div>
+
+        <div class="delivery">
+            <div class="delivery-label">
+                Versandart:
+            </div>
+
+            <div class="delivery-select">
+                <select
+                    id="delivery"
+                    name="delivery"
+                    class="form-select"
+                    onchange="fnSubmitForm('basketform');"
+                >
+                    <option value="5" selected>
+                        Schneller und diskreter Versand (+€10)
+                    </option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="total-summary">
+            <span class="total-label">Gesamtsumme:</span>
+            <span class="total-amount" id="total-amount">€{{$cart_total_price}}</span>
+        </div>
+
+        <div class="cart-actions">
+            <div class="terms-row">
+                <input
+                    type="checkbox"
+                    id="agreement"
+                    name="agreement"
+                    class="form-checkbox1"
+                />
+
+                <label for="agreement">
+                    <strong>
+                        Ich habe die
+                        <a
+                            href="https://www.kamagraoriginal.to/de/geschaftsbedingungen"
+                            target="_blank"
+                            class="form-link"
+                        >
+                            Geschäftsbedingungen
+                        </a>
+                        gelesen und stimme ihnen zu.
+                    </strong>
+                </label>
+            </div>
+
+            <div class="buttons-row">
+                <button
+                    type="button"
+                    class="basket-button"
+                    onclick="fnRecalculate('basketform');"
+                >
+                    Aktualisieren
+                </button>
+
+                <button
+                    type="button"
+                    class="basket-button primary"
+                    onclick="fnConfirmOrder();"
+                >
+                    Zur Kasse gehen
+                </button>
+            </div>
+        </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@endsection
+
+@section('scripts')
+<script>
+function changeQty(position, increase) {
+    var qty = parseInt($('#select-number' + position + '').val());
+    if (!isNaN(qty)) {
+        qty = increase ? qty + 1 : (qty - 1 > 1 ? qty - 1 : 1);
+        $('#select-number' + position + '').val(qty);
+        product = $('#select-number' + position + '').data('product');
+        // console.log(qty+" "+product);
+        $.ajax({
+            url: "{{ route('product.update-cart') }}",
+            type: "POST",
+            data: {
+                product: product,
+                quantity: qty,
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(data) {
+                window.location.reload();
+            },
+            error: function(data) {
+                window.location.reload();
+            }
+        });
+    } else {
+        $('#select-number' + position + '').val(1);
+        product = $('#select-number' + position + '').data('product');
+        $.ajax({
+            url: "{{ route('product.update-cart') }}",
+            type: "POST",
+            data: {
+                product: product,
+                quantity: 1,
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(data) {
+                window.location.reload();
+            },
+            error: function(data) {
+                window.location.reload();
+            }
+        });
+    }
+    position = '';
+}
+
+// Add missing functions required by cartpage UI
+function fnSubmitForm(formName) {
+    // Placeholder function for form submission
+    console.log("Form submitted: " + formName);
+}
+
+function fnCoupon(showMessage) {
+    // Placeholder function for coupon handling
+    console.log("Coupon function called");
+}
+
+function fnRecalculate(formName) {
+    // Placeholder function for recalculation
+    console.log("Recalculating: " + formName);
+}
+
+function fnConfirmOrder() {
+    // Check if terms agreement checkbox is checked
+    if (!document.getElementById('agreement').checked) {
+        alert('Please agree to the terms and conditions to proceed to checkout.');
+        return false;
+    }
+    
+    // Redirect to checkout page when confirm order is clicked
+    window.location.href = "{{ route('home.checkout_form') }}";
+}
+
+$(document).on("change", "#input_country", function() {
+    var country_id = $(this).val();
+    $.ajax({
+        url: '{{route("user.getState")}}',
+        method: 'post',
+        data: {
+            "_token": "{{csrf_token()}}",
+            country_id: country_id
+        },
+        success: function(res) {
+            $("#input_zone").html(res);
+        }
+    });
+});
+
+$(document).ready(function() {
+    // Handle quantity changes
+    $('.form-input-text[name="quantity[]"]').on('change', function() {
+        var position = $(this).data('product');
+        var newQty = $(this).val();
+        
+        $.ajax({
+            url: "{{ route('product.update-cart') }}",
+            type: "POST",
+            data: {
+                product: position,
+                quantity: newQty,
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(data) {
+                window.location.reload();
+            },
+            error: function(data) {
+                window.location.reload();
+            }
+        });
+    });
+    
+    // Handle product removal - click on remove cell (X)
+    $('.remove[data-product]').click(function() {
+        var productId = $(this).data('product');
+        
+        $.ajax({
+            url: "{{ route('product.delete-from-cart') }}",
+            type: "POST",
+            data: {
+                product: productId,
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(data) {
+                window.location.reload();
+            },
+            error: function(data) {
+                window.location.reload();
+            }
+        });
+    });
+    
+    // Update total with shipping cost
+    function updateTotalWithShipping() {
+        var cartTotal = parseFloat('{{$cart_total_price}}');
+        var selectedOption = $('#delivery option:selected');
+        var shippingText = selectedOption.text();
+        
+        // Extract shipping cost from option text (format: "... (+€X)")
+        var shippingMatch = shippingText.match(/\+€(\d+)/);
+        var shippingCost = shippingMatch ? parseFloat(shippingMatch[1]) : 0;
+        
+        var total = cartTotal + shippingCost;
+        $('#total-amount').text('€' + total.toFixed(2));
+    }
+    
+    // Initial update
+    updateTotalWithShipping();
+    
+    // Update when delivery option changes
+    $('#delivery').change(function() {
+        updateTotalWithShipping();
+    });
+});
+</script>
+@endsection

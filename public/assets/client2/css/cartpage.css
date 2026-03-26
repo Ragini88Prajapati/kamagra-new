@@ -1,0 +1,302 @@
+/* Cart Page CSS */
+
+.emptybackround {
+    width: 750px;
+    /* margin: 0px auto 0; */
+    padding: 20px;
+    border-bottom: 2px solid #9EC8FA;
+    background-color: #A0D9F7;
+}
+.cart-container {
+    width: 750px;
+    /* margin: 0 auto 30px; */
+    background: #fff;
+    border: 1px solid #b5d9f2;
+    /* padding: 20px; */
+}
+
+h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #075baf;
+    font-family: Arial, Helvetica, sans-serif;
+   
+}
+
+/* .shop-basket-items {
+    width: 100%;
+    border-collapse: collapse;
+} */
+
+.shop-basket-items thead {
+    background: #bfe6ff;
+}
+
+.shop-basket-items th {
+    background-color: #A0D9F7;
+    border-bottom: 2px solid #9EC8FA;
+    color: #000000;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px 0px 5px 15px;
+    vertical-align: inherit;
+}
+.shop-basket-items td {
+    padding: 12px;
+    border-bottom: 1px solid #dceefc;
+    font-size: 13px;
+}
+
+.product-name a {
+    color: #0b5ed7;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.form-input-text{
+    width: 50% !important;
+    box-sizing: border-box;
+    border: 1px solid #9EC8FA;
+    padding: 5px;
+    margin-bottom: 10px;
+    }
+
+    .form-select {
+  
+    box-sizing: border-box;
+    border: 1px solid #9EC8FA;
+    padding: 5px;
+    }
+    
+
+.qty {
+    width: 50px;
+}
+
+#gift {
+    max-width: 95%;
+    border: 1px solid #9EC8FA;
+    padding: 4px;
+}
+.basket-button {
+    color: #FFF;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 4px 6px;
+    background-color: #F46000;
+    border: 1px solid #EB5600;
+    
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.payment {
+  display: flex;
+  flex-wrap: wrap;
+ font-size: 13px;
+    color: #071D35;
+}
+
+.payment-label {
+  width: 40%;
+  min-width: 200px;
+  color: #000000;
+}
+
+.payment-options {
+  width: 55%;
+  min-width: 300px;
+  color: #000000;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  color: #000000;
+}
+
+.payment-option img {
+  max-height: 20px;
+}
+
+.discount {
+  color: #555;
+}
+
+.delivery {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  font-size: 13px;
+ color: #000000;
+}
+
+.delivery-label {
+  width: 40%;
+  min-width: 200px;
+  
+}
+
+.delivery-select {
+  width: 55%;
+  min-width: 300px;
+}
+
+.delivery-select select {
+  width: 100%;
+  padding: 6px;
+}
+
+.total-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 22px;
+  color: #0b5ed7;
+  font-weight: 700;
+}
+
+.total-label,
+.total-amount {
+  white-space: nowrap;
+}
+
+.cart-actions {
+  margin-top: 20px;
+}
+
+.terms-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  font-size: 13px;
+ color: #000000;
+}
+
+.form-checkbox1{
+    -webkit-transform: scale(1.4);
+}
+.form-link {
+  color: #0b5ed7;
+  text-decoration: none;
+}
+
+.buttons-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.basket-button {
+    color: #FFF;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 4px 6px;
+    background-color: #F46000;
+    border: 1px solid #EB5600;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.basket-button.primary {
+  font-size: 16px;
+}
+
+/* =========================
+   MOBILE – ROW STYLE CART
+========================= */
+@media (max-width: 767px) {
+
+  .emptybackround,
+  .cart-container {
+    width: 100%;
+    /* padding: 20px; */
+  }
+
+  .form-input-text{
+        width: 50% !important;
+        box-sizing: border-box;
+    }
+
+  h1 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  /* Keep table layout */
+  .shop-basket-items {
+    font-size: 12px;
+  }
+
+  .shop-basket-items th,
+  .shop-basket-items td {
+ 
+    padding: 6px 4px;
+        white-space: nowrap;
+        text-align: center;
+  }
+
+  /* Product name smaller */
+  .product-name a {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+
+
+  /* Remove button */
+  .remove {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  /* Gift dropdown */
+  #gift {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  /* Voucher row */
+  .item_discount {
+    width: 65%;
+    font-size: 12px;
+  }
+
+  .basket-button {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+
+  /* Payment & delivery stay inline but wrap */
+  .payment,
+  .delivery {
+    font-size: 12px;
+  }
+
+  .payment-option {
+    flex-wrap: wrap;
+  }
+
+  /* Total */
+  .total-summary {
+    font-size: 18px;
+  }
+
+  /* Buttons */
+  .buttons-row {
+    gap: 8px;
+  }
+
+  .basket-button.primary {
+    font-size: 14px;
+  }
+}
